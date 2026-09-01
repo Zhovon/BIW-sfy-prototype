@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  DESIGN TOKENS — single source of truth for the storefront palette.
+
+  Phase A (now): a clean neutral baseline that mirrors the current Shopify
+  storefront look, so we reach visual parity first.
+
+  Phase B (recolor): comment out the :root block below and uncomment
+  ".clinical-couture" — the whole site flips to the new brand system.
+  Nothing else needs to change.
+*/
+
+/* BIW Clinical Couture v2.0 — locked brand palette (single source of truth) */
+:root {
+  --ice: #EEF6F9;
+  --teal: #4E9DB8;
+  --ink: #12333D;
+  --gold: #C9A961;
+  --paper: #f6f9fa;
+  --muted: #5d6f77;
+  --line: #dbe6ea;
+
+  --font-display: "Cormorant Garamond";
+  --font-body: "Montserrat";
+}
+
+/* Previous neutral baseline (pre-recolor) — kept for reference
+:root {
+  --ice: #f4f4f2; --teal: #8a8f88; --ink: #1c1c1c; --gold: #b08d57;
+  --paper: #ffffff; --muted: #6b6b6b; --line: #e6e6e3;
+}
+*/
+
+* { box-sizing: border-box; }
+
+html { -webkit-font-smoothing: antialiased; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display), serif;
+}
+
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* eyebrow / kicker */
+.kicker {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 26px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+.btn:hover { opacity: 0.85; }
+.btn--ghost { background: transparent; color: var(--ink); }
+.btn--gold { background: var(--gold); border-color: var(--gold); color: #fff; }

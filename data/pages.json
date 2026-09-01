@@ -1,0 +1,88 @@
+{
+  "shampoo": {
+    "slug": "shampoo",
+    "type": "product-grid",
+    "title": "Shampoo",
+    "products": [
+      "colour-protect-shine-shampoo",
+      "keratin-repair-strengthen-shampoo",
+      "nourishing-argan-oil-shampoo",
+      "scalp-care-anti-dandruff-shampoo"
+    ],
+    "description": ""
+  },
+  "serums": {
+    "slug": "serums",
+    "type": "product-grid",
+    "title": "Serums",
+    "products": [
+      "hair-growth-scalp-revival-serum",
+      "hyaluronic-acid-hydration-booster-serum",
+      "retinol-anti-ageing-night-serum",
+      "vitamin-c-brightening-face-serum"
+    ],
+    "description": ""
+  },
+  "face-wash": {
+    "slug": "face-wash",
+    "type": "product-grid",
+    "title": "Face Wash",
+    "products": [
+      "activated-charcoal-deep-cleanse-face-wash",
+      "hydrating-vitamin-c-face-wash",
+      "soothing-rose-ceramide-face-wash"
+    ],
+    "description": ""
+  },
+  "products": {
+    "slug": "products",
+    "type": "product-grid",
+    "title": "Products",
+    "products": [
+      "activated-charcoal-deep-cleanse-face-wash",
+      "colour-protect-shine-shampoo",
+      "hair-growth-scalp-revival-serum",
+      "hyaluronic-acid-hydration-booster-serum",
+      "hydrating-vitamin-c-face-wash",
+      "keratin-repair-strengthen-shampoo",
+      "nourishing-argan-oil-shampoo",
+      "retinol-anti-ageing-night-serum"
+    ],
+    "description": ""
+  },
+  "female-services": {
+    "slug": "female-services",
+    "type": "collection-grid",
+    "title": "Female Services",
+    "collections": [
+      "facials",
+      "hydrafacials",
+      "hair-services",
+      "pedicure-manicure",
+      "skin-treatments",
+      "hifu-treatment",
+      "waxing",
+      "brightening-treatments",
+      "fair-polish",
+      "body-care"
+    ],
+    "description": "HYDRA FACIALS\n              \n            Experience the ultimate skin transformation with our Hydra Facial treatments. Using advanced..."
+  },
+  "male-services": {
+    "slug": "male-services",
+    "type": "collection-grid",
+    "title": "Male Services",
+    "collections": [
+      "facials-gents",
+      "hair-beard",
+      "hair-care-treatment",
+      "hair-colour",
+      "pedicure-manicure-gents",
+      "bath-packages",
+      "gents-grooming-packages",
+      "body-scrub-and-waxing",
+      "soak-and-relax"
+    ],
+    "description": "HAIR & BEARD\n              \n            Step up your grooming game with our expert Hair & Beard services..."
+  }
+}

@@ -1,0 +1,259 @@
+[
+  {
+    "handle": "bath-packages",
+    "title": "Luxury Bath Packages for Relaxation & Skin Care for Men",
+    "products": [
+      "hot-bath-with-shower-30-min",
+      "rose-leaf-bath-30-min",
+      "apple-cider-bath-30-min",
+      "chandan-bath-30-min",
+      "salt-bath-30-min",
+      "ice-bath-30-min",
+      "jacuzzi-or-hot-bath-30-min"
+    ]
+  },
+  {
+    "handle": "body-care",
+    "title": "Professional Body Care Treatments for Glowing Skin",
+    "products": [
+      "signature-brightening-treatment",
+      "full-body-scrub",
+      "full-body-brightening-polish-massage",
+      "full-body-brightening-polish",
+      "body-massage"
+    ]
+  },
+  {
+    "handle": "body-scrub-and-waxing",
+    "title": "Body Scrub & Waxing Services for Men",
+    "products": [
+      "lower-body-waxing",
+      "upper-body-waxing",
+      "full-body-waxing-gents",
+      "lower-body-scrub",
+      "upper-body-scrub",
+      "full-body-scrub-gents"
+    ]
+  },
+  {
+    "handle": "brightening-treatments",
+    "title": "Skin Brightening Treatments for Glowing Even Skin",
+    "products": [
+      "legs-brightening",
+      "neck-brightening",
+      "underarms-brightening",
+      "back-brightening",
+      "feet-brightening",
+      "v-line-brightening",
+      "bra-line-brightening"
+    ]
+  },
+  {
+    "handle": "facials-gents",
+    "title": "Gents Facials & Skin Care Treatments for Men",
+    "products": [
+      "insta-glow",
+      "ayurvedic-facial",
+      "dermaplaning-facial-gents",
+      "pearl-whitening-gents",
+      "microdermabrasion-glow-facial",
+      "golden-glow",
+      "24k-gold-ultimo",
+      "bio-hydra-gents",
+      "advance-hydra-gents",
+      "premium-hydra-gents",
+      "ultimate-hydra-gents",
+      "beauty-intelligent-signature"
+    ]
+  },
+  {
+    "handle": "facials",
+    "title": "Professional Facial Treatments for Glowing Skin",
+    "products": [
+      "instant-glow-facial",
+      "korean-glow-facial",
+      "organic-facial",
+      "pearl-whitening-facial",
+      "bubble-glow-facial",
+      "acne-facial",
+      "deep-cleaning-aqua-filter-peeling",
+      "dermaplaning",
+      "dermaplaning-glow-facial",
+      "regular-clean-up"
+    ]
+  },
+  {
+    "handle": "fair-polish",
+    "title": "Fair Polish Body Scrub & Skin Brightening Treatment",
+    "products": [
+      "feet-fair-polish",
+      "back-fair-polish",
+      "front-body-fair-polish",
+      "underarms-fair-polish",
+      "bra-line-fair-polish",
+      "face-fair-polish",
+      "half-hand-fair-polish",
+      "full-hand-fair-polish",
+      "half-leg-fair-polish",
+      "full-leg-fair-polish",
+      "full-body-fair-polish"
+    ]
+  },
+  {
+    "handle": "gents-grooming-packages",
+    "title": "Gents Grooming Packages for Men",
+    "products": [
+      "advance-grooming-package",
+      "premium-grooming-package"
+    ]
+  },
+  {
+    "handle": "hair-care-treatment",
+    "title": "Professional Hair Care & Treatment for Healthy Strong Hair for Men",
+    "products": [
+      "hair-setup-wash-dry",
+      "regular-hair-treatment",
+      "hair-keratin-treatment",
+      "magical-hair-treatment",
+      "advance-hair-treatment-gents",
+      "signature-hair-treatment-gents",
+      "hair-volume",
+      "hair-curly",
+      "hair-rebonding-keratin",
+      "hair-straight-hair-spa"
+    ]
+  },
+  {
+    "handle": "hair-colour",
+    "title": "Professional Hair Colour Services",
+    "products": [
+      "brightening-hair-colour",
+      "d-tan-hair-colour",
+      "chocolate-hair-colour",
+      "parafin-hair-colour",
+      "honey-milk-hair-colour",
+      "crystal-hair-colour",
+      "signature-hair-colour",
+      "medical-hair-colour",
+      "peeling-hair-colour"
+    ]
+  },
+  {
+    "handle": "hair-services",
+    "title": "Professional Hair Services for All Hair Types",
+    "products": [
+      "blow-dry",
+      "shampoo-wash",
+      "omega-treatment-short-long",
+      "keratin-treatment-short-long",
+      "signature-hair-treatment",
+      "damage-repair-treatment",
+      "advanced-hair-treatment",
+      "hair-protein-spa-short-long",
+      "hair-smoothie-spa-short-long",
+      "magical-oil-massage",
+      "hot-oil-massage"
+    ]
+  },
+  {
+    "handle": "hifu-treatment",
+    "title": "HIFU Non-Surgical Skin Lifting & Tightening Treatment",
+    "products": [
+      "face-rf-radio-frequency",
+      "hifu"
+    ]
+  },
+  {
+    "handle": "hydrafacials",
+    "title": "Hydra Facial Treatments for Glowing Skin",
+    "products": [
+      "signature-facial",
+      "ultimate-glow-hydra",
+      "premium-hydra",
+      "advance-hydra",
+      "bio-hydra"
+    ]
+  },
+  {
+    "handle": "pedicure-manicure-gents",
+    "title": "Gents Pedicure & Manicure Nail Care Services",
+    "products": [
+      "basic-manicure",
+      "basic-pedicure",
+      "brightening-pedi-mani-gents",
+      "d-tan-pedi-mani-gents",
+      "chocolate-pedi-mani-gents",
+      "paraffin-pedi-mani-gents",
+      "honey-milk-pedi-mani-gents",
+      "crystal-pedi-mani-gents",
+      "signature-pedi-mani-gents",
+      "medical-pedi-mani-gents",
+      "peeling-pedi-mani-gents"
+    ]
+  },
+  {
+    "handle": "pedicure-manicure",
+    "title": "Pedicure & Manicure Nail Services for Perfect Hands",
+    "products": [
+      "signature-pedi-mani",
+      "crystal-pedi-mani",
+      "paraffin-pedi-mani",
+      "glow-pedi-mani",
+      "d-tan-pedi-mani",
+      "brightening-pedi-mani",
+      "basic-pedi-mani"
+    ]
+  },
+  {
+    "handle": "skin-treatments",
+    "title": "Advanced Skin Treatments for Healthy Glowing Skin",
+    "products": [
+      "radiant-glow-treatment",
+      "glutathione-99m-mg",
+      "glutathione-90k-mg",
+      "skin-prp",
+      "scalp-prp",
+      "scalp-prp-with-needling",
+      "facial-hair-removal-laser",
+      "customized-oxy-glow",
+      "oxygeno-glow",
+      "lip-peeling",
+      "lip-carbon",
+      "carbon-laser",
+      "bb-glow-treatment",
+      "dermapen-collagen-treatment",
+      "dermapen-rejuvenation",
+      "dermapen-meso-acne",
+      "chemical-peeling"
+    ]
+  },
+  {
+    "handle": "soak-and-relax",
+    "title": "Soak & Relax Spa Treatments for Stress Relief",
+    "products": [
+      "foot-calf-massage-30-mins",
+      "shoulder-back-massage-45-mins",
+      "specific-injury-massage",
+      "sports-massage-full-body-stretching-60-mins",
+      "stress-relief-massage-full-body-60-mins",
+      "stone-therapy-massage-full-body-60-mins",
+      "deep-tissue-massage-full-body-60-mins"
+    ]
+  },
+  {
+    "handle": "waxing",
+    "title": "Professional Waxing Services for Smooth Skin",
+    "products": [
+      "full-hand-waxing",
+      "half-hand-waxing",
+      "full-body-waxing",
+      "half-leg-waxing",
+      "full-face-waxing",
+      "back-waxing",
+      "belly-waxing",
+      "full-leg-waxing",
+      "bikini-waxing",
+      "underarms-waxing"
+    ]
+  }
+]

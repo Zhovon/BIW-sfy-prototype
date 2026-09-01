@@ -1,0 +1,9 @@
+node_modules/
+.next/
+out/
+*.log
+.env
+.env.local
+
+# scaffold order store (real orders live in Postgres)
+data/orders.json
