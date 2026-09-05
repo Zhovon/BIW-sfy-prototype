@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { validatePayment } from "@/lib/sslcommerz";
+import { validatePayment, paymentMatchesOrder } from "@/lib/sslcommerz";
 import { markOrder, getOrder } from "@/lib/orders";
 import { withApiLog } from "@/lib/analytics";
 
@@ -17,13 +17,15 @@ export const POST = withApiLog(async (req: NextRequest) => {
     return NextResponse.redirect(`${base}/checkout/cancelled?reason=unknown`, 303);
   }
 
-  // Confirm with the gateway's validator — the POST alone is not proof of payment.
-  const valid = valId ? await validatePayment(valId) : false;
-  if (!valid) {
+  // Confirm with the gateway's validator, then cross-check the validated figures
+  // against this order — the POST alone (and even a VALID status) is not proof
+  // the right amount was paid for the right transaction.
+  const v = valId ? await validatePayment(valId) : { ok: false as const };
+  if (!v.ok || !paymentMatchesOrder(v, order)) {
     await markOrder(tranId, "failed");
     return NextResponse.redirect(`${base}/checkout/cancelled?reason=unverified`, 303);
   }
 
-  await markOrder(tranId, "paid", valId);
+  await markOrder(tranId, "paid", v.valId);
   return NextResponse.redirect(`${base}/checkout/success?order=${encodeURIComponent(tranId)}`, 303);
 });

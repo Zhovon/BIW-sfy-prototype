@@ -74,8 +74,19 @@ export async function initSession(opts: {
   }
 }
 
-/** Confirm a transaction is genuinely paid. Returns true only for VALID/VALIDATED. */
-export async function validatePayment(valId: string): Promise<boolean> {
+export type ValidationResult =
+  | { ok: false }
+  | { ok: true; tranId: string; amount: number; currency: string; valId: string };
+
+/**
+ * Confirm a transaction with the gateway's validator and return its
+ * authoritative figures. A "VALID"/"VALIDATED" status alone is NOT proof the
+ * right customer paid the right amount for the right order — the caller must
+ * cross-check tranId/amount/currency against the stored order (see
+ * paymentMatchesOrder). This closes a val_id-replay hole where a cheap paid
+ * transaction's val_id is POSTed against an expensive order.
+ */
+export async function validatePayment(valId: string): Promise<ValidationResult> {
   const url = new URL(`${apiBase()}/validator/api/validationserverAPI.php`);
   url.searchParams.set("val_id", valId);
   url.searchParams.set("store_id", SSLC.storeId);
@@ -84,8 +95,30 @@ export async function validatePayment(valId: string): Promise<boolean> {
   try {
     const res = await fetch(url, { method: "GET" });
     const data = await res.json();
-    return data?.status === "VALID" || data?.status === "VALIDATED";
+    if (data?.status !== "VALID" && data?.status !== "VALIDATED") return { ok: false };
+    return {
+      ok: true,
+      tranId: String(data.tran_id ?? ""),
+      amount: Number(data.amount ?? data.currency_amount ?? NaN),
+      currency: String(data.currency ?? ""),
+      valId: String(data.val_id ?? valId),
+    };
   } catch {
-    return false;
+    return { ok: false };
   }
+}
+
+/**
+ * Verify a validated payment genuinely belongs to this order: same transaction
+ * id, same amount (to the paisa), and BDT. Guards against val_id replay and
+ * amount tampering.
+ */
+export function paymentMatchesOrder(
+  v: Extract<ValidationResult, { ok: true }>,
+  order: { tranId: string; amount: number },
+): boolean {
+  const tranOk = v.tranId === order.tranId;
+  const amountOk = Number.isFinite(v.amount) && Math.abs(v.amount - order.amount) < 0.01;
+  const currencyOk = v.currency === "BDT";
+  return tranOk && amountOk && currencyOk;
 }
