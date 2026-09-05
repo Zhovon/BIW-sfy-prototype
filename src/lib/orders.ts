@@ -1,25 +1,18 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { getProduct } from "@/lib/catalog";
+import type { Order, OrderLine, OrderStatus } from "@/lib/order-types";
 
 /**
  * Scaffold order store — a JSON file. In production these rows move to Postgres
  * (POST /orders on the FastAPI backend). Prices are ALWAYS recomputed here from
  * the catalog; the client-submitted cart is treated as untrusted input.
+ *
+ * Types + shared constants live in order-types.ts (client-safe, no `fs`).
  */
 
-export type OrderStatus = "pending" | "paid" | "failed" | "cancelled";
-export type OrderLine = { handle: string; title: string; price: number; qty: number };
-export type Order = {
-  tranId: string;
-  lines: OrderLine[];
-  amount: number;
-  customer: { name: string; email: string; phone: string; address: string };
-  status: OrderStatus;
-  valId?: string;
-  createdAt: string;
-  updatedAt: string;
-};
+export type { Order, OrderLine, OrderStatus } from "@/lib/order-types";
+export { ADMIN_STATUSES } from "@/lib/order-types";
 
 const FILE = path.join(process.cwd(), "data", "orders.json");
 
@@ -60,6 +53,28 @@ export async function createOrder(o: Omit<Order, "status" | "createdAt" | "updat
 
 export async function getOrder(tranId: string): Promise<Order | undefined> {
   return (await readAll())[tranId];
+}
+
+/** All orders, newest first — for the admin dashboard. */
+export async function listOrders(): Promise<Order[]> {
+  const orders = await readAll();
+  return Object.values(orders).sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+}
+
+/**
+ * Admin manual status override. Unlike markOrder (the payment-callback path,
+ * which is idempotent and never regresses a "paid" order), an admin is trusted
+ * to set any status — e.g. marking a paid order "fulfilled" or "refunded".
+ */
+export async function adminSetStatus(tranId: string, status: OrderStatus): Promise<Order | undefined> {
+  const orders = await readAll();
+  const order = orders[tranId];
+  if (!order) return undefined;
+  order.status = status;
+  order.updatedAt = new Date().toISOString();
+  orders[tranId] = order;
+  await writeAll(orders);
+  return order;
 }
 
 /**

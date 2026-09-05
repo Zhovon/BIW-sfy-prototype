@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { validatePayment } from "@/lib/sslcommerz";
 import { markOrder } from "@/lib/orders";
+import { withApiLog } from "@/lib/analytics";
 
 export const runtime = "nodejs";
 
@@ -9,7 +10,7 @@ export const runtime = "nodejs";
  * the customer closes the browser before redirect). Idempotent: markOrder never
  * regresses a "paid" order, so repeated IPNs are safe.
  */
-export async function POST(req: NextRequest) {
+export const POST = withApiLog(async (req: NextRequest) => {
   const form = await req.formData();
   const tranId = String(form.get("tran_id") || "");
   const valId = String(form.get("val_id") || "");
@@ -27,4 +28,4 @@ export async function POST(req: NextRequest) {
   if (status === "FAILED") await markOrder(tranId, "failed");
   if (status === "CANCELLED") await markOrder(tranId, "cancelled");
   return NextResponse.json({ ok: true });
-}
+});

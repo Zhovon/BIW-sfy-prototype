@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { initSession } from "@/lib/sslcommerz";
 import { priceCart, createOrder } from "@/lib/orders";
+import { withApiLog } from "@/lib/analytics";
 
 export const runtime = "nodejs";
 
-export async function POST(req: NextRequest) {
+export const POST = withApiLog(async (req: NextRequest) => {
   const body = await req.json().catch(() => null);
   if (!body?.cart || !Array.isArray(body.cart) || !body.customer) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
@@ -40,4 +41,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: result.reason, tranId }, { status: 502 });
   }
   return NextResponse.json({ url: result.gatewayUrl, tranId });
-}
+});

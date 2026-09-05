@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { validatePayment } from "@/lib/sslcommerz";
 import { markOrder, getOrder } from "@/lib/orders";
+import { withApiLog } from "@/lib/analytics";
 
 export const runtime = "nodejs";
 
 /** SSLCommerz POSTs here on successful payment. Validate before trusting it. */
-export async function POST(req: NextRequest) {
+export const POST = withApiLog(async (req: NextRequest) => {
   const form = await req.formData();
   const tranId = String(form.get("tran_id") || "");
   const valId = String(form.get("val_id") || "");
@@ -25,4 +26,4 @@ export async function POST(req: NextRequest) {
 
   await markOrder(tranId, "paid", valId);
   return NextResponse.redirect(`${base}/checkout/success?order=${encodeURIComponent(tranId)}`, 303);
-}
+});
