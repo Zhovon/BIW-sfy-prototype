@@ -37,10 +37,25 @@ export async function expectedToken(): Promise<string | null> {
   return sha256Hex(`biw-admin::${pw}`);
 }
 
-/** Verify a password the user typed at the login form. */
-export function verifyPassword(input: string): boolean {
+/** Constant-time compare of two equal-length strings (no early-exit leak). */
+function timingSafeEqual(a: string, b: string): boolean {
+  if (a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return diff === 0;
+}
+
+/**
+ * Verify a password the user typed at the login form. Compares SHA-256 hashes
+ * in constant time so the response timing can't be used to guess the password
+ * character-by-character. Hashing first also makes the compared strings a fixed
+ * length regardless of the input, so no length is leaked either.
+ */
+export async function verifyPassword(input: string): Promise<boolean> {
   const pw = adminPassword();
-  return pw.length > 0 && input === pw;
+  if (pw.length === 0) return false;
+  const [a, b] = await Promise.all([sha256Hex(input), sha256Hex(pw)]);
+  return timingSafeEqual(a, b);
 }
 
 /** Verify a cookie token presented on a guarded request. */

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { logAccess, clientMeta } from "@/lib/analytics";
+import { rateLimit, clientIp, tooManyRequests } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 
@@ -10,6 +11,10 @@ export const runtime = "nodejs";
  * public page load.
  */
 export async function POST(req: Request) {
+  // Cap log flooding: 120 page-view beacons per minute per IP.
+  const rl = rateLimit(`track:${clientIp(req)}`, { limit: 120, windowMs: 60_000 });
+  if (!rl.ok) return tooManyRequests(rl.retryAfter);
+
   let path = "/";
   let referrer: string | null = null;
   try {

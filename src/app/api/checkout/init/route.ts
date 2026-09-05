@@ -2,10 +2,15 @@ import { NextRequest, NextResponse } from "next/server";
 import { initSession } from "@/lib/sslcommerz";
 import { priceCart, createOrder } from "@/lib/orders";
 import { withApiLog } from "@/lib/analytics";
+import { rateLimit, clientIp, tooManyRequests } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 
 export const POST = withApiLog(async (req: NextRequest) => {
+  // Cap order/session spam: 15 checkout inits per 10 min per IP.
+  const rl = rateLimit(`checkout-init:${clientIp(req)}`, { limit: 15, windowMs: 10 * 60_000 });
+  if (!rl.ok) return tooManyRequests(rl.retryAfter);
+
   const body = await req.json().catch(() => null);
   if (!body?.cart || !Array.isArray(body.cart) || !body.customer) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
