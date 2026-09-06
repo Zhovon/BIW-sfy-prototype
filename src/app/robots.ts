@@ -6,8 +6,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      // Non-indexable: admin, API, and per-session commerce flows.
-      disallow: ["/admin", "/api/", "/cart", "/checkout", "/account"],
+      // Non-indexable: admin, API, and per-session commerce/booking flows.
+      disallow: ["/admin", "/api/", "/cart", "/checkout", "/account", "/book"],
     },
     sitemap: absoluteUrl("/sitemap.xml"),
     host: absoluteUrl("/"),

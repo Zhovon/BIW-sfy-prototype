@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useCart, CartItem } from "@/lib/cart";
 
 type Props = {
@@ -10,8 +11,16 @@ type Props = {
 
 export default function AddToCart({ product, soldOut }: Props) {
   const { add } = useCart();
+  const router = useRouter();
   const [qty, setQty] = useState(1);
   const isService = product.type === "service";
+
+  // Services are booked (paid at the salon), so "Book now" adds the service then
+  // sends the customer to the booking widget. Retail just adds + opens the drawer.
+  function primaryAction() {
+    add(product, qty);
+    if (isService) router.push("/book");
+  }
 
   return (
     <>
@@ -19,7 +28,7 @@ export default function AddToCart({ product, soldOut }: Props) {
         <button
           className="btn w-full !bg-ink !border-ink disabled:opacity-40"
           disabled={soldOut}
-          onClick={() => add(product, qty)}
+          onClick={primaryAction}
         >
           {soldOut ? "Sold out" : isService ? "Book appointment now" : "Add to cart"}
         </button>

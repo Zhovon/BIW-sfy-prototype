@@ -36,6 +36,7 @@ export function priceCart(cart: { handle: string; qty: number }[]): { lines: Ord
     const p = getProduct(item.handle);
     const qty = Math.max(1, Math.floor(Number(item.qty) || 0));
     if (!p || p.price_bdt == null) continue; // silently drop unknown/invalid handles
+    if (p.type === "service") continue; // services are booked + paid at the salon, never charged online
     lines.push({ handle: p.handle, title: p.title, price: p.price_bdt, qty });
   }
   const amount = lines.reduce((n, l) => n + l.price * l.qty, 0);

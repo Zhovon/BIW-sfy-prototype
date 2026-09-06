@@ -15,6 +15,12 @@ type CartCtx = {
   items: CartItem[];
   count: number;
   subtotal: number;
+  /** Retail items go through online (SSLCommerz) checkout. */
+  retailItems: CartItem[];
+  /** Service items are booked via the CRM widget and paid at the salon. */
+  serviceItems: CartItem[];
+  /** Subtotal of retail items only — services are never charged online. */
+  retailSubtotal: number;
   add: (item: Omit<CartItem, "qty">, qty?: number) => void;
   setQty: (handle: string, qty: number) => void;
   remove: (handle: string) => void;
@@ -65,9 +71,27 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const count = items.reduce((n, i) => n + i.qty, 0);
   const subtotal = items.reduce((n, i) => n + i.price * i.qty, 0);
+  const retailItems = items.filter((i) => i.type !== "service");
+  const serviceItems = items.filter((i) => i.type === "service");
+  const retailSubtotal = retailItems.reduce((n, i) => n + i.price * i.qty, 0);
 
   return (
-    <Ctx.Provider value={{ items, count, subtotal, add, setQty, remove, clear, isOpen, setOpen }}>
+    <Ctx.Provider
+      value={{
+        items,
+        count,
+        subtotal,
+        retailItems,
+        serviceItems,
+        retailSubtotal,
+        add,
+        setQty,
+        remove,
+        clear,
+        isOpen,
+        setOpen,
+      }}
+    >
       {children}
     </Ctx.Provider>
   );
