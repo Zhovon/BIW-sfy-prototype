@@ -16,29 +16,29 @@ import { CRM_URL, bookingWidgetUrl, serviceProductIds } from "@/lib/crm";
  * Services are paid at the salon, so they never touch online checkout.
  */
 export default function BookingWidget() {
-  const { serviceItems, remove } = useCart();
+  const { serviceItems, remove, hydrated } = useCart();
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [confirmed, setConfirmed] = useState(false);
 
   const ids = useMemo(() => serviceProductIds(serviceItems), [serviceItems]);
 
-  // Set the iframe src exactly once. Later cart changes are pushed via
-  // postMessage (below) so the widget doesn't reload and lose the user's
-  // half-filled form — same contract the Shopify embed uses.
-  const initialSrc = useRef(bookingWidgetUrl(ids));
-
-  // Live cart → widget sync. Skip the first run (the initial `?cart=` already
-  // seeded the widget) and stop once the booking is confirmed.
-  const firstRun = useRef(true);
+  // Freeze the iframe src the first time the cart actually has services. The
+  // cart hydrates from localStorage in a later effect, so `ids` is empty on the
+  // first render — seeding the src then would drop the `?cart=` param. Once set,
+  // it never changes: later cart edits are pushed via postMessage (below) so the
+  // widget doesn't reload and lose the user's half-filled form (Shopify contract).
+  const [src, setSrc] = useState<string | null>(null);
   useEffect(() => {
-    if (firstRun.current) {
-      firstRun.current = false;
-      return;
-    }
-    if (confirmed) return;
+    if (src === null && ids.length > 0) setSrc(bookingWidgetUrl(ids));
+  }, [ids, src]);
+
+  // Live cart → widget sync once the widget is seeded, until the booking is
+  // confirmed. The initial `?cart=` already seeded it, so only pushes after.
+  useEffect(() => {
+    if (src === null || confirmed) return;
     const w = iframeRef.current?.contentWindow;
     w?.postMessage({ type: "biw:cart-updated", ids }, CRM_URL);
-  }, [ids, confirmed]);
+  }, [ids, src, confirmed]);
 
   // Booking confirmed → clear the booked services from the cart, show success.
   useEffect(() => {
@@ -62,7 +62,13 @@ export default function BookingWidget() {
     );
   }
 
-  if (ids.length === 0) {
+  // Still reading the cart from localStorage, or seeding the src — hold the
+  // layout so we don't flash "no services" before the cart hydrates.
+  if (!hydrated || (ids.length > 0 && src === null)) {
+    return <div className="py-24 text-center text-muted">Loading your services…</div>;
+  }
+
+  if (ids.length === 0 || src === null) {
     return (
       <div className="py-16 text-center text-muted">
         <p className="mb-6">You have no services to book yet.</p>
@@ -74,7 +80,7 @@ export default function BookingWidget() {
   return (
     <iframe
       ref={iframeRef}
-      src={initialSrc.current}
+      src={src}
       title="Book your appointment"
       className="w-full rounded-2xl border border-line bg-transparent"
       style={{ height: 760 }}

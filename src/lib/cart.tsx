@@ -15,6 +15,8 @@ type CartCtx = {
   items: CartItem[];
   count: number;
   subtotal: number;
+  /** True once the cart has been read from localStorage (avoids empty-state flashes). */
+  hydrated: boolean;
   /** Retail items go through online (SSLCommerz) checkout. */
   retailItems: CartItem[];
   /** Service items are booked via the CRM widget and paid at the salon. */
@@ -81,6 +83,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         items,
         count,
         subtotal,
+        hydrated,
         retailItems,
         serviceItems,
         retailSubtotal,
