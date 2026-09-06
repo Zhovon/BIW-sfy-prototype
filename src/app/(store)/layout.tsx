@@ -6,16 +6,59 @@ import Footer from "@/components/Footer";
 import { CartProvider } from "@/lib/cart";
 import CartDrawer from "@/components/CartDrawer";
 import Track from "@/components/Track";
+import JsonLd from "@/components/JsonLd";
+import { SITE_URL, SITE_NAME, SITE_TAGLINE, absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "BIW · Beauty Intelligent Wellness",
-  description: "Bangladesh's first integrated medical-aesthetic wellness experience.",
+  description: SITE_TAGLINE,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    title: "BIW · Beauty Intelligent Wellness",
+    description: SITE_TAGLINE,
+    url: SITE_URL,
+    locale: "en_US",
+    images: ["/biw-logo.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BIW · Beauty Intelligent Wellness",
+    description: SITE_TAGLINE,
+    images: ["/biw-logo.png"],
+  },
+};
+
+const organizationLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE_NAME,
+  alternateName: "BIW",
+  url: SITE_URL,
+  logo: absoluteUrl("/biw-logo.png"),
+  description: SITE_TAGLINE,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Dhaka",
+    addressCountry: "BD",
+  },
+};
+
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  url: SITE_URL,
 };
 
 export default function StoreLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${bodyFont.variable}`}>
       <body>
+        <JsonLd data={organizationLd} />
+        <JsonLd data={websiteLd} />
         <CartProvider>
           <a
             href="#MainContent"
