@@ -6,7 +6,9 @@ import { useCart } from "@/lib/cart";
 import { formatBDT } from "@/lib/catalog";
 
 export default function CheckoutPage() {
-  const { items, subtotal } = useCart();
+  // Online checkout is for retail products only — services are booked via the
+  // CRM widget and paid at the salon, so they never enter the payment total.
+  const { retailItems, retailSubtotal } = useCart();
   const [form, setForm] = useState({ name: "", email: "", phone: "", address: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -25,7 +27,7 @@ export default function CheckoutPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          cart: items.map((i) => ({ handle: i.handle, qty: i.qty })),
+          cart: retailItems.map((i) => ({ handle: i.handle, qty: i.qty })),
           customer: form,
         }),
       });
@@ -38,12 +40,12 @@ export default function CheckoutPage() {
     }
   }
 
-  if (items.length === 0) {
+  if (retailItems.length === 0) {
     return (
       <div className="wrap py-24 text-center">
         <h1 className="font-display text-4xl mb-4">Checkout</h1>
-        <p className="text-muted mb-8">Your cart is empty.</p>
-        <Link href="/collections/all" className="btn btn--gold">Explore Services</Link>
+        <p className="text-muted mb-8">You have no products to pay for online.</p>
+        <Link href="/book" className="btn btn--gold">Book a service</Link>
       </div>
     );
   }
@@ -73,7 +75,7 @@ export default function CheckoutPage() {
         <aside className="bg-ice border border-line p-7 h-fit">
           <h2 className="font-display text-2xl mb-5">Order Summary</h2>
           <div className="divide-y divide-line mb-5">
-            {items.map((i) => (
+            {retailItems.map((i) => (
               <div key={i.handle} className="flex justify-between py-2.5 text-sm">
                 <span className="text-ink/80">{i.title} × {i.qty}</span>
                 <span className="whitespace-nowrap">{formatBDT(i.price * i.qty)}</span>
@@ -82,7 +84,7 @@ export default function CheckoutPage() {
           </div>
           <div className="flex justify-between font-medium border-t border-line pt-4 mb-6">
             <span>Total</span>
-            <span>{formatBDT(subtotal)}</span>
+            <span>{formatBDT(retailSubtotal)}</span>
           </div>
           <button className="btn w-full !bg-gold !border-gold disabled:opacity-50" onClick={pay} disabled={loading}>
             {loading ? "Redirecting…" : "Pay with SSLCommerz"}

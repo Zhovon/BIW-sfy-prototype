@@ -1,17 +1,38 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { products, getProduct, formatBDT, formatDurationLong } from "@/lib/catalog";
+import { absoluteUrl, metaDescription, SITE_NAME } from "@/lib/site";
+import JsonLd from "@/components/JsonLd";
 import AddToCart from "@/components/AddToCart";
 
 export function generateStaticParams() {
   return products.map((p) => ({ handle: p.handle }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ handle: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ handle: string }> }): Promise<Metadata> {
   const { handle } = await params;
   const p = getProduct(handle);
-  return { title: p ? `${p.title} · BIW` : "Product · BIW" };
+  if (!p) return { title: "Product · BIW" };
+
+  const description =
+    metaDescription(cleanDescription(p.description)) ||
+    `${p.title} at ${SITE_NAME}, Dhaka.`;
+  const path = `/products/${p.handle}`;
+
+  return {
+    title: `${p.title} · BIW`,
+    description,
+    alternates: { canonical: path },
+    openGraph: {
+      type: "website",
+      title: p.title,
+      description,
+      url: path,
+      images: p.image ? [{ url: p.image, alt: p.title }] : ["/biw-logo.png"],
+    },
+  };
 }
 
 /** Strip the trailing "Duration: ..." sentence — shown separately below. */
@@ -28,8 +49,29 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
   const soldOut = p.availability === "OutOfStock";
   const desc = cleanDescription(p.description);
 
+  const productLd = {
+    "@context": "https://schema.org",
+    "@type": p.type === "service" ? "Service" : "Product",
+    name: p.title,
+    ...(desc ? { description: metaDescription(desc, 300) } : {}),
+    ...(p.image ? { image: p.image } : {}),
+    brand: { "@type": "Brand", name: SITE_NAME },
+    ...(p.price_bdt != null
+      ? {
+          offers: {
+            "@type": "Offer",
+            price: p.price_bdt,
+            priceCurrency: "BDT",
+            availability: soldOut ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
+            url: absoluteUrl(`/products/${p.handle}`),
+          },
+        }
+      : {}),
+  };
+
   return (
     <div className="wrap py-12">
+      <JsonLd data={productLd} />
       <div className="grid md:grid-cols-2 gap-10 md:gap-16">
         {/* image */}
         <div className="relative aspect-[4/5] bg-ice border border-line overflow-hidden self-start">

@@ -1,0 +1,89 @@
+"use client";
+
+import Link from "next/link";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useCart } from "@/lib/cart";
+import { CRM_URL, bookingWidgetUrl, serviceProductIds } from "@/lib/crm";
+
+/**
+ * Embeds the CRM's `/book` widget for the service items in the cart — the same
+ * widget the Shopify storefront iframes. The widget owns the whole booking flow
+ * (branch/date/time from the availability API, customer details, appointment
+ * POST, confirmation email). We only:
+ *   - seed it via `?cart=<shopify_product_ids>` on first load,
+ *   - push live updates as `biw:cart-updated` when the cart changes, and
+ *   - clear the booked services on `biw:booking-confirmed`.
+ * Services are paid at the salon, so they never touch online checkout.
+ */
+export default function BookingWidget() {
+  const { serviceItems, remove, hydrated } = useCart();
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [confirmed, setConfirmed] = useState(false);
+
+  const ids = useMemo(() => serviceProductIds(serviceItems), [serviceItems]);
+
+  // Freeze the iframe src the first time the cart actually has services. The
+  // cart hydrates from localStorage in a later effect, so `ids` is empty on the
+  // first render — seeding the src then would drop the `?cart=` param. Once set,
+  // it never changes: later cart edits are pushed via postMessage (below) so the
+  // widget doesn't reload and lose the user's half-filled form (Shopify contract).
+  const [src, setSrc] = useState<string | null>(null);
+  useEffect(() => {
+    if (src === null && ids.length > 0) setSrc(bookingWidgetUrl(ids));
+  }, [ids, src]);
+
+  // Live cart → widget sync once the widget is seeded, until the booking is
+  // confirmed. The initial `?cart=` already seeded it, so only pushes after.
+  useEffect(() => {
+    if (src === null || confirmed) return;
+    const w = iframeRef.current?.contentWindow;
+    w?.postMessage({ type: "biw:cart-updated", ids }, CRM_URL);
+  }, [ids, src, confirmed]);
+
+  // Booking confirmed → clear the booked services from the cart, show success.
+  useEffect(() => {
+    function onMessage(e: MessageEvent) {
+      if (e.origin !== CRM_URL) return;
+      if (!e.data || e.data.type !== "biw:booking-confirmed") return;
+      setConfirmed(true);
+      serviceItems.forEach((i) => remove(i.handle));
+    }
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, [serviceItems, remove]);
+
+  if (confirmed) {
+    return (
+      <div className="mx-auto max-w-2xl rounded-xl border border-[#d1fae5] bg-[#ecfdf5] px-6 py-8 text-center text-[#065f46]">
+        <p className="font-display text-2xl mb-2">✓ Your appointment is booked</p>
+        <p className="text-sm">Payment is at the salon. A confirmation email is on its way.</p>
+        <Link href="/collections/all" className="btn btn--ghost mt-6 inline-block">Continue browsing</Link>
+      </div>
+    );
+  }
+
+  // Still reading the cart from localStorage, or seeding the src — hold the
+  // layout so we don't flash "no services" before the cart hydrates.
+  if (!hydrated || (ids.length > 0 && src === null)) {
+    return <div className="py-24 text-center text-muted">Loading your services…</div>;
+  }
+
+  if (ids.length === 0 || src === null) {
+    return (
+      <div className="py-16 text-center text-muted">
+        <p className="mb-6">You have no services to book yet.</p>
+        <Link href="/pages/female-services" className="btn btn--gold">Browse services</Link>
+      </div>
+    );
+  }
+
+  return (
+    <iframe
+      ref={iframeRef}
+      src={src}
+      title="Book your appointment"
+      className="w-full rounded-2xl border border-line bg-transparent"
+      style={{ height: 760 }}
+    />
+  );
+}

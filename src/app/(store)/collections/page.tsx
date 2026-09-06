@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import cards from "../../../data/collection_cards.json";
+import cards from "@/../data/collection_cards.json";
 
 type Card = { handle: string; title: string; caption: string; image: string | null };
 

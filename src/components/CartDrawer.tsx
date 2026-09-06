@@ -6,7 +6,7 @@ import { useCart } from "@/lib/cart";
 import { formatBDT } from "@/lib/catalog";
 
 export default function CartDrawer() {
-  const { items, subtotal, isOpen, setOpen, setQty, remove } = useCart();
+  const { items, retailItems, serviceItems, retailSubtotal, isOpen, setOpen, setQty, remove } = useCart();
 
   return (
     <>
@@ -57,14 +57,23 @@ export default function CartDrawer() {
               ))}
             </div>
             <div className="border-t border-line px-6 py-5 space-y-4">
-              <div className="flex justify-between text-sm">
-                <span className="text-muted">Subtotal</span>
-                <span className="font-medium">{formatBDT(subtotal)}</span>
-              </div>
-              <p className="text-xs text-muted">Taxes and booking details confirmed at checkout.</p>
+              {retailItems.length > 0 && (
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted">Products subtotal</span>
+                  <span className="font-medium">{formatBDT(retailSubtotal)}</span>
+                </div>
+              )}
+              {serviceItems.length > 0 && (
+                <p className="text-xs text-muted">Services are booked on the next step and paid at the salon.</p>
+              )}
+              {serviceItems.length > 0 && (
+                <Link href="/book" onClick={() => setOpen(false)} className="btn btn--gold w-full">Choose a time & book</Link>
+              )}
               <div className="grid grid-cols-2 gap-3">
                 <Link href="/cart" onClick={() => setOpen(false)} className="btn btn--ghost w-full">View cart</Link>
-                <Link href="/checkout" onClick={() => setOpen(false)} className="btn w-full !bg-ink !border-ink">Check out</Link>
+                {retailItems.length > 0 && (
+                  <Link href="/checkout" onClick={() => setOpen(false)} className="btn w-full !bg-ink !border-ink">Check out</Link>
+                )}
               </div>
             </div>
           </>
