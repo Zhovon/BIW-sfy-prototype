@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import SectionHead from "@/components/SectionHead";
+import Reveal from "@/components/Reveal";
+import BlogCarousel from "@/components/BlogCarousel";
 import { getProduct, getArticles } from "@/lib/catalog";
 
 const HERO_VIDEO =
@@ -109,22 +111,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIALS — dark Teal Ink clinical register */}
+      {/* TESTIMONIALS — dark Teal Ink clinical register, fades in from depth */}
       <section className="section section--dark">
         <div className="wrap">
-          <SectionHead kicker="Testimonials" title="What Our Clients Say" subtitle="Real experiences from our valued clients." tone="dark" />
-          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
-            {testimonials.map((t) => (
-              <figure key={t.name} className="flex flex-col gap-4 rounded-xl border border-white/10 bg-white/[0.04] p-7 md:p-8">
-                <Stars filled={t.stars} />
-                <blockquote className="grow text-[15px] leading-[1.7] text-white/80">“{t.text}”</blockquote>
-                <figcaption className="flex flex-col gap-0.5 border-t border-white/10 pt-4">
-                  <span className="font-display text-lg leading-[1.3] text-white">{t.name}</span>
-                  <span className="text-[12px] uppercase tracking-[0.14em] text-gold">{t.service}</span>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
+          <Reveal>
+            <SectionHead kicker="Testimonials" title="What Our Clients Say" subtitle="Real experiences from our valued clients." tone="dark" />
+            <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+              {testimonials.map((t) => (
+                <figure key={t.name} className="flex flex-col gap-4 rounded-xl border border-white/10 bg-white/[0.04] p-7 md:p-8">
+                  <Stars filled={t.stars} />
+                  <blockquote className="grow text-[15px] leading-[1.7] text-white/80">“{t.text}”</blockquote>
+                  <figcaption className="flex flex-col gap-0.5 border-t border-white/10 pt-4">
+                    <span className="font-display text-lg leading-[1.3] text-white">{t.name}</span>
+                    <span className="text-[12px] uppercase tracking-[0.14em] text-gold">{t.service}</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -132,23 +136,8 @@ export default function Home() {
       <section className="section">
         <div className="wrap">
           <SectionHead kicker="Journal" title="Read Our Blog" subtitle="Skin science and wellness, in plain language." />
-          <div className="mt-12 flex gap-6 overflow-x-auto pb-2.5 -mx-5 px-5 md:mx-0 md:px-0">
-            {getArticles().slice(0, 5).map((a) => (
-              <article key={a.slug} className="w-[280px] flex-none md:w-[320px]">
-                <Link href={`/blog/${a.slug}`} className="group flex h-full flex-col overflow-hidden rounded-md border border-line bg-paper transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
-                  <div className="relative aspect-[3/2] overflow-hidden bg-ice">
-                    {a.image && (
-                      <Image src={a.image} alt={a.title} fill sizes="320px" className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
-                    )}
-                  </div>
-                  <div className="flex grow flex-col p-5">
-                    <h3 className="font-display text-lg leading-[1.3] mb-2 group-hover:text-gold transition-colors">{a.title}</h3>
-                    {a.excerpt && <p className="text-[13px] leading-[1.6] mb-4 text-muted line-clamp-3">{a.excerpt}</p>}
-                    <span className="mt-auto text-[12px] font-semibold uppercase tracking-[0.12em] text-teal group-hover:text-gold transition-colors">Read more →</span>
-                  </div>
-                </Link>
-              </article>
-            ))}
+          <div className="mt-12">
+            <BlogCarousel articles={getArticles().slice(0, 5)} />
           </div>
         </div>
       </section>

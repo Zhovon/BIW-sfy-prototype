@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import Reveal from "@/components/Reveal";
 
 const cols = [
   {
@@ -35,46 +35,47 @@ export default function Footer() {
       {/* signature gold hairline */}
       <div className="h-0.5 w-full bg-gold" />
 
-      <div className="wrap grid gap-10 py-16 sm:grid-cols-2 md:grid-cols-4">
-        {/* brand column */}
-        <div className="sm:col-span-2 md:col-span-1">
-          <Image src="/biw-logo.png" alt="Beauty Intelligent Wellness" width={72} height={72} className="h-16 w-auto object-contain" />
-          <p className="mt-4 max-w-[30ch] text-[13px] leading-[1.7] text-white/50">
-            Beauty Intelligent Wellness. Bring out your inner beauty, where clinic meets couture.
-          </p>
+      <Reveal>
+        <div className="wrap grid gap-10 py-16 sm:grid-cols-2 md:grid-cols-4">
+          {/* brand column */}
+          <div className="sm:col-span-2 md:col-span-1">
+            <p className="max-w-[30ch] text-[13px] leading-[1.7] text-white/50">
+              Beauty Intelligent Wellness. Bring out your inner beauty, where clinic meets couture.
+            </p>
+          </div>
+
+          {cols.map((c) => (
+            <nav key={c.heading} aria-label={c.heading}>
+              <h4 className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/90">
+                {c.heading}
+              </h4>
+              <ul className="space-y-3">
+                {c.links.map((l) => (
+                  <li key={l.href}>
+                    <Link
+                      href={l.href}
+                      className="text-[13px] leading-[1.5] text-white/60 transition-colors hover:text-gold"
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
         </div>
 
-        {cols.map((c) => (
-          <nav key={c.heading} aria-label={c.heading}>
-            <h4 className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/90">
-              {c.heading}
-            </h4>
-            <ul className="space-y-3">
-              {c.links.map((l) => (
-                <li key={l.href}>
-                  <Link
-                    href={l.href}
-                    className="text-[13px] leading-[1.5] text-white/60 transition-colors hover:text-gold"
-                  >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        ))}
-      </div>
-
-      <div className="border-t border-white/10">
-        <div className="wrap flex flex-col items-center justify-between gap-3 py-6 text-center sm:flex-row sm:text-left">
-          <span className="text-[12px] text-white/45">
-            © {new Date().getFullYear()} Beauty Intelligent Wellness
-          </span>
-          <span className="text-[11px] uppercase tracking-[0.24em] text-white/35">
-            Clinical Couture
-          </span>
+        <div className="border-t border-white/10">
+          <div className="wrap flex flex-col items-center justify-between gap-3 py-6 text-center sm:flex-row sm:text-left">
+            <span className="text-[12px] text-white/45">
+              © {new Date().getFullYear()} Beauty Intelligent Wellness
+            </span>
+            <span className="text-[11px] uppercase tracking-[0.24em] text-white/35">
+              Clinical Couture
+            </span>
+          </div>
         </div>
-      </div>
+      </Reveal>
     </footer>
   );
 }
