@@ -6,7 +6,7 @@
 export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ||
   process.env.SITE_URL ||
-  "https://biw.salon"
+  "https://biw.beauty"
 ).replace(/\/$/, "");
 
 export const SITE_NAME = "Beauty Intelligent Wellness";
