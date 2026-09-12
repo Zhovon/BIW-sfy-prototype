@@ -52,13 +52,28 @@ h1, h2, h3, .font-display {
 
 .wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* eyebrow / kicker */
+/* Consistent vertical rhythm for page sections — one scale everywhere so the
+   whole page breathes evenly (80px mobile / 112px desktop). */
+.section { padding-top: 5rem; padding-bottom: 5rem; }
+@media (min-width: 768px) { .section { padding-top: 7rem; padding-bottom: 7rem; } }
+
+/* eyebrow / kicker — the teal editorial label above every section heading */
 .kicker {
+  display: inline-block;
   font-size: 11px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--teal);
   font-weight: 700;
+}
+
+/* The signature Heritage Gold hairline — the single most repeatable expression
+   of the brand. Short 54px rule; counts toward the 10% gold budget. */
+.rule-gold {
+  width: 54px;
+  height: 2px;
+  background: var(--gold);
+  border: 0;
 }
 
 .btn {

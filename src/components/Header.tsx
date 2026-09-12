@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import CartButton from "@/components/CartButton";
+import MobileNav from "@/components/MobileNav";
 
 type NavItem = { label: string; href: string; children?: { label: string; href: string }[] };
 
@@ -41,7 +42,8 @@ export default function Header() {
     <header className="border-b border-line bg-paper sticky top-0 z-40">
       {/* utility row */}
       <div className="wrap grid grid-cols-3 items-center h-[86px]">
-        <div className="flex items-center">
+        <div className="flex items-center gap-2">
+          <MobileNav nav={nav} />
           <button aria-label="Search" className="text-ink hover:text-gold transition-colors">
             <IconSearch />
           </button>
