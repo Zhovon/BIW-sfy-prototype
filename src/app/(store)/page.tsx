@@ -142,8 +142,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CLOSING CTA — dark clinical band, the premium invitation before the footer */}
-      <section className="section section--dark">
+      {/* CLOSING CTA — dark clinical band, the premium invitation before the footer.
+         Bottom padding matches the footer's top padding so the gold hairline
+         divider sits symmetrically between them (one cohesive dark close). */}
+      <section className="section--dark pt-20 pb-16 md:pt-28 md:pb-16">
         <div className="wrap text-center">
           <span className="kicker mb-3">Your Visit</span>
           <h2 className="font-display text-[30px] leading-[1.1] md:text-[46px] max-w-[18ch] mx-auto">
