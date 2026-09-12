@@ -12,3 +12,4 @@ data/orders.json
 # scaffold analytics / request logs (move to Postgres or an analytics sink)
 data/access-log.jsonl
 data/api-log.jsonl
+.DS_Store
