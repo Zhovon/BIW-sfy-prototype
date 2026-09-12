@@ -20,8 +20,8 @@
   --ink: #12333D;
   --gold: #C9A961;
   --paper: #f6f9fa;
-  --muted: #5d6f77;
-  --line: #dbe6ea;
+  --muted: #5F6B72;
+  --line: #D8DEE1;
 
   --font-display: "Cormorant Garamond";
   --font-body: "Montserrat";
@@ -57,8 +57,8 @@ h1, h2, h3, .font-display {
   font-size: 11px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--muted);
-  font-weight: 600;
+  color: var(--teal);
+  font-weight: 700;
 }
 
 .btn {
@@ -67,10 +67,11 @@ h1, h2, h3, .font-display {
   justify-content: center;
   padding: 12px 26px;
   font-size: 13px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
   border: 1px solid var(--ink);
+  border-radius: 100px;
   background: var(--ink);
   color: #fff;
   cursor: pointer;
@@ -78,4 +79,4 @@ h1, h2, h3, .font-display {
 }
 .btn:hover { opacity: 0.85; }
 .btn--ghost { background: transparent; color: var(--ink); }
-.btn--gold { background: var(--gold); border-color: var(--gold); color: #fff; }
+.btn--gold { background: var(--gold); border-color: var(--gold); color: var(--ink); }

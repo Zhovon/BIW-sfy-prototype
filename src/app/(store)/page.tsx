@@ -48,9 +48,9 @@ export default function Home() {
       </section>
 
       {/* HERO TEXT BLOCK — matches biw.salon ai-responsive-text: one 48px block, ~80px pt / ~105px pb */}
-      <section className="px-5 pt-[52px] pb-[72px] text-center md:pt-[80px] md:pb-[104px]">
-        <div className="mx-auto max-w-[1120px]">
-          <h1 className="font-display text-[32px] leading-[1.2] font-normal md:text-[48px]">
+      <section className="pt-[52px] pb-[72px] text-center md:pt-[80px] md:pb-[104px]">
+        <div className="wrap">
+          <h1 className="font-display text-[32px] leading-[1.2] font-normal md:text-[48px] mx-auto max-w-[22ch]">
             Smart Beauty. Holistic Wellness. Bangladesh&rsquo;s first integrated
             medical-aesthetic wellness experience.
           </h1>
@@ -58,14 +58,14 @@ export default function Home() {
       </section>
 
       {/* ABOUT BIW — matches biw.salon ai-image-text (95% container, gap 40px, 48px heading, 21px body) */}
-      <section className="w-full">
-        <div className="mx-auto flex w-[95%] flex-col items-center gap-5 md:flex-row md:gap-10">
-          <div className="min-w-0 flex-1 md:ml-10 md:mb-16 md:mt-10">
+      <section className="py-10 md:py-16">
+        <div className="wrap flex flex-col items-center gap-8 md:flex-row md:gap-12">
+          <div className="min-w-0 flex-1">
             <div className="relative aspect-square overflow-hidden rounded-md bg-ice">
               <Image src="/biw-emblem.png" alt="Beauty Intelligent Wellness" fill sizes="(max-width:768px) 100vw, 45vw" className="object-contain" />
             </div>
           </div>
-          <div className="min-w-0 flex-1 text-center md:mr-10 md:mb-11">
+          <div className="min-w-0 flex-1 text-center md:text-left">
             <h2 className="font-display text-[34px] md:text-[48px] leading-[1.2] mb-5">About BIW</h2>
             <p className="text-[18px] md:text-[21px] leading-[1.6]">
               Beauty Intelligent Wellness was created as a modern destination for refined beauty,
@@ -80,7 +80,7 @@ export default function Home() {
 
       {/* OUR SERVICES — matches biw.salon ai-page-links-collection (32px heading, mb-40px, gap 20px, 1:1 media) */}
       <section className="py-10">
-        <div className="mx-auto max-w-[1200px] px-5">
+        <div className="wrap">
           <div className="text-center mb-10">
             <h2 className="font-display text-[32px] leading-[1.2]">Our Services</h2>
           </div>
@@ -105,7 +105,7 @@ export default function Home() {
 
       {/* TESTIMONIALS — matches biw.salon ai-testimonial-carousel (py-60px, px-40px, cards p-30px r-12px, gap 30px) */}
       <section className="py-[60px]">
-        <div className="mx-auto max-w-[1200px] px-5 md:px-10">
+        <div className="wrap">
           <div className="text-center mb-10">
             <h2 className="font-display text-[32px] md:text-[38px] leading-[1.2]">What Our Clients Say</h2>
             <p className="mt-3 text-base text-muted">Real experiences from our valued customers</p>
@@ -132,7 +132,7 @@ export default function Home() {
 
       {/* BLOG — matches biw.salon ai-blog-carousel (horizontal scroll, cards 320px, gap 25px, content p-20px) */}
       <section className="py-6">
-        <div className="mx-auto max-w-[1200px] px-5">
+        <div className="wrap">
           <div className="text-center mb-[30px]">
             <h2 className="font-display text-[32px] leading-[1.2]">Read Our Blog</h2>
           </div>
