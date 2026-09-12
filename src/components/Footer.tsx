@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const cols = [
   {
@@ -30,14 +31,14 @@ const cols = [
 
 export default function Footer() {
   return (
-    <footer className="mt-24 bg-ink text-white/70">
+    <footer className="bg-ink text-white/70">
       {/* signature gold hairline */}
       <div className="h-0.5 w-full bg-gold" />
 
       <div className="wrap grid gap-10 py-16 sm:grid-cols-2 md:grid-cols-4">
         {/* brand column */}
         <div className="sm:col-span-2 md:col-span-1">
-          <div className="font-display text-2xl font-semibold tracking-[0.06em] text-gold">BIW</div>
+          <Image src="/biw-logo.png" alt="Beauty Intelligent Wellness" width={72} height={72} className="h-16 w-auto object-contain" />
           <p className="mt-4 max-w-[30ch] text-[13px] leading-[1.7] text-white/50">
             Beauty Intelligent Wellness. Bring out your inner beauty, where clinic meets couture.
           </p>

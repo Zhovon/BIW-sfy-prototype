@@ -109,18 +109,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="section bg-ice">
+      {/* TESTIMONIALS — dark Teal Ink clinical register */}
+      <section className="section section--dark">
         <div className="wrap">
-          <SectionHead kicker="Testimonials" title="What Our Clients Say" subtitle="Real experiences from our valued clients." />
+          <SectionHead kicker="Testimonials" title="What Our Clients Say" subtitle="Real experiences from our valued clients." tone="dark" />
           <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
             {testimonials.map((t) => (
-              <figure key={t.name} className="flex flex-col gap-4 rounded-xl border border-line bg-paper p-7 md:p-8 shadow-sm">
+              <figure key={t.name} className="flex flex-col gap-4 rounded-xl border border-white/10 bg-white/[0.04] p-7 md:p-8">
                 <Stars filled={t.stars} />
-                <blockquote className="grow text-[15px] leading-[1.7] text-ink/85">“{t.text}”</blockquote>
-                <figcaption className="flex flex-col gap-0.5 border-t border-line pt-4">
-                  <span className="font-display text-lg leading-[1.3]">{t.name}</span>
-                  <span className="text-[13px] tracking-[0.02em] text-teal">{t.service}</span>
+                <blockquote className="grow text-[15px] leading-[1.7] text-white/80">“{t.text}”</blockquote>
+                <figcaption className="flex flex-col gap-0.5 border-t border-white/10 pt-4">
+                  <span className="font-display text-lg leading-[1.3] text-white">{t.name}</span>
+                  <span className="text-[12px] uppercase tracking-[0.14em] text-gold">{t.service}</span>
                 </figcaption>
               </figure>
             ))}
@@ -149,6 +149,29 @@ export default function Home() {
                 </Link>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CLOSING CTA — dark clinical band, the premium invitation before the footer */}
+      <section className="section section--dark">
+        <div className="wrap text-center">
+          <span className="kicker mb-3">Your Visit</span>
+          <h2 className="font-display text-[30px] leading-[1.1] md:text-[46px] max-w-[18ch] mx-auto">
+            Begin your consultation
+          </h2>
+          <p className="mt-4 text-white/60 max-w-[52ch] mx-auto leading-[1.7]">
+            Tell us about your skin and your goals. Our specialists design a plan
+            held to a clinical standard, tailored to you.
+          </p>
+          <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+            <Link href="/collections" className="btn btn--gold">Reserve your session</Link>
+            <Link
+              href="https://wa.me/8801806553255"
+              className="btn btn--ghost !border-white/40 !text-white hover:!bg-white/5"
+            >
+              Message on WhatsApp
+            </Link>
           </div>
         </div>
       </section>

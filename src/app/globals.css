@@ -19,7 +19,7 @@
   --teal: #4E9DB8;
   --ink: #12333D;
   --gold: #C9A961;
-  --paper: #f6f9fa;
+  --paper: #ffffff;
   --muted: #5F6B72;
   --line: #D8DEE1;
 
@@ -56,6 +56,17 @@ h1, h2, h3, .font-display {
    whole page breathes evenly (80px mobile / 112px desktop). */
 .section { padding-top: 5rem; padding-bottom: 5rem; }
 @media (min-width: 768px) { .section { padding-top: 7rem; padding-bottom: 7rem; } }
+
+/* Teal Ink dark register — the clinical, premium surface. White copy, gold as
+   the single jewel. Used on feature sections and the closing CTA band. */
+.section--dark { background: var(--ink); color: #fff; }
+.section--dark .kicker { color: var(--gold); }
+.section--dark h1,
+.section--dark h2,
+.section--dark h3 { color: #fff; }
+
+/* Hairline top-rule in cool teal — a precise, clinical divider between bands. */
+.rule-teal { width: 100%; height: 1px; background: var(--line); border: 0; }
 
 /* eyebrow / kicker — the teal editorial label above every section heading */
 .kicker {
