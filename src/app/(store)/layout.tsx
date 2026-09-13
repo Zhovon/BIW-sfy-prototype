@@ -63,7 +63,10 @@ export default function StoreLayout({ children }: { children: React.ReactNode })
           <style>{`.reveal{opacity:1 !important;transform:none !important}`}</style>
         </noscript>
       </head>
-      <body>
+      {/* min-h-screen flex column = sticky footer: on short pages (contact,
+          cart, policies) main grows to fill the viewport so the footer sits at
+          the bottom with a clear gap instead of butting under the content. */}
+      <body className="flex min-h-screen flex-col">
         <JsonLd data={organizationLd} />
         <JsonLd data={websiteLd} />
         <CartProvider>
@@ -74,7 +77,7 @@ export default function StoreLayout({ children }: { children: React.ReactNode })
             Skip to content
           </a>
           <Header />
-          <main id="MainContent">{children}</main>
+          <main id="MainContent" className="flex-1">{children}</main>
           <Footer />
           <CartDrawer />
           <Track />

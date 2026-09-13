@@ -50,7 +50,10 @@ h1, h2, h3, .font-display {
   font-family: var(--font-display), serif;
 }
 
-.wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+/* Only set horizontal padding — the `padding` shorthand zeroed the vertical
+   padding of any element that also had a `py-*` utility (contact container,
+   footer, etc.), collapsing their top/bottom spacing. */
+.wrap { max-width: 1200px; margin: 0 auto; padding-left: 20px; padding-right: 20px; }
 
 /* Consistent vertical rhythm for page sections — one scale everywhere so the
    whole page breathes evenly (80px mobile / 112px desktop). */
