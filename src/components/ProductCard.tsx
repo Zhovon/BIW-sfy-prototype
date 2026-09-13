@@ -26,7 +26,9 @@ export default function ProductCard({ p }: { p: Product }) {
         )}
       </div>
       <div className="pt-3 text-center">
-        <h3 className="font-display text-lg leading-tight group-hover:underline underline-offset-[0.3rem]">
+        {/* Clamp titles to 2 lines at a fixed min-height so prices line up
+            across a row regardless of how long each title is. */}
+        <h3 className="font-display text-lg leading-tight group-hover:underline underline-offset-[0.3rem] line-clamp-2 min-h-[2.75rem]">
           {p.title}
         </h3>
         <div className="text-[13px] text-muted mt-1">{formatBDT(p.price_bdt)}</div>

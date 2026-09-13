@@ -3,7 +3,7 @@ import Image from "next/image";
 import SectionHead from "@/components/SectionHead";
 import Reveal from "@/components/Reveal";
 import BlogCarousel from "@/components/BlogCarousel";
-import { getProduct, getArticles } from "@/lib/catalog";
+import { getArticles } from "@/lib/catalog";
 
 const HERO_VIDEO = "/hero.mp4";
 
@@ -14,10 +14,11 @@ const testimonials = [
   { stars: 5, name: "Mehnaz Begum", service: "Spa Package", text: "Such a premium experience from start to finish. The salon is beautifully designed and the team made me feel so pampered. BIW is now my go-to wellness destination." },
 ];
 
+// Images match the original biw.salon "Our Services" section (migrated local).
 const serviceCards = [
-  { label: "Female Services", href: "/pages/female-services", img: getProduct("signature-facial")?.image },
-  { label: "Male Services", href: "/pages/male-services", img: getProduct("advance-hydra-gents")?.image },
-  { label: "View More Services", href: "/collections", img: getProduct("body-massage")?.image },
+  { label: "Female Services", href: "/pages/female-services", img: "/products/Gemini_Generated_Image_vxugitvxugitvxug.png" },
+  { label: "Male Services", href: "/pages/male-services", img: "/products/Gemini_Generated_Image_nynk6jnynk6jnynk.png" },
+  { label: "View More Services", href: "/collections", img: "/products/download.jpg" },
 ];
 
 function Stars({ filled }: { filled: number }) {

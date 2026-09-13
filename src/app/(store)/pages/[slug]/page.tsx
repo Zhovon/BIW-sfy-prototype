@@ -71,9 +71,11 @@ export default async function StaticPage({ params }: { params: Promise<{ slug: s
               {c.cover && (
                 <Image src={c.cover} alt={c.title} fill sizes="(max-width:768px) 50vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
               )}
-              <div className="absolute inset-0 bg-ink/20 group-hover:bg-ink/30 transition-colors" />
-              <div className="absolute inset-0 flex items-center justify-center p-4 text-center">
-                <span className="font-display text-white text-xl leading-tight drop-shadow">{c.title}</span>
+              {/* uniform gradient scrim so the title reads consistently on any
+                  image, title anchored bottom-centre with even padding */}
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/25 to-ink/10 group-hover:from-ink/85 transition-colors" />
+              <div className="absolute inset-x-0 bottom-0 flex items-end justify-center px-4 pb-5 text-center">
+                <span className="font-display text-white text-lg md:text-xl leading-tight">{c.title}</span>
               </div>
             </div>
           </Link>
