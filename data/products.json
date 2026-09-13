@@ -286,7 +286,7 @@
     "price_bdt": 799.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Man_relaxing_in_bathtub_202606201837.jpg?v=1781959068&width=1920",
+    "image": "/products/Man_relaxing_in_bathtub_202606201837.jpg",
     "description": "An apple cider vinegar-infused bath that balances the skin's pH, reduces irritation, and leaves skin refreshed and softened.",
     "variants": [
       {
@@ -309,7 +309,7 @@
     "price_bdt": 899.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Man_relaxing_in_bathtub_202606201838.jpg?v=1781959111&width=1920",
+    "image": "/products/Man_relaxing_in_bathtub_202606201838.jpg",
     "description": "A fragrant sandalwood (chandan) infused bath with cooling, anti-inflammatory, and skin-brightening properties rooted in Ayurvedic tradition.",
     "variants": [
       {
@@ -332,7 +332,7 @@
     "price_bdt": 599.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/he_should_be_laying_down._202606110227.jpg?v=1781123316&width=1920",
+    "image": "/products/he_should_be_laying_down._202606110227.jpg",
     "description": "A simple yet effective hot bath followed by a refreshing shower — the foundation of any good wellness routine.",
     "variants": [
       {
@@ -355,7 +355,7 @@
     "price_bdt": 1099.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Man_sitting_in_cold_tub_202606201850.jpg?v=1781959875&width=1920",
+    "image": "/products/Man_sitting_in_cold_tub_202606201850.jpg",
     "description": "A controlled 30-minute cold immersion bath that reduces inflammation, boosts circulation, and accelerates muscle recovery — the biohacker's choice.",
     "variants": [
       {
@@ -378,7 +378,7 @@
     "price_bdt": 1111.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Man_relaxing_in_jacuzzi_202606201849.jpg?v=1781959818&width=1920",
+    "image": "/products/Man_relaxing_in_jacuzzi_202606201849.jpg",
     "description": "A luxurious 30-minute hot bath or Jacuzzi session — the perfect pre-treatment ritual to relax muscles, open pores, and prepare the body for further wellness services.",
     "variants": [
       {
@@ -401,7 +401,7 @@
     "price_bdt": 699.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Man_relaxing_in_bathtub_202606201835.jpg?v=1781958924&width=1920",
+    "image": "/products/Man_relaxing_in_bathtub_202606201835.jpg",
     "description": "A romantic, aromatic rose petal bath rich in antioxidants — softens the skin, lifts the mood, and delivers a sensory wellness experience.",
     "variants": [
       {
@@ -424,7 +424,7 @@
     "price_bdt": 999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Man_smiling_relaxing_in_bathtub_202606201842_bc2fec3d-ec8d-4e29-b720-550f6c23d2fd.jpg?v=1781959409&width=1920",
+    "image": "/products/Man_smiling_relaxing_in_bathtub_202606201842_bc2fec3d-ec8d-4e29-b720-550f6c23d2fd.jpg",
     "description": "A detoxifying mineral salt bath that draws out impurities, soothes the skin, and provides a deep sense of physical and mental calm.",
     "variants": [
       {
@@ -447,7 +447,7 @@
     "price_bdt": 3999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Hair_dry_and_cut_wash.jpg?v=1780391536&width=1920",
+    "image": "/products/Hair_dry_and_cut_wash.jpg",
     "description": "A chemical rebounding process followed by keratin infusion for permanently straight, frizz-free, and brilliantly smooth hair.",
     "variants": [
       {
@@ -470,7 +470,7 @@
     "price_bdt": 4999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/HairProteinSpa_ShortLong_1.jpg?v=1780139874&width=1920",
+    "image": "/products/HairProteinSpa_ShortLong_1.jpg",
     "description": "A two-in-one premium session combining professional hair straightening with a nourishing spa treatment to restore smoothness and moisture balance.",
     "variants": [
       {
@@ -493,7 +493,7 @@
     "price_bdt": 7000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Hands_massaging_exfoliating_scrub_202605302100.jpg?v=1780158238&width=1920",
+    "image": "/products/Hands_massaging_exfoliating_scrub_202605302100.jpg",
     "description": "Waxing of the legs and thighs for clean, smooth lower-body hair removal with long-lasting results.",
     "variants": [
       {
@@ -516,7 +516,7 @@
     "price_bdt": 4999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Hands_massaging_exfoliating_scrub_202605302100_4bb4934f-d1fc-46c2-9e61-0fdeab8244fc.jpg?v=1780409465&width=1920",
+    "image": "/products/Hands_massaging_exfoliating_scrub_202605302100_4bb4934f-d1fc-46c2-9e61-0fdeab8244fc.jpg",
     "description": "A head-to-toe exfoliating scrub for men using mineral-rich granules to remove dead skin, unclog pores, and restore smoothness.",
     "variants": [
       {
@@ -539,7 +539,7 @@
     "price_bdt": 6999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Man_receiving_chest_waxing_treat__202606022030.jpg?v=1780410823&width=1920",
+    "image": "/products/Man_receiving_chest_waxing_treat__202606022030.jpg",
     "description": "A comprehensive full body waxing service for men covering the chest, back, arms, legs, and underarms for long-lasting smoothness.",
     "variants": [
       {
@@ -562,7 +562,7 @@
     "price_bdt": 2499.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Spa_lower_body_scrub_treatment_202605302102.jpg?v=1780409738&width=1920",
+    "image": "/products/Spa_lower_body_scrub_treatment_202605302102.jpg",
     "description": "A targeted scrub from waist downward — legs, thighs, and feet — ideal for regular lower-body maintenance.",
     "variants": [
       {
@@ -585,7 +585,7 @@
     "price_bdt": 2499.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Hands_massaging_scrub_on_skin_202606022013.jpg?v=1780409687&width=1920",
+    "image": "/products/Hands_massaging_scrub_on_skin_202606022013.jpg",
     "description": "A targeted scrub from waist upward — arms, chest, back, and shoulders — for cleansed, smooth, and refreshed skin.",
     "variants": [
       {
@@ -608,7 +608,7 @@
     "price_bdt": 3499.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/ChemicalPeeling2.jpg?v=1780411027&width=1920",
+    "image": "/products/ChemicalPeeling2.jpg",
     "description": "Waxing of the chest, back, shoulders, and arms — removing hair above the waist for a clean, groomed result.",
     "variants": [
       {
@@ -631,7 +631,7 @@
     "price_bdt": 3999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/BubbleGlowFacial1.jpg?v=1780151038&width=1920",
+    "image": "/products/BubbleGlowFacial1.jpg",
     "description": "A luxury gold-infused facial that uses 24K gold particles to stimulate collagen, reduce fine lines, and deliver an immediate lift and glow. The choice for high occasions.",
     "variants": [
       {
@@ -654,7 +654,7 @@
     "price_bdt": 6999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/download_5ad0b3e0-8599-4c4d-88d8-f73e5bd0e375.jpg?v=1779816984&width=1920",
+    "image": "/products/download_5ad0b3e0-8599-4c4d-88d8-f73e5bd0e375.jpg",
     "description": "An upgraded HydraFacial protocol using advanced serums to deeply hydrate, cleanse, and resurface. Ideal for men experiencing dullness, enlarged pores, or early skin stress.",
     "variants": [
       {
@@ -677,7 +677,7 @@
     "price_bdt": 1999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/OrganicGlowfacial.jpg?v=1780958197&width=1920",
+    "image": "/products/OrganicGlowfacial.jpg",
     "description": "A deeply calming facial rooted in Ayurvedic tradition — using herbal botanical extracts, traditional massage techniques, and natural actives aligned with Rajiv's Eastern healing philosophy.",
     "variants": [
       {
@@ -700,7 +700,7 @@
     "price_bdt": 13999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/RegularClean-Up1.jpg?v=1780151344&width=1920",
+    "image": "/products/RegularClean-Up1.jpg",
     "description": "BIW's most prestigious facial — a fully bespoke, multi-modal signature treatment combining advanced technology with Rajiv's Eastern healing protocols and Laboni's nutritional wellness science. The pinnacle of intelligent beauty.",
     "variants": [
       {
@@ -723,7 +723,7 @@
     "price_bdt": 4999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/download_da05851f-fa3c-4bef-b1e3-8c3d6b533716.jpg?v=1779816993&width=1920",
+    "image": "/products/download_da05851f-fa3c-4bef-b1e3-8c3d6b533716.jpg",
     "description": "An entry-level HydraFacial using bio-compatible serums to simultaneously cleanse and hydrate. A strong foundational treatment for all skin types — including first-time facial clients.",
     "variants": [
       {
@@ -746,7 +746,7 @@
     "price_bdt": 2099.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Dermaplaning3.jpg?v=1780150557&width=1920",
+    "image": "/products/Dermaplaning3.jpg",
     "description": "A precision blade exfoliation technique that removes dead skin cells and fine facial hair, followed by targeted serums for a noticeably smoother, brighter face.",
     "variants": [
       {
@@ -769,7 +769,7 @@
     "price_bdt": 3499.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/acnefacialbeforeafter.jpg?v=1780150684&width=1920",
+    "image": "/products/acnefacialbeforeafter.jpg",
     "description": "A gold-toned brightening facial combining antioxidant-rich golden serums with targeted massage techniques to revive tired skin and restore a natural, healthy radiance.",
     "variants": [
       {
@@ -792,7 +792,7 @@
     "price_bdt": 1499.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/instantglowfacial2.jpg?v=1780150442&width=1920",
+    "image": "/products/instantglowfacial2.jpg",
     "description": "A fast-acting glow facial designed for time-pressed clients — delivers an immediate brightening and refreshing effect in a concise, results-driven session.",
     "variants": [
       {
@@ -815,7 +815,7 @@
     "price_bdt": 2999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/DeepCleaningAquaFilterPeeling3.jpg?v=1780150820&width=1920",
+    "image": "/products/DeepCleaningAquaFilterPeeling3.jpg",
     "description": "A mechanical exfoliation treatment using fine crystal or diamond-tip technology to buff away dead skin, smooth texture, and immediately brighten the complexion.",
     "variants": [
       {
@@ -838,7 +838,7 @@
     "price_bdt": 2499.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/download_61c3c63e-8532-41a3-abd2-ccbbc19ba11c.jpg?v=1779817073&width=1920",
+    "image": "/products/download_61c3c63e-8532-41a3-abd2-ccbbc19ba11c.jpg",
     "description": "A brightening facial infused with pearl extract and depigmenting peptides to visibly reduce dark spots, sun damage, and uneven skin tone for men.",
     "variants": [
       {
@@ -861,7 +861,7 @@
     "price_bdt": 8999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/download_5406dcd3-c7d6-4ec7-9d84-a7cf7dada49f.jpg?v=1779816978&width=1920",
+    "image": "/products/download_5406dcd3-c7d6-4ec7-9d84-a7cf7dada49f.jpg",
     "description": "A comprehensive hydradermabrasion session targeting uneven texture, congested pores, and early ageing signs with premium infusion technology. Clinically visible results.",
     "variants": [
       {
@@ -884,7 +884,7 @@
     "price_bdt": 10999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/download_4bd31356-3884-4ea3-b2eb-a01c5f8596cb.jpg?v=1779817066&width=1920",
+    "image": "/products/download_4bd31356-3884-4ea3-b2eb-a01c5f8596cb.jpg",
     "description": "The most intensive HydraFacial on the gents menu — vortex extraction, brightening infusion, and targeted booster serums for a transformative skin reset. For high-performance results.",
     "variants": [
       {
@@ -907,7 +907,7 @@
     "price_bdt": 2999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/hotoilmassage1.jpg?v=1780412987&width=1920",
+    "image": "/products/hotoilmassage1.jpg",
     "description": "A performance-focused treatment combining sports massage techniques with assisted full-body stretching — designed for active men to enhance flexibility, reduce injury risk, and accelerate recovery.",
     "variants": [
       {
@@ -930,7 +930,7 @@
     "price_bdt": 3499.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/StressReliefMassage_FullBody_60mins.jpg?v=1780413082&width=1920",
+    "image": "/products/StressReliefMassage_FullBody_60mins.jpg",
     "description": "A holistic full-body massage combining Swedish and Eastern techniques to systematically dissolve accumulated stress, regulate the nervous system, and restore a calm, centred state of being.",
     "variants": [
       {
@@ -953,7 +953,7 @@
     "price_bdt": 1000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/A_high-quality__photorealistic_close-up_of_202605071708.jpg?v=1780960283&width=1920",
+    "image": "/products/A_high-quality__photorealistic_close-up_of_202605071708.jpg",
     "description": "A comprehensive grooming package:  hydrogen gold facial, luxury mask, crystal pedicure-manicure, magical oil massage, nano soft spa, and makeover. Sharp, refined, complete.",
     "variants": [
       {
@@ -976,7 +976,7 @@
     "price_bdt": 9999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/A_high-quality__professional_street-style_photograph_202605082217.jpg?v=1780960612&width=1920",
+    "image": "/products/A_high-quality__professional_street-style_photograph_202605082217.jpg",
     "description": "The ultimate men's grooming experience:  premium gold facial, honey & milk pedicure-manicure, premium hair oil massage, premium hair spa, and a full makeover. For the man who accepts nothing less.",
     "variants": [
       {
@@ -999,7 +999,7 @@
     "price_bdt": 1999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Male_specialist_drawing_hairline__202606021803.jpg?v=1780401800&width=1920",
+    "image": "/products/Male_specialist_drawing_hairline__202606021803.jpg",
     "description": "An intensive restorative treatment for damaged or chemically processed hair that rebuilds structure, restores shine, and reduces frizz.",
     "variants": [
       {
@@ -1022,7 +1022,7 @@
     "price_bdt": 3999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Man_s_hair_transformation_salon___202606021732_1.jpg?v=1780400066&width=1920",
+    "image": "/products/Man_s_hair_transformation_salon___202606021732_1.jpg",
     "description": "A professional curling treatment that creates defined, long-lasting curls with enhanced texture and bounce for men who want structured wave.",
     "variants": [
       {
@@ -1045,7 +1045,7 @@
     "price_bdt": 1499.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Man_receiving_hair_treatment_202606021814_2.jpg?v=1780402530&width=1920",
+    "image": "/products/Man_receiving_hair_treatment_202606021814_2.jpg",
     "description": "A professional keratin smoothing system that controls frizz, reduces drying time, and delivers silk and shine for weeks.",
     "variants": [
       {
@@ -1068,7 +1068,7 @@
     "price_bdt": 499.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Person_getting_hair_washed_202606021837.jpg?v=1780403881&width=1920",
+    "image": "/products/Person_getting_hair_washed_202606021837.jpg",
     "description": "A professional wash and blow-dry service to achieve a clean, styled finish — perfect as a standalone or add-on service.",
     "variants": [
       {
@@ -1091,7 +1091,7 @@
     "price_bdt": 2999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Hairstylist_styling_man_s_hair_202606021742.jpg?v=1780400566&width=1920",
+    "image": "/products/Hairstylist_styling_man_s_hair_202606021742.jpg",
     "description": "A volumising treatment designed to add body and lift to flat or thin hair, delivering a fuller, thicker appearance with lasting results.",
     "variants": [
       {
@@ -1114,7 +1114,7 @@
     "price_bdt": 1499.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Scalp_microneedling_for_hair_growth_202606021806.jpg?v=1780402037&width=1920",
+    "image": "/products/Scalp_microneedling_for_hair_growth_202606021806.jpg",
     "description": "A fast-absorbing treatment using a proprietary botanical blend to revive dull, stressed hair and restore a healthy, vibrant look.",
     "variants": [
       {
@@ -1137,7 +1137,7 @@
     "price_bdt": 999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Barber_styling_man_s_hair_202606021821_1.jpg?v=1780403021&width=1920",
+    "image": "/products/Barber_styling_man_s_hair_202606021821_1.jpg",
     "description": "An essential conditioning treatment that replenishes moisture, improves manageability, and brings back natural shine to everyday hair.",
     "variants": [
       {
@@ -1160,7 +1160,7 @@
     "price_bdt": 2499.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/download.jpg?v=1779816948&width=1920",
+    "image": "/products/download.jpg",
     "description": "BIW's signature men's deep conditioning and repair ritual — addresses dryness, breakage, and scalp health for noticeably healthier hair.",
     "variants": [
       {
@@ -1183,7 +1183,7 @@
     "price_bdt": 2499.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Brightening.jpg?v=1780960034&width=1920",
+    "image": "/products/Brightening.jpg",
     "description": "A brightening colour service that lifts dull or faded hair tone for a fresher, more vibrant appearance without full bleaching.",
     "variants": [
       {
@@ -1206,7 +1206,7 @@
     "price_bdt": 2799.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Man_receiving_hair_color_treatment_202606021932.jpg?v=1780407207&width=1920",
+    "image": "/products/Man_receiving_hair_color_treatment_202606021932.jpg",
     "description": "A rich, warm chocolate toned colour treatment — a client favourite for its dimensional, natural-looking brown results.",
     "variants": [
       {
@@ -1229,7 +1229,7 @@
     "price_bdt": 3499.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Barber_applying_hair_dye_client_202606021852.jpg?v=1780404764&width=1920",
+    "image": "/products/Barber_applying_hair_dye_client_202606021852.jpg",
     "description": "A clear, glossy colour treatment that enhances natural hair tone with a mirror-like crystal shine finish.",
     "variants": [
       {
@@ -1252,7 +1252,7 @@
     "price_bdt": 2499.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Barber_applying_hair_dye_client_202606021852_1_ff61333f-5c8b-42ad-a057-6fce9c44392e.jpg?v=1780406891&width=1920",
+    "image": "/products/Barber_applying_hair_dye_client_202606021852_1_ff61333f-5c8b-42ad-a057-6fce9c44392e.jpg",
     "description": "A de-tanning colour correction treatment for sun-exposed hair that removes brassiness and restores the hair's original tone.",
     "variants": [
       {
@@ -1275,7 +1275,7 @@
     "price_bdt": 3499.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Medical1_be7900b3-971b-462a-9743-c3ec28b8c3b1.jpg?v=1780405588&width=1920",
+    "image": "/products/Medical1_be7900b3-971b-462a-9743-c3ec28b8c3b1.jpg",
     "description": "A nourishing colour treatment infused with honey and milk proteins to condition while colouring, delivering soft, warm-toned results.",
     "variants": [
       {
@@ -1298,7 +1298,7 @@
     "price_bdt": 5999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Man_getting_hair_highlights_202606021903_1.jpg?v=1780405482&width=1920",
+    "image": "/products/Man_getting_hair_highlights_202606021903_1.jpg",
     "description": "A medically-formulated hair colour treatment designed for sensitive scalps — uses low-irritant, dermatologist-aligned colour agents for safe, lasting colour.",
     "variants": [
       {
@@ -1321,7 +1321,7 @@
     "price_bdt": 2999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Man_getting_hair_color_treatment_202606021914.jpg?v=1780406073&width=1920",
+    "image": "/products/Man_getting_hair_color_treatment_202606021914.jpg",
     "description": "A paraffin-enriched colour service that seals the cuticle post-colour for enhanced shine, longevity, and protection of the hair fibre.",
     "variants": [
       {
@@ -1344,7 +1344,7 @@
     "price_bdt": 7999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Peeling2.jpg?v=1780140049&width=1920",
+    "image": "/products/Peeling2.jpg",
     "description": "A premium colour and scalp peeling service that combines vibrant colour application with a deep cleansing peel for a refreshed scalp and vivid results.",
     "variants": [
       {
@@ -1367,7 +1367,7 @@
     "price_bdt": 4499.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Man_hair_coloring_treatment_salon_202606021859.jpg?v=1780405211&width=1920",
+    "image": "/products/Man_hair_coloring_treatment_salon_202606021859.jpg",
     "description": "BIW's signature colour service — a custom colour application with toning and finishing for a polished, dimensional result.",
     "variants": [
       {
@@ -1390,7 +1390,7 @@
     "price_bdt": 4999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/DeepTissueMassage_FullBody_60mins.jpg?v=1780411429&width=1920",
+    "image": "/products/DeepTissueMassage_FullBody_60mins.jpg",
     "description": "A high-pressure therapeutic massage targeting deep muscle layers to release chronic tension, break down adhesions, and restore full muscular function. Ideal for men with physically demanding lifestyles or persistent muscle tightness.Pricing: Starts at ৳4,999. Intensity-tiered up to ৳9,999 based on session depth and protocol customisation. Final pricing confirmed at consultation.",
     "variants": [
       {
@@ -1413,7 +1413,7 @@
     "price_bdt": 2499.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Three_hands_massaging_person_s_neck_202606090446.jpg?v=1780959098&width=1920",
+    "image": "/products/Three_hands_massaging_person_s_neck_202606090446.jpg",
     "description": "A focused, intensive massage targeting the upper body stress zones — neck, shoulders, and full back. The go-to solution for desk workers and professionals carrying tension from long working hours.",
     "variants": [
       {
@@ -1436,7 +1436,7 @@
     "price_bdt": 2999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Hands_giving_massage_to_person_202606090424_1.jpg?v=1780959862&width=1920",
+    "image": "/products/Hands_giving_massage_to_person_202606090424_1.jpg",
     "description": "A targeted therapeutic massage for localised injuries or chronic pain areas — personalised protocol based on the client's specific condition. Ideal for post-injury recovery or sports-related musculoskeletal complaints.Pricing: Starts at ৳2,999. Complexity-tiered up to ৳9,999 based on injury type, protocol, and session duration. Final pricing confirmed at consultation.",
     "variants": [
       {
@@ -1459,7 +1459,7 @@
     "price_bdt": 4999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/GeneratedImageJune02_2026-8_58PM.png?v=1780412601&width=1920",
+    "image": "/products/GeneratedImageJune02_2026-8_58PM.png",
     "description": "A deeply grounding hot stone massage where smooth, heated basalt stones are used to melt tension, improve blood circulation, and induce profound physical and mental relaxation.",
     "variants": [
       {
@@ -1482,7 +1482,7 @@
     "price_bdt": 999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Foot_CalfMassage_30mins_2.jpg?v=1780141266&width=1920",
+    "image": "/products/Foot_CalfMassage_30mins_2.jpg",
     "description": "A revitalising 30-minute massage for the feet and calves using reflexology-informed techniques. Relieves fatigue, improves circulation, and is the perfect stand-alone relaxation add-on.",
     "variants": [
       {
@@ -1505,7 +1505,7 @@
     "price_bdt": 699.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/10.jpg?v=1780408791&width=1920",
+    "image": "/products/10.jpg",
     "description": "A standard manicure — trim, shape, buff, and moisturise — for neat, groomed hands.",
     "variants": [
       {
@@ -1528,7 +1528,7 @@
     "price_bdt": 799.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/18.jpg?v=1780408832&width=1920",
+    "image": "/products/18.jpg",
     "description": "A standard pedicure — soak, trim, shape, and buff — for clean, well-maintained feet.",
     "variants": [
       {
@@ -1551,7 +1551,7 @@
     "price_bdt": 2499.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/download_4835f02a-08ad-406f-bf05-3394fcd0dd52.jpg?v=1779817000&width=1920",
+    "image": "/products/download_4835f02a-08ad-406f-bf05-3394fcd0dd52.jpg",
     "description": "A brightening foot and hand treatment using lightening actives to even out dark patches, knuckles, and uneven tone.",
     "variants": [
       {
@@ -1574,7 +1574,7 @@
     "price_bdt": 2799.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Man_receiving_Chocolate_Pedi-Man__202606022002.jpg?v=1780409043&width=1920",
+    "image": "/products/Man_receiving_Chocolate_Pedi-Man__202606022002.jpg",
     "description": "A rich chocolate-infused pedicure and manicure that deeply nourishes dry skin and leaves a warm, pleasant scent.",
     "variants": [
       {
@@ -1597,7 +1597,7 @@
     "price_bdt": 3499.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/11.jpg?v=1780407770&width=1920",
+    "image": "/products/11.jpg",
     "description": "A crystal mineral-infused pedicure and manicure that delivers deep exfoliation and a polished, glass-like finish on hands and feet.",
     "variants": [
       {
@@ -1620,7 +1620,7 @@
     "price_bdt": 2499.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/9_d8a043ee-2836-4434-a146-4e485a86235d.jpg?v=1780959568&width=1920",
+    "image": "/products/9_d8a043ee-2836-4434-a146-4e485a86235d.jpg",
     "description": "A targeted de-tanning treatment for men's hands and feet that removes sun-induced pigmentation and restores natural skin tone.",
     "variants": [
       {
@@ -1643,7 +1643,7 @@
     "price_bdt": 3499.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Man_receiving_pedicure_spa_202606021949.jpg?v=1780408224&width=1920",
+    "image": "/products/Man_receiving_pedicure_spa_202606021949.jpg",
     "description": "A nourishing honey and milk-based treatment that softens calluses, conditions cuticles, and leaves hands and feet hydrated and smooth.",
     "variants": [
       {
@@ -1666,7 +1666,7 @@
     "price_bdt": 5999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/17.jpg?v=1780407666&width=1920",
+    "image": "/products/17.jpg",
     "description": "A clinically-inspired nail and extremity care service using dermatologist-grade exfoliants and soothing actives for men with skin sensitivities.",
     "variants": [
       {
@@ -1689,7 +1689,7 @@
     "price_bdt": 2999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Man_receiving_Paraffin_Pedi-Mani_202606021952.jpg?v=1780408482&width=1920",
+    "image": "/products/Man_receiving_Paraffin_Pedi-Mani_202606021952.jpg",
     "description": "Warm paraffin wax therapy for men — deeply conditions, softens, and soothes hands and feet while relieving joint stiffness.",
     "variants": [
       {
@@ -1712,7 +1712,7 @@
     "price_bdt": 7999.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/12.jpg?v=1780407614&width=1920",
+    "image": "/products/12.jpg",
     "description": "A premium chemical peel-enhanced pedicure and manicure for men — deeply exfoliates, brightens, and smooths hands and feet.",
     "variants": [
       {
@@ -1735,7 +1735,7 @@
     "price_bdt": 4499.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Professional_commercial_photography_of_a_202605030121_16d974c0-a194-4cc0-b528-5c01d71f83ed.jpg?v=1780959625&width=1920",
+    "image": "/products/Professional_commercial_photography_of_a_202605030121_16d974c0-a194-4cc0-b528-5c01d71f83ed.jpg",
     "description": "BIW's flagship men's hand and foot ritual — a multi-step luxury treatment with premium soaks, custom masks, and finishing polish.",
     "variants": [
       {
@@ -1827,7 +1827,7 @@
     "price_bdt": 1500.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/facial_ca93c464-3928-4fd1-8eab-78c2cfdf6aa2.jpg?v=1780665860&width=1920",
+    "image": "/products/facial_ca93c464-3928-4fd1-8eab-78c2cfdf6aa2.jpg",
     "description": "A facial polishing treatment using fine exfoliating particles and brightening serums for an instantly even and luminous complexion.Duration: 20 min",
     "variants": [
       {
@@ -1850,7 +1850,7 @@
     "price_bdt": 10000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/make_it_look_Halal_2K_202605301316_b440121e-d057-4e4f-9076-9eb0b18e57cf.jpg?v=1780666157&width=1920",
+    "image": "/products/make_it_look_Halal_2K_202605301316_b440121e-d057-4e4f-9076-9eb0b18e57cf.jpg",
     "description": "A foot-specific brightening treatment using callus removal, deep exfoliation, and depigmenting actives for clean, even-toned feet.Duration: 30 min",
     "variants": [
       {
@@ -1873,7 +1873,7 @@
     "price_bdt": 700.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/make_it_look_modest_2K_202605301320_1.jpg?v=1780665414&width=1920",
+    "image": "/products/make_it_look_modest_2K_202605301320_1.jpg",
     "description": "An exfoliating foot polish that softens calluses, removes dead skin, and brightens overall foot appearance.Duration: 20 min",
     "variants": [
       {
@@ -1896,7 +1896,7 @@
     "price_bdt": 1000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Hydrafacial.jpg?v=1780665749&width=1920",
+    "image": "/products/Hydrafacial.jpg",
     "description": "An exfoliating polish across the front torso — chest, abdomen, and stomach area — for smooth, even-toned skin.Duration: 30 min",
     "variants": [
       {
@@ -1919,7 +1919,7 @@
     "price_bdt": 6000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/make_it_look_modest_2K_202605301324.jpg?v=1780665201&width=1920",
+    "image": "/products/make_it_look_modest_2K_202605301324.jpg",
     "description": "A whole-body brightening polish combining exfoliation, depigmenting actives, and hydrating finishes for visibly lighter, glowing skin from head to toe.Duration: 1 hour",
     "variants": [
       {
@@ -1942,7 +1942,7 @@
     "price_bdt": 3000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/PEDICURE_MANICURE_jpeg.jpg?v=1780665969&width=1920",
+    "image": "/products/PEDICURE_MANICURE_jpeg.jpg",
     "description": "An exfoliating polish for the entire leg that removes dead skin, evens tone, and leaves legs noticeably brighter and smoother.Duration: 20 min",
     "variants": [
       {
@@ -1965,7 +1965,7 @@
     "price_bdt": 2000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/make_it_look_modest_2K_202605301320_1_d7581334-3c26-4d16-b8a1-63ec79cb6c3e.jpg?v=1780666014&width=1920",
+    "image": "/products/make_it_look_modest_2K_202605301320_1_d7581334-3c26-4d16-b8a1-63ec79cb6c3e.jpg",
     "description": "An exfoliating polish for the lower leg (knee to ankle) — brightens, smooths, and refines skin texture.Duration: 20 min",
     "variants": [
       {
@@ -1988,7 +1988,7 @@
     "price_bdt": 4000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/FACIALS.jpg?v=1781121216&width=1920",
+    "image": "/products/FACIALS.jpg",
     "description": "A brightening facial that delivers an immediate radiance boost using active glow agents. Perfect for pre-event skin prep or dull, tired skin.\nWhat's Included:\n\nDeep cleansing & gentle exfoliation\nActive glow agent infusion\nBrightening mask & vitamin-rich serum\nHydration boost & skin nourishment\nFacial massage for improved circulation\nSPF moisturizer finish\n\nBenefits:\n\nInstantly brighter & more radiant skin\nReduced dullness & fatigue\nIdeal pre-event skin preparation\nSuitable for all skin types\nNo downtime — glow immediately after\n\nDuration: Approximately 40 minutes.",
     "variants": [
       {
@@ -2011,7 +2011,7 @@
     "price_bdt": 3000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/FACIALS_2.jpg?v=1781121172&width=1920",
+    "image": "/products/FACIALS_2.jpg",
     "description": "Inspired by K-beauty protocols, this multi-step facial combines hydration layers with brightening actives for a dewy, glass-skin finish.Duration: 40 minutes",
     "variants": [
       {
@@ -2034,7 +2034,7 @@
     "price_bdt": 12000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/generate-an-extreme-closeup-image-of-a-woman-getting-neck-brightenning-treatment-in-a-warm-environment-squrare-shape-1-1-photo.png?v=1781241890&width=1920",
+    "image": "/products/generate-an-extreme-closeup-image-of-a-woman-getting-neck-brightenning-treatment-in-a-warm-environment-squrare-shape-1-1-photo.png",
     "description": "A targeted neck-brightening protocol using depigmenting actives, exfoliation, and infusion to fade dark patches around the neckline.Duration: 20 min",
     "variants": [
       {
@@ -2057,7 +2057,7 @@
     "price_bdt": 10000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/make_it_look_modest_2K_202605301322.jpg?v=1780663944&width=1920",
+    "image": "/products/make_it_look_modest_2K_202605301322.jpg",
     "description": "BIW's signature whole-body brightening protocol — an extended luxury treatment combining premium polishing, depigmenting infusion, and finishing wraps for transformative skin clarity.Duration: 1 hour 30 min",
     "variants": [
       {
@@ -2080,7 +2080,7 @@
     "price_bdt": 1000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/UnderarmsWaxing.jpg?v=1780665802&width=1920",
+    "image": "/products/UnderarmsWaxing.jpg",
     "description": "An underarm polishing treatment that exfoliates dead skin and instantly brightens the area for cleaner, even-toned underarms.Duration: 20 min",
     "variants": [
       {
@@ -2103,7 +2103,7 @@
     "price_bdt": 1000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/make_it_look_modest_2K_202605301322_5dc3cf6b-4923-4aaa-8e9d-3be22f30485a.jpg?v=1780665606&width=1920",
+    "image": "/products/make_it_look_modest_2K_202605301322_5dc3cf6b-4923-4aaa-8e9d-3be22f30485a.jpg",
     "description": "An exfoliating polish across the entire back area that removes dead skin, fades blemishes, and reveals a clearer back.Duration: 20 min",
     "variants": [
       {
@@ -2126,7 +2126,7 @@
     "price_bdt": 7000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/give_clothes_2K_202605301326.jpg?v=1780665039&width=1920",
+    "image": "/products/give_clothes_2K_202605301326.jpg",
     "description": "A whole-body exfoliating scrub using mineral salts and natural exfoliants to remove dead skin cells and reveal smoother, softer skin.Duration: 1 hour",
     "variants": [
       {
@@ -2149,7 +2149,7 @@
     "price_bdt": 20000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/generate-an-extreme-closeup-square-shape-1-1-image-of-back-brightening-treatment-of-a-bangladeshi-woman-in-a-warm-environment-without-her-back-no-other-body-parts-are-visible-extreme.png?v=1781242404&width=1920",
+    "image": "/products/generate-an-extreme-closeup-square-shape-1-1-image-of-back-brightening-treatment-of-a-bangladeshi-woman-in-a-warm-environment-without-her-back-no-other-body-parts-are-visible-extreme.png",
     "description": "BIW's premium back-brightening protocol — for blemish-free, even-toned skin across the entire back area, ideal for bridal and event prep.Duration: 30 min",
     "variants": [
       {
@@ -2172,7 +2172,7 @@
     "price_bdt": 10000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/an_extreme_close_up_of_202606110219.jpg?v=1781122820&width=1920",
+    "image": "/products/an_extreme_close_up_of_202606110219.jpg",
     "description": "A bra-line specific treatment that lightens darkened areas caused by friction and pressure, restoring a uniform skin tone.Duration: 30 min",
     "variants": [
       {
@@ -2195,7 +2195,7 @@
     "price_bdt": 8000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/generate-an-extreme-closeup-square-shape-1-1-image-of-leg-brightening-treatment-of-a-bangladeshi-woman-in-a-warm-environment-without-leg-no-other-body-parts-are-visible-extreme-closeu.png?v=1781242309&width=1920",
+    "image": "/products/generate-an-extreme-closeup-square-shape-1-1-image-of-leg-brightening-treatment-of-a-bangladeshi-woman-in-a-warm-environment-without-leg-no-other-body-parts-are-visible-extreme-closeu.png",
     "description": "A targeted brightening treatment for the legs to lighten sun-darkened skin, even tone, and restore a uniform glow.Duration: 30 min",
     "variants": [
       {
@@ -2218,7 +2218,7 @@
     "price_bdt": 8000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/generate-an-extreme-closeup-square-shape-1-1-image-of-underarm-brightening-treatment-in-a-warm-environment-without-underarm-no-other-body-parts-are-visible-extreme-closeup.png?v=1781242192&width=1920",
+    "image": "/products/generate-an-extreme-closeup-square-shape-1-1-image-of-underarm-brightening-treatment-in-a-warm-environment-without-underarm-no-other-body-parts-are-visible-extreme-closeup.png",
     "description": "An underarm-specific brightening treatment combining exfoliation, depigmenting serums, and soothing actives to lighten and even tone.Duration: 20 min",
     "variants": [
       {
@@ -2241,7 +2241,7 @@
     "price_bdt": 8000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/generate-an-extreme-closeup-square-shape-1-1-image-of-hip-brightening-treatment-of-a-bangladeshi-woman-in-a-warm-environment-without-her-one-thigh-no-other-body-parts-are-visible-extr.png?v=1781242694&width=1920",
+    "image": "/products/generate-an-extreme-closeup-square-shape-1-1-image-of-hip-brightening-treatment-of-a-bangladeshi-woman-in-a-warm-environment-without-her-one-thigh-no-other-body-parts-are-visible-extr.png",
     "description": "An intimate-area brightening treatment using clinical-grade actives in a discreet, sensitive-skin-safe protocol.Duration: 30 min",
     "variants": [
       {
@@ -2264,7 +2264,7 @@
     "price_bdt": 5000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/ChemicalPeeling_0cb6f70f-207b-4002-9390-8e072c8961cc.jpg?v=1781121285&width=1920",
+    "image": "/products/ChemicalPeeling_0cb6f70f-207b-4002-9390-8e072c8961cc.jpg",
     "description": "A clinically targeted facial formulated to reduce active breakouts, control sebum, and soothe inflamed acne-prone skin.Duration: 40 min",
     "variants": [
       {
@@ -2287,7 +2287,7 @@
     "price_bdt": 5000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/facial_4202ca0a-4145-4bed-a1a7-0b3c14e0264d.jpg?v=1781128189&width=1920",
+    "image": "/products/facial_4202ca0a-4145-4bed-a1a7-0b3c14e0264d.jpg",
     "description": "An oxygenating bubble treatment that deep-cleanses pores while delivering a surge of hydration, leaving skin plump and luminous.Duration: 40 min",
     "variants": [
       {
@@ -2310,7 +2310,7 @@
     "price_bdt": 4000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/FACIALS__2.jpg?v=1781120967&width=1920",
+    "image": "/products/FACIALS__2.jpg",
     "description": "An advanced aqua-peeling technique that purges impurities from deep within pores using a pressurised water filtration system.Duration: 45 min",
     "variants": [
       {
@@ -2333,7 +2333,7 @@
     "price_bdt": 4000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Dermaplaning.jpg?v=1781121111&width=1920",
+    "image": "/products/Dermaplaning.jpg",
     "description": "A precision exfoliation treatment using a surgical blade to remove dead skin cells and vellus hair, revealing a smoother, brighter complexion.Duration: 50 min",
     "variants": [
       {
@@ -2356,7 +2356,7 @@
     "price_bdt": 5000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Face_reference_lock___active_202605260119_1.jpg?v=1781120769&width=1920",
+    "image": "/products/Face_reference_lock___active_202605260119_1.jpg",
     "description": "Combines the resurfacing power of dermaplaning with a brightening serum infusion for amplified glow and product absorption.Duration: 1 hour",
     "variants": [
       {
@@ -2379,7 +2379,7 @@
     "price_bdt": 4000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/facial_ca7dbefe-124a-438c-8965-dab556a6c25f.jpg?v=1779868262&width=1920",
+    "image": "/products/facial_ca7dbefe-124a-438c-8965-dab556a6c25f.jpg",
     "description": "A nature-first facial using certified organic botanical extracts. Ideal for sensitive skin types seeking a gentle, chemical-free treatment.Duration: 40 min",
     "variants": [
       {
@@ -2402,7 +2402,7 @@
     "price_bdt": 5000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/FACIALS_5b6334a1-1768-44ba-ab50-a460cdc7fd35.jpg?v=1781283155&width=1920",
+    "image": "/products/FACIALS_5b6334a1-1768-44ba-ab50-a460cdc7fd35.jpg",
     "description": "A luxury treatment infused with pearl extract and brightening peptides to visibly reduce pigmentation and unify skin tone.Duration: 40 min",
     "variants": [
       {
@@ -2425,7 +2425,7 @@
     "price_bdt": 3000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/facial_af289ae9-ddbe-480a-af87-6fa44b47478d.jpg?v=1781121025&width=1920",
+    "image": "/products/facial_af289ae9-ddbe-480a-af87-6fa44b47478d.jpg",
     "description": "A straightforward skin maintenance treatment — cleanse, exfoliate, steam, and mask — to keep the complexion fresh and clear.Duration: 40 min",
     "variants": [
       {
@@ -2448,7 +2448,7 @@
     "price_bdt": 2500.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/extreme_close_up_of_an_202606132209.jpg?v=1781366960&width=1920",
+    "image": "/products/extreme_close_up_of_an_202606132209.jpg",
     "description": "A targeted polish for the bra-line area that smooths and brightens skin where friction has caused darkening.Duration: 20 min",
     "variants": [
       {
@@ -2471,7 +2471,7 @@
     "price_bdt": 8000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/extreme_close_up_of_an_202606132225.jpg?v=1781367956&width=1920",
+    "image": "/products/extreme_close_up_of_an_202606132225.jpg",
     "description": "A whole-body exfoliating polish that removes dead skin, reveals brighter skin tone, and finishes with a hydrating wrap.Duration: 40 min",
     "variants": [
       {
@@ -2494,7 +2494,7 @@
     "price_bdt": 2000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/apply_treatment_on_the_upper_202606132222.jpg?v=1781367788&width=1920",
+    "image": "/products/apply_treatment_on_the_upper_202606132222.jpg",
     "description": "An exfoliating polish for the full arm — shoulder to fingertips — that removes dead skin and reveals brighter, smoother arms.Duration: 20 min",
     "variants": [
       {
@@ -2517,7 +2517,7 @@
     "price_bdt": 1500.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/hand_polish__treatment_should_be_202606132213.jpg?v=1781367221&width=1920",
+    "image": "/products/hand_polish__treatment_should_be_202606132213.jpg",
     "description": "An exfoliating polish for the lower arm (elbow to fingertips) that refines and brightens forearm skin.Duration: 20 min",
     "variants": [
       {
@@ -2540,7 +2540,7 @@
     "price_bdt": 6000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/FaceRF_RadioFrequency.jpg?v=1781122128&width=1920",
+    "image": "/products/FaceRF_RadioFrequency.jpg",
     "description": "A radio frequency facial treatment that uses controlled thermal energy to firm sagging skin, smooth fine lines, and improve overall facial contour.Duration: 50 min",
     "variants": [
       {
@@ -2563,7 +2563,7 @@
     "price_bdt": 16000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/A_high-resolution__photorealistic_medium_shot_202606132013.jpg?v=1781360044&width=1920",
+    "image": "/products/A_high-resolution__photorealistic_medium_shot_202606132013.jpg",
     "description": "High-Intensity Focused Ultrasound — a non-surgical face-lifting procedure that tightens skin, contours the jawline, and stimulates collagen production at deep dermal levels.Duration: 50 min",
     "variants": [
       {
@@ -2586,7 +2586,7 @@
     "price_bdt": 5000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/haircut_1.jpg?v=1781141263&width=1920",
+    "image": "/products/haircut_1.jpg",
     "description": "An intensive repair protocol for severely damaged hair using high-concentration actives to restore elasticity, shine, and strength.Duration: 2 hours",
     "variants": [
       {
@@ -2609,7 +2609,7 @@
     "price_bdt": 2000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/BlowDry.jpg?v=1781121448&width=1920",
+    "image": "/products/BlowDry.jpg",
     "description": "A professional blow-dry styling session to create sleek, smooth, or voluminous finishes ready for any occasion.Duration: 20 min",
     "variants": [
       {
@@ -2632,7 +2632,7 @@
     "price_bdt": 6000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Meera_Rahman.png_is_having_a_hair_202606132158.jpg?v=1781366612&width=1920",
+    "image": "/products/Meera_Rahman.png_is_having_a_hair_202606132158.jpg",
     "description": "A restorative deep-conditioning treatment specifically formulated for heat-damaged, over-processed, or colour-treated hair.Duration: 2 hours",
     "variants": [
       {
@@ -2655,7 +2655,7 @@
     "price_bdt": 3000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/hairwash_1.jpg?v=1781140380&width=1920",
+    "image": "/products/hairwash_1.jpg",
     "description": "A targeted protein therapy for chemically treated or structurally weak hair — rebuilds the hair shaft and reduces frizz and breakage.Duration: 1 hour 30 minAvailable for short and long hair at the same price.",
     "variants": [
       {
@@ -2678,7 +2678,7 @@
     "price_bdt": 4000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/hairwash.jpg?v=1781140247&width=1920",
+    "image": "/products/hairwash.jpg",
     "description": "A nutrient-rich smoothie treatment that replenishes protein and moisture levels, leaving hair soft, manageable, and visibly healthier.Duration: 1 hour 30 minAvailable for short and long hair at the same price.",
     "variants": [
       {
@@ -2701,7 +2701,7 @@
     "price_bdt": 1500.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/hairwash_2.jpg?v=1781140604&width=1920",
+    "image": "/products/hairwash_2.jpg",
     "description": "A traditional warm oil scalp treatment that stimulates circulation, nourishes hair follicles, and deeply conditions dry or damaged strands.Duration: 1 hour",
     "variants": [
       {
@@ -2724,7 +2724,7 @@
     "price_bdt": 8000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/add_hand_globes_on_the_202606132154.jpg?v=1781366112&width=1920",
+    "image": "/products/add_hand_globes_on_the_202606132154.jpg",
     "description": "A professional keratin smoothing system that eliminates frizz, reduces blow-dry time, and imparts long-lasting silk and shine for up to 3–4 months.Duration: 3–4 hoursAvailable for short and long hair at the same price.",
     "variants": [
       {
@@ -2747,7 +2747,7 @@
     "price_bdt": 2000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/hair.jpg?v=1781140858&width=1920",
+    "image": "/products/hair.jpg",
     "description": "An enhanced oil massage using a proprietary blend of rejuvenating botanical oils formulated to reduce breakage and promote healthy hair growth.Duration: 1 hour 30 min",
     "variants": [
       {
@@ -2770,7 +2770,7 @@
     "price_bdt": 11000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/A_high-resolution__photorealistic_photograph_capturing_202606132144.jpg?v=1781365486&width=1920",
+    "image": "/products/A_high-resolution__photorealistic_photograph_capturing_202606132144.jpg",
     "description": "An advanced omega-fatty acid infusion treatment that restructures the hair from within, delivering superior strength, elasticity, and glossiness.Duration: 3 hoursAvailable for short and long hair at the same price.",
     "variants": [
       {
@@ -2793,7 +2793,7 @@
     "price_bdt": 1000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Hair_Spa_Treatment___Warm_202605260131.jpg?v=1781141589&width=1920",
+    "image": "/products/Hair_Spa_Treatment___Warm_202605260131.jpg",
     "description": "A professional cleansing wash using sulfate-balanced shampoo and conditioner, finished with scalp massage.Duration: 20 min",
     "variants": [
       {
@@ -2816,7 +2816,7 @@
     "price_bdt": 6000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/haircut_1_d19ff988-db0f-4a8e-8c92-0527d494c5b3.jpg?v=1781365707&width=1920",
+    "image": "/products/haircut_1_d19ff988-db0f-4a8e-8c92-0527d494c5b3.jpg",
     "description": "BIW's flagship hair treatment — a multi-step ritual combining deep conditioning, scalp therapy, and finishing techniques for transformative hair health.Duration: 2 hours",
     "variants": [
       {
@@ -2839,7 +2839,7 @@
     "price_bdt": 7000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/AdvanceHydra_1.jpg?v=1781129817&width=1920",
+    "image": "/products/AdvanceHydra_1.jpg",
     "description": "An upgraded hydradermabrasion treatment targeting uneven texture, congested pores, and early signs of ageing with advanced infusion serums.Duration: 1 hour 30 min",
     "variants": [
       {
@@ -2862,7 +2862,7 @@
     "price_bdt": 5000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/HYDRAFACIALS_7f21d429-17ac-4ca6-90e0-65be57a533a0.jpg?v=1781120245&width=1920",
+    "image": "/products/HYDRAFACIALS_7f21d429-17ac-4ca6-90e0-65be57a533a0.jpg",
     "description": "An entry-level HydraFacial protocol that hydrates and cleanses simultaneously using bio-compatible serums suited for all skin types.Duration: 1 hour",
     "variants": [
       {
@@ -2885,7 +2885,7 @@
     "price_bdt": 9000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/hydraFACIALS.jpg?v=1781120160&width=1920",
+    "image": "/products/hydraFACIALS.jpg",
     "description": "A comprehensive multi-step HydraFacial featuring targeted boosters for brightening, firming, and deep hydration — suited for mature or stressed skin.Duration: 2 hours",
     "variants": [
       {
@@ -2908,7 +2908,7 @@
     "price_bdt": 14000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/HYDRA_FACIALS__1.jpg?v=1781119943&width=1920",
+    "image": "/products/HYDRA_FACIALS__1.jpg",
     "description": "BIW's bespoke prestige facial — a fully customised multi-modal treatment designed around each client's unique skin profile and wellness goals.Duration: 2 hours 50 min",
     "variants": [
       {
@@ -2931,7 +2931,7 @@
     "price_bdt": 11000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/hydra_1.jpg?v=1781120095&width=1920",
+    "image": "/products/hydra_1.jpg",
     "description": "The most intensive glow-focused HydraFacial at BIW, combining vortex extraction, brightening infusion, and LED light therapy for transformative results.Duration: 2 hours 20 min",
     "variants": [
       {
@@ -2954,7 +2954,7 @@
     "price_bdt": 6000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/massage_1.jpg?v=1780665333&width=1920",
+    "image": "/products/massage_1.jpg",
     "description": "A traditional full-body relaxation massage using therapeutic pressure techniques and aromatic oils to relieve tension and improve circulation.Duration: 1 hour",
     "variants": [
       {
@@ -2977,7 +2977,7 @@
     "price_bdt": 10000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Massage.jpg?v=1780665111&width=1920",
+    "image": "/products/Massage.jpg",
     "description": "The complete body wellness ritual — combining BIW's brightening polish with a full-body relaxation massage for a fully restorative experience.Duration: 1 hour 20 min",
     "variants": [
       {
@@ -3000,7 +3000,7 @@
     "price_bdt": 3000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/PEDICURE_MANICURE_2.jpg?v=1781136072&width=1920",
+    "image": "/products/PEDICURE_MANICURE_2.jpg",
     "description": "A foundational nail and hand/foot care routine — soak, shape, cuticle care, and polish — for clean, groomed extremities.Duration: 50 min",
     "variants": [
       {
@@ -3023,7 +3023,7 @@
     "price_bdt": 4000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/PEDICURE_MANICURE_4.jpg?v=1781137164&width=1920",
+    "image": "/products/PEDICURE_MANICURE_4.jpg",
     "description": "Incorporates brightening scrubs and targeted serums to lighten darkened knuckles, heels, and nails for a visibly even-toned result.Duration: 1 hour",
     "variants": [
       {
@@ -3046,7 +3046,7 @@
     "price_bdt": 6000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/PEDICURE_MANICURE_7.jpg?v=1781139528&width=1920",
+    "image": "/products/PEDICURE_MANICURE_7.jpg",
     "description": "A premium crystal-infused treatment offering deep exfoliation, mineral replenishment, and a polished, glass-like finish on hands and feet.Duration: 1 hour 30 min",
     "variants": [
       {
@@ -3069,7 +3069,7 @@
     "price_bdt": 4000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/PEDICURE_MANICURE_3.jpg?v=1781137207&width=1920",
+    "image": "/products/PEDICURE_MANICURE_3.jpg",
     "description": "A de-tanning treatment for hands and feet that removes sun damage and restores the skin's natural tone using tan-reversal actives.Duration: 1 hour",
     "variants": [
       {
@@ -3092,7 +3092,7 @@
     "price_bdt": 4000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/PEDICURE_MANICURE_5.jpg?v=1781138821&width=1920",
+    "image": "/products/PEDICURE_MANICURE_5.jpg",
     "description": "A hydration-first treatment combining glow-boosting masks and nourishing oils for soft, luminous hands and feet.Duration: 1 hour",
     "variants": [
       {
@@ -3115,7 +3115,7 @@
     "price_bdt": 5000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/PEDICURE_MANICURE.jpg?v=1781139246&width=1920",
+    "image": "/products/PEDICURE_MANICURE.jpg",
     "description": "Warm paraffin wax therapy deeply conditions and softens the skin, relieves joint discomfort, and leaves hands and feet silky smooth.Duration: 1 hour",
     "variants": [
       {
@@ -3138,7 +3138,7 @@
     "price_bdt": 8000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/PEDICURE_MANICURE__8.jpg?v=1781121560&width=1920",
+    "image": "/products/PEDICURE_MANICURE__8.jpg",
     "description": "BIW's most luxurious nail service — a complete sensory ritual combining premium soaks, custom masks, hot stone massage, and finishing polish.Duration: 2 hours",
     "variants": [
       {
@@ -3161,7 +3161,7 @@
     "price_bdt": 6000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/BBGlowTreatment_1_6b4d3eac-f9dc-4977-93ad-cd60a66f4dec.jpg?v=1781358263&width=1920",
+    "image": "/products/BBGlowTreatment_1_6b4d3eac-f9dc-4977-93ad-cd60a66f4dec.jpg",
     "description": "A semi-permanent skin-finishing treatment that infuses a brightening BB pigment into the dermis for an even, foundation-like glow lasting weeks.Duration: 40 min",
     "variants": [
       {
@@ -3184,7 +3184,7 @@
     "price_bdt": 11000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/CarbonLaser.jpg?v=1781358080&width=1920",
+    "image": "/products/CarbonLaser.jpg",
     "description": "An advanced laser carbon facial that exfoliates, tightens pores, removes blackheads, and stimulates collagen for clearer, firmer skin.Duration: 30 min",
     "variants": [
       {
@@ -3207,7 +3207,7 @@
     "price_bdt": 9000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Woman_receiving_facial_treatment_202606110411.jpg?v=1781129544&width=1920",
+    "image": "/products/Woman_receiving_facial_treatment_202606110411.jpg",
     "description": "A bespoke oxygen-infusion facial tailored to specific skin concerns — anti-ageing, brightening, hydration, or anti-acne — using customised booster ampoules.Duration: 30 min",
     "variants": [
       {
@@ -3230,7 +3230,7 @@
     "price_bdt": 10000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/A_high-resolution_photorealistic_photograph_capturing_202606131950.jpg?v=1781358849&width=1920",
+    "image": "/products/A_high-resolution_photorealistic_photograph_capturing_202606131950.jpg",
     "description": "A collagen-boosting micro-needling treatment that stimulates the skin's natural production of collagen and elastin, improving fine lines and skin density.Duration: 1 hour 20 min",
     "variants": [
       {
@@ -3253,7 +3253,7 @@
     "price_bdt": 10000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Hydrafacial_492b2120-d111-41b9-85fe-3b597b79d90e.jpg?v=1781359528&width=1920",
+    "image": "/products/Hydrafacial_492b2120-d111-41b9-85fe-3b597b79d90e.jpg",
     "description": "A targeted micro-needling protocol delivering active mesotherapy serums to combat acne scarring, reduce inflammation, and rebuild healthy skin texture.Duration: 1 hour 20 min",
     "variants": [
       {
@@ -3276,7 +3276,7 @@
     "price_bdt": 10000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/A_detailed__high-resolution_photograph_capturing_202606132000.jpg?v=1781359278&width=1920",
+    "image": "/products/A_detailed__high-resolution_photograph_capturing_202606132000.jpg",
     "description": "A skin-renewal micro-needling treatment infused with anti-ageing peptides and hyaluronic acid for firmer, brighter, more youthful skin.Duration: 1 hour 20 min",
     "variants": [
       {
@@ -3299,7 +3299,7 @@
     "price_bdt": 10000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/facehairremoval.jpg?v=1781356638&width=1920",
+    "image": "/products/facehairremoval.jpg",
     "description": "A medical-grade laser hair removal procedure targeting facial hair on the upper lip, chin, sideburns, and forehead — for smoother, hair-free skin.Duration: 20 min",
     "variants": [
       {
@@ -3322,7 +3322,7 @@
     "price_bdt": 10000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/change_the_environment_to_similar_202606131836.jpg?v=1781354193&width=1920",
+    "image": "/products/change_the_environment_to_similar_202606131836.jpg",
     "description": "An intravenous glutathione protocol (90,000 mg dosage) that delivers powerful antioxidant action, brightens skin from within, and supports detoxification.Duration: 20 min",
     "variants": [
       {
@@ -3345,7 +3345,7 @@
     "price_bdt": 20000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/use_hijab_and_change_the_202606110207.jpg?v=1781122052&width=1920",
+    "image": "/products/use_hijab_and_change_the_202606110207.jpg",
     "description": "The most powerful glutathione IV protocol available at BIW — high-dose detoxification and skin brightening for visible whole-body luminosity.Duration: 20 min",
     "variants": [
       {
@@ -3368,7 +3368,7 @@
     "price_bdt": 3000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/generate_an_extreme_closeup_image_202606131939_861b797f-f07e-412f-b853-a63d22f7b027.jpg?v=1781358009&width=1920",
+    "image": "/products/generate_an_extreme_closeup_image_202606131939_861b797f-f07e-412f-b853-a63d22f7b027.jpg",
     "description": "A targeted carbon laser treatment for the lip area that brightens dark pigmentation and revives natural lip colour.Duration: 20 min",
     "variants": [
       {
@@ -3391,7 +3391,7 @@
     "price_bdt": 3000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/LipPeeling_4.jpg?v=1781356899&width=1920",
+    "image": "/products/LipPeeling_4.jpg",
     "description": "A gentle exfoliation treatment for the lips that removes dead skin, smooths texture, and prepares the lips for pigmentation correction.Duration: 20 min",
     "variants": [
       {
@@ -3414,7 +3414,7 @@
     "price_bdt": 7000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/OxygenoGlow.jpg?v=1781356806&width=1920",
+    "image": "/products/OxygenoGlow.jpg",
     "description": "An oxygen-jet facial that infuses pressurised oxygen and brightening serums into the skin for an instantly dewy, refreshed complexion.Duration: 25 min",
     "variants": [
       {
@@ -3437,7 +3437,7 @@
     "price_bdt": 4000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Meera_Rahman.png_is_getting_a_Radiant_202606131830.jpg?v=1781353821&width=1920",
+    "image": "/products/Meera_Rahman.png_is_getting_a_Radiant_202606131830.jpg",
     "description": "A quick-acting express treatment that delivers an immediate burst of radiance using vitamin C and brightening serums — ideal before events.Duration: 15 min",
     "variants": [
       {
@@ -3460,7 +3460,7 @@
     "price_bdt": 11000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/A_photorealistic__detailed_photograph_capturing_202606131911.jpg?v=1781356463&width=1920",
+    "image": "/products/A_photorealistic__detailed_photograph_capturing_202606131911.jpg",
     "description": "A platelet-rich plasma injection therapy for the scalp that activates dormant hair follicles, thickens existing hair, and slows hair loss.Duration: 1 hour",
     "variants": [
       {
@@ -3483,7 +3483,7 @@
     "price_bdt": 16000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/client_is_wearing_a_white_202606131914.jpg?v=1781356497&width=1920",
+    "image": "/products/client_is_wearing_a_white_202606131914.jpg",
     "description": "An advanced combination treatment using platelet-rich plasma (PRP) with micro-needling to stimulate hair follicle regeneration and combat hair loss.Duration: 1 hour 20 min",
     "variants": [
       {
@@ -3506,7 +3506,7 @@
     "price_bdt": 14000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/remove_jwelery_2K_202606131851.jpg?v=1781355448&width=1920",
+    "image": "/products/remove_jwelery_2K_202606131851.jpg",
     "description": "A platelet-rich plasma facial treatment that uses the body's own growth factors to rejuvenate skin, improve texture, and accelerate collagen production.Duration: 1 hour 20 min",
     "variants": [
       {
@@ -3529,7 +3529,7 @@
     "price_bdt": 1500.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/extreme-close-view-of-back-waxing-from-top.png?v=1781122773&width=1920",
+    "image": "/products/extreme-close-view-of-back-waxing-from-top.png",
     "description": "Hair removal across the back area — ideal for backless attire and overall smoothness.Duration: 15 min",
     "variants": [
       {
@@ -3552,7 +3552,7 @@
     "price_bdt": 3000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/Close_up_belly_waxing_202606110213.jpg?v=1781122448&width=1920",
+    "image": "/products/Close_up_belly_waxing_202606110213.jpg",
     "description": "Targeted hair removal across the abdomen and lower belly area for smoother midsection appearance.Duration: 20 min",
     "variants": [
       {
@@ -3575,7 +3575,7 @@
     "price_bdt": 4000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/generate-an-extreme-closeup-square-shape-1-1-image-of-body-waxing-of-a-bangladeshi-woman-in-a-warm-environment-show-only-a-strap-of-panty-at-the-back-side-without-her-back-no-other-bo.png?v=1781243259&width=1920",
+    "image": "/products/generate-an-extreme-closeup-square-shape-1-1-image-of-body-waxing-of-a-bangladeshi-woman-in-a-warm-environment-show-only-a-strap-of-panty-at-the-back-side-without-her-back-no-other-bo.png",
     "description": "Discreet bikini-line waxing performed in a private setting using gentle waxes formulated for sensitive areas.Duration: 30 min",
     "variants": [
       {
@@ -3598,7 +3598,7 @@
     "price_bdt": 10000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/generate-an-extreme-closeup-square-shape-1-1-image-of-body-waxing-of-a-bangladeshi-woman-in-a-warm-environment-without-her-back-no-other-body-parts-are-visible-extreme-closeup.png?v=1781242837&width=1920",
+    "image": "/products/generate-an-extreme-closeup-square-shape-1-1-image-of-body-waxing-of-a-bangladeshi-woman-in-a-warm-environment-without-her-back-no-other-body-parts-are-visible-extreme-closeup.png",
     "description": "Complete hair removal from face to toes in one extended sitting — ideal pre-event, pre-wedding, or pre-vacation grooming.Duration: 1 hour",
     "variants": [
       {
@@ -3621,7 +3621,7 @@
     "price_bdt": 2000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/generate-an-extreme-closeup-square-shape-1-1-image-of-vline-brightening-treatment-of-a-bangladeshi-woman-in-a-warm-environment-without-her-waist-no-other-body-parts-are-visible-extrem.png?v=1781242625&width=1920",
+    "image": "/products/generate-an-extreme-closeup-square-shape-1-1-image-of-vline-brightening-treatment-of-a-bangladeshi-woman-in-a-warm-environment-without-her-waist-no-other-body-parts-are-visible-extrem.png",
     "description": "Complete facial waxing that removes unwanted hair across forehead, sideburns, upper lip, and chin for smooth, polished skin.Duration: 20 min",
     "variants": [
       {
@@ -3644,7 +3644,7 @@
     "price_bdt": 2000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/generate-an-extreme-closeup-square-shape-1-1-image-of-full-arm-waxing-of-a-bangladeshi-woman-in-a-warm-environment-without-her-arm-no-other-body-parts-are-visible-extreme-closeup.png?v=1781243474&width=1920",
+    "image": "/products/generate-an-extreme-closeup-square-shape-1-1-image-of-full-arm-waxing-of-a-bangladeshi-woman-in-a-warm-environment-without-her-arm-no-other-body-parts-are-visible-extreme-closeup.png",
     "description": "Complete hair removal from shoulder to fingertips using premium waxes for smooth, polished arms.Duration: 20 min",
     "variants": [
       {
@@ -3667,7 +3667,7 @@
     "price_bdt": 3000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/generate-an-extreme-closeup-square-shape-1-1-image-of-thigh-leg-waxing-of-a-bangladeshi-woman-in-a-warm-environment-her-body-should-have-small-natural-hair-technician-applying-wax-wea.png?v=1781243820&width=1920",
+    "image": "/products/generate-an-extreme-closeup-square-shape-1-1-image-of-thigh-leg-waxing-of-a-bangladeshi-woman-in-a-warm-environment-her-body-should-have-small-natural-hair-technician-applying-wax-wea.png",
     "description": "Complete hair removal from upper thigh to ankle using premium waxes for smooth, hair-free legs.Duration: 15 min",
     "variants": [
       {
@@ -3690,7 +3690,7 @@
     "price_bdt": 1500.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/generate-an-extreme-closeup-square-shape-1-1-image-of-half-hand-waxing-of-a-bangladeshi-woman-in-a-warm-environment-without-her-hand-no-other-body-parts-are-visible-extreme-closeup.png?v=1781243378&width=1920",
+    "image": "/products/generate-an-extreme-closeup-square-shape-1-1-image-of-half-hand-waxing-of-a-bangladeshi-woman-in-a-warm-environment-without-her-hand-no-other-body-parts-are-visible-extreme-closeup.png",
     "description": "Hair removal from elbow to fingertips for smooth forearm appearance.Duration: 15 min",
     "variants": [
       {
@@ -3713,7 +3713,7 @@
     "price_bdt": 2000.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/generate-an-extreme-closeup-square-shape-1-1-image-of-half-leg-waxing-of-a-bangladeshi-woman-in-a-warm-environment-her-body-should-have-small-natural-bodyhair-without-her-leg-no-other.png?v=1781243689&width=1920",
+    "image": "/products/generate-an-extreme-closeup-square-shape-1-1-image-of-half-leg-waxing-of-a-bangladeshi-woman-in-a-warm-environment-her-body-should-have-small-natural-bodyhair-without-her-leg-no-other.png",
     "description": "Hair removal from knee to ankle (or knee to thigh) using premium waxes for smooth lower legs.Duration: 20 min",
     "variants": [
       {
@@ -3736,7 +3736,7 @@
     "price_bdt": 1500.0,
     "currency": "BDT",
     "availability": "InStock",
-    "image": "https://biw.salon/cdn/shop/files/generate-an-extreme-closeup-square-shape-1-1-image-of-underarm-waxing-of-a-bangladeshi-woman-in-a-warm-environment-her-body-should-have-small-natural-hair-technician-applying-wax-wear.png?v=1781243916&width=1920",
+    "image": "/products/generate-an-extreme-closeup-square-shape-1-1-image-of-underarm-waxing-of-a-bangladeshi-woman-in-a-warm-environment-her-body-should-have-small-natural-hair-technician-applying-wax-wear.png",
     "description": "Quick underarm hair removal using premium soothing waxes that protect sensitive skin.Duration: 10 min",
     "variants": [
       {
