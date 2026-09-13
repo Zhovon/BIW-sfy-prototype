@@ -14,7 +14,11 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const title = POLICIES[slug];
-  return { title: `${title ?? "Policy"} · BIW` };
+  return {
+    title: `${title ?? "Policy"} · BIW`,
+    description: `${title ?? "Policy"} — Beauty Intelligent Wellness, Dhaka.`,
+    alternates: { canonical: `/policies/${slug}` },
+  };
 }
 
 export default async function PolicyPage({ params }: { params: Promise<{ slug: string }> }) {

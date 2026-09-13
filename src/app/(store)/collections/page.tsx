@@ -7,6 +7,7 @@ type Card = { handle: string; title: string; caption: string; image: string | nu
 export const metadata = {
   title: "Collections · BIW",
   description: "Browse all BIW service collections.",
+  alternates: { canonical: "/collections" },
 };
 
 export default function CollectionsPage() {

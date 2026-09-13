@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getArticle, getArticles } from "@/lib/catalog";
 
@@ -28,7 +29,11 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
     <article className="wrap py-16 max-w-[68ch]">
       <div className="kicker text-center">Journal</div>
       <h1 className="font-display text-4xl md:text-5xl mt-3 mb-8 text-center leading-tight">{article.title}</h1>
-      <div className="aspect-[16/7] bg-ice border border-line mb-10" />
+      <div className="relative aspect-[16/7] overflow-hidden bg-ice border border-line mb-10">
+        {article.image && (
+          <Image src={article.image} alt={article.title} fill sizes="(max-width:768px) 100vw, 68ch" className="object-cover" priority />
+        )}
+      </div>
       <div className="space-y-5">
         {article.paragraphs.map((p, i) => (
           <p key={i} className="text-ink/80 leading-relaxed">{p}</p>
