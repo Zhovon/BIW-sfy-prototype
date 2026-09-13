@@ -1,13 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  images: {
-    // product imagery still served from the Shopify CDN until media is migrated
-    remotePatterns: [
-      { protocol: "https", hostname: "biw.salon" },
-      { protocol: "https", hostname: "cdn.shopify.com" },
-    ],
-  },
+  // all product/hero media is now served locally from public/
+  // (see scripts/migrate_media_local.py) — no Shopify CDN remote hosts needed.
 };
 
 export default nextConfig;

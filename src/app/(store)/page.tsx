@@ -5,8 +5,7 @@ import Reveal from "@/components/Reveal";
 import BlogCarousel from "@/components/BlogCarousel";
 import { getProduct, getArticles } from "@/lib/catalog";
 
-const HERO_VIDEO =
-  "https://biw.salon/cdn/shop/videos/c/vp/9e0592ec483f4cec82b7ee0e344db534/9e0592ec483f4cec82b7ee0e344db534.HD-1080p-7.2Mbps-84905408.mp4?v=0";
+const HERO_VIDEO = "/hero.mp4";
 
 const testimonials = [
   { stars: 5, name: "Nadia Islam", service: "Signature Facial", text: "The facial treatment at BIW was absolutely divine. My skin felt rejuvenated and glowing for days. The staff was incredibly professional and attentive." },
@@ -40,6 +39,7 @@ export default function Home() {
       <section className="relative overflow-hidden bg-ink">
         <video
           className="w-full h-[70vh] md:h-[80vh] object-cover"
+          poster="/hero-poster.jpg"
           autoPlay
           muted
           loop

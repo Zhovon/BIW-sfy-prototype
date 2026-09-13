@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 
-const CDN = "https://biw.salon/cdn/shop/files";
+// images migrated local (see scripts/migrate_media_local.py)
+const CDN = "/products";
 
 const principles = [
   {
@@ -28,19 +29,19 @@ const founders = [
   {
     name: "LABONI AKTER",
     role: "Founder",
-    img: `${CDN}/Untitled_design_1.png?v=1784270911&width=800`,
+    img: `${CDN}/Untitled_design_1.png`,
     bio: "Laboni founded BIW around a belief that wellness and beauty are one pursuit, guided by care and evidence rather than trend. She sets the standard for the client experience and maintaining female services to be the top notch and compatible with clients for best experience. Not only that She maintain the branch catalogs and criteria of services.",
   },
   {
     name: "MD RAZIB AHAMED",
     role: "Founder",
-    img: `${CDN}/WhatsApp_Image_2026-07-13_at_14.31.10.jpg?v=1784270928&width=800`,
+    img: `${CDN}/WhatsApp_Image_2026-07-13_at_14.31.10.jpg`,
     bio: "MD: Razib founded BIW to build a wellness centre Dhaka could trust, where every treatment is chosen for the person in front of it. He leads its direction and growth. For Internal communication and getting out the best output from the employee he is the core of this responsibilities. As a humble person he is quite popular among all employee",
   },
   {
     name: "USMAN BHUIYAN",
     role: "Founder",
-    img: `${CDN}/Untitled_design_3.png?v=1784270930&width=800`,
+    img: `${CDN}/Untitled_design_3.png`,
     bio: "Usman Bhuiyan Rubel founded BIW with a vision to redefine beauty and wellness through exceptional care, innovation, and excellence. As a founder , he leads the company\u2019s growth while ensuring every BIW location delivers a consistent, personalized experience built on quality, trust, and client satisfaction. Absolutely focused person with ambition.",
   },
 ];
@@ -121,13 +122,13 @@ export default function AboutContent() {
         </p>
         <div className="grid md:grid-cols-3 gap-4 mt-12">
           <div className="relative aspect-[3/4] overflow-hidden bg-ice">
-            <Image src={`${CDN}/pedicure_haircut.jpg?v=1784268819&width=1200`} alt="BIW treatment" fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover" />
+            <Image src={`${CDN}/pedicure_haircut.jpg`} alt="BIW treatment" fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover" />
           </div>
           <div className="relative aspect-[3/4] overflow-hidden bg-ice">
-            <Image src={`${CDN}/lobby.jpg?v=1784268819&width=1200`} alt="BIW lobby" fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover" />
+            <Image src={`${CDN}/lobby.jpg`} alt="BIW lobby" fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover" />
           </div>
           <div className="relative aspect-[3/4] overflow-hidden bg-ice">
-            <Image src={`${CDN}/face_scan.jpg?v=1784268878&width=1200`} alt="BIW skin assessment" fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover" />
+            <Image src={`${CDN}/face_scan.jpg`} alt="BIW skin assessment" fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover" />
           </div>
         </div>
       </section>
