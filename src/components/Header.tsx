@@ -44,9 +44,9 @@ export default function Header() {
       <div className="wrap grid grid-cols-3 items-center h-[86px]">
         <div className="flex items-center gap-2">
           <MobileNav nav={nav} />
-          <button aria-label="Search" className="text-ink hover:text-gold transition-colors">
+          <Link href="/search" aria-label="Search" className="text-ink hover:text-gold transition-colors">
             <IconSearch />
-          </button>
+          </Link>
         </div>
         <Link href="/" className="flex justify-center" aria-label="BIW home">
           <Image src="/biw-logo.png" alt="BIW" width={64} height={64} priority className="h-14 w-auto object-contain" />

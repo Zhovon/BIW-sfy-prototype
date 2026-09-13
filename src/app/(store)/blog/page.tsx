@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { getArticles } from "@/lib/catalog";
 
-export const metadata = { title: "Journal · BIW" };
+export const metadata = {
+  title: "Journal · BIW",
+  description: "Skin science and wellness, in plain language — the Beauty Intelligent Wellness journal.",
+  alternates: { canonical: "/blog" },
+};
 
 export default function Blog() {
   const articles = getArticles();

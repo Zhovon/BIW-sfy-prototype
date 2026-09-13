@@ -9,7 +9,14 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const a = getArticle(slug);
-  return { title: a ? `${a.title} · BIW` : "Journal · BIW" };
+  if (!a) return { title: "Journal · BIW" };
+  const description = a.excerpt || a.paragraphs[0]?.slice(0, 160);
+  return {
+    title: `${a.title} · BIW`,
+    description,
+    alternates: { canonical: `/blog/${slug}` },
+    openGraph: { type: "article", title: a.title, description, url: `/blog/${slug}`, images: [a.image || "/biw-logo.png"] },
+  };
 }
 
 export default async function Article({ params }: { params: Promise<{ slug: string }> }) {

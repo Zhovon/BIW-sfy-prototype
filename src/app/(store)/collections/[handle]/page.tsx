@@ -1,6 +1,10 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import ProductCard from "@/components/ProductCard";
 import { products, getCollections, getCollection } from "@/lib/catalog";
+import { absoluteUrl } from "@/lib/site";
+
+const PAGE_SIZE = 24;
 
 export function generateStaticParams() {
   return [{ handle: "all" }, ...getCollections().map((c) => ({ handle: c.slug }))];
@@ -9,7 +13,11 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ handle: string }> }) {
   const { handle } = await params;
   const title = handle === "all" ? "All Products" : getCollection(handle)?.title ?? "Collection";
-  return { title: `${title} · BIW` };
+  return {
+    title: `${title} · BIW`,
+    description: `Browse ${title} at Beauty Intelligent Wellness, Dhaka.`,
+    alternates: { canonical: `/collections/${handle}` },
+  };
 }
 
 function FilterBar({ count }: { count: number }) {
@@ -36,22 +44,53 @@ function FilterBar({ count }: { count: number }) {
   );
 }
 
-export default async function CollectionPage({ params }: { params: Promise<{ handle: string }> }) {
+function Pagination({ handle, page, totalPages }: { handle: string; page: number; totalPages: number }) {
+  if (totalPages <= 1) return null;
+  const base = `/collections/${handle}`;
+  const href = (p: number) => (p === 1 ? base : `${base}?page=${p}`);
+  const link = "inline-flex items-center justify-center min-w-9 h-9 px-3 border border-line text-sm hover:border-ink transition-colors";
+  const disabled = "pointer-events-none opacity-40";
+  return (
+    <nav className="mt-14 flex items-center justify-center gap-2" aria-label="Pagination">
+      <Link href={href(page - 1)} className={`${link} ${page <= 1 ? disabled : ""}`} aria-label="Previous page" aria-disabled={page <= 1}>
+        ←
+      </Link>
+      <span className="px-3 text-sm text-muted">Page {page} of {totalPages}</span>
+      <Link href={href(page + 1)} className={`${link} ${page >= totalPages ? disabled : ""}`} aria-label="Next page" aria-disabled={page >= totalPages}>
+        →
+      </Link>
+    </nav>
+  );
+}
+
+export default async function CollectionPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ handle: string }>;
+  searchParams: Promise<{ page?: string }>;
+}) {
   const { handle } = await params;
+  const { page: pageParam } = await searchParams;
 
   const isAll = handle === "all";
   const data = isAll ? { title: "All Products", items: products } : getCollection(handle);
   if (!data) notFound();
+
+  const totalPages = Math.max(1, Math.ceil(data.items.length / PAGE_SIZE));
+  const page = Math.min(Math.max(1, Number(pageParam) || 1), totalPages);
+  const pageItems = data.items.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   return (
     <div className="wrap py-12">
       <h1 className="font-display text-4xl text-center mb-8">{data.title}</h1>
       <FilterBar count={data.items.length} />
       <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10">
-        {data.items.map((p) => (
+        {pageItems.map((p) => (
           <ProductCard key={p.handle} p={p} />
         ))}
       </div>
+      <Pagination handle={handle} page={page} totalPages={totalPages} />
     </div>
   );
 }

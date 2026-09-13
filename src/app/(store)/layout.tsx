@@ -56,6 +56,13 @@ const websiteLd = {
 export default function StoreLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${bodyFont.variable}`}>
+      <head>
+        {/* Without JS, IntersectionObserver never fires, so reveal content would
+            stay at opacity:0. Force it visible when scripting is unavailable. */}
+        <noscript>
+          <style>{`.reveal{opacity:1 !important;transform:none !important}`}</style>
+        </noscript>
+      </head>
       <body>
         <JsonLd data={organizationLd} />
         <JsonLd data={websiteLd} />

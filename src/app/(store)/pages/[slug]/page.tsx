@@ -14,7 +14,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const titles: Record<string, string> = { about: "About BIW", contact: "Contact" };
   const title = titles[slug] ?? getCustomPage(slug)?.title ?? "BIW";
-  return { title: `${title} · BIW` };
+  const descriptions: Record<string, string> = {
+    about: "Beauty Intelligent Wellness — an integrated medical-aesthetic wellness centre in Bashundhara, Dhaka.",
+    contact: "Get in touch with Beauty Intelligent Wellness, Dhaka.",
+  };
+  return {
+    title: `${title} · BIW`,
+    description: descriptions[slug] ?? `${title} at Beauty Intelligent Wellness, Dhaka.`,
+    alternates: { canonical: `/pages/${slug}` },
+  };
 }
 
 export default async function StaticPage({ params }: { params: Promise<{ slug: string }> }) {

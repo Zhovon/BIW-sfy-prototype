@@ -33,6 +33,25 @@ def pick_best(base_name, v):
         variants = scraped_variants(base_name, None)
     return variants[-1][1] if variants else None
 
+MAX_EDGE = 1400  # source cap: retina-sufficient for the largest rendered size
+
+def copy_img(src, dst):
+    """Copy into public/, downscaling to <=MAX_EDGE px on the long edge. The
+    scraped originals are up to 2048px/1.7MB; on-demand optimization of those on
+    the 2-vCPU VPS took ~8s/image. Bounding the source cuts CPU + repo weight."""
+    try:
+        out = subprocess.run(["sips", "-g", "pixelWidth", "-g", "pixelHeight", src],
+                             capture_output=True, text=True)
+        dims = [int(w) for w in out.stdout.split() if w.isdigit()]
+        long_edge = max(dims) if dims else 0
+    except Exception:
+        long_edge = 0
+    if long_edge > MAX_EDGE:
+        subprocess.run(["sips", "-Z", str(MAX_EDGE), src, "--out", dst],
+                       check=True, capture_output=True)
+    else:
+        shutil.copyfile(src, dst)
+
 def main():
     products = json.load(open(PRODUCTS_JSON))
     copied, missing, nulls = 0, [], 0
@@ -49,7 +68,7 @@ def main():
             missing.append((p["handle"], base_name))
             continue
         dst = os.path.join(PUB_PRODUCTS, base_name)
-        shutil.copyfile(src, dst)
+        copy_img(src, dst)
         p["image"] = f"/products/{base_name}"
         copied += 1
 
@@ -72,7 +91,7 @@ def main():
             src = pick_best(base_name, v)
             if not src:
                 cc_missing.append(base_name); continue
-            shutil.copyfile(src, os.path.join(PUB_PRODUCTS, base_name))
+            copy_img(src, os.path.join(PUB_PRODUCTS, base_name))
             c["image"] = f"/products/{base_name}"
             cc_copied += 1
         json.dump(cards, open(cc_path, "w"), ensure_ascii=False, indent=2)
@@ -86,7 +105,7 @@ def main():
         src = pick_best(name, None)
         if not src:
             ab_missing.append(name); continue
-        shutil.copyfile(src, os.path.join(PUB_PRODUCTS, name)); ab_copied += 1
+        copy_img(src, os.path.join(PUB_PRODUCTS, name)); ab_copied += 1
     print(f"about images: copied {ab_copied}, missing {len(ab_missing)} {ab_missing}")
 
     # hero video + poster
