@@ -31,15 +31,15 @@ export function getProduct(handle: string): Product | undefined {
 }
 
 // ---- Real Shopify collections (handle + true membership) ----
-type RawCollection = { handle: string; title: string; caption?: string; products: string[] };
+type RawCollection = { handle: string; title: string; caption?: string; image?: string; products: string[] };
 const rawCollections = collectionsData as RawCollection[];
 const collectionByHandle = new Map(rawCollections.map((c) => [c.handle, c]));
 
-export type Collection = { slug: string; title: string; caption?: string; count: number };
+export type Collection = { slug: string; title: string; caption?: string; image?: string; count: number };
 
 export function getCollections(): Collection[] {
   return rawCollections
-    .map((c) => ({ slug: c.handle, title: c.title, caption: c.caption, count: c.products.length }))
+    .map((c) => ({ slug: c.handle, title: c.title, caption: c.caption, image: c.image, count: c.products.length }))
     .sort((a, b) => b.count - a.count);
 }
 

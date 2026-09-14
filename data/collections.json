@@ -11,7 +11,8 @@
       "ice-bath-30-min",
       "jacuzzi-or-hot-bath-30-min"
     ],
-    "caption": "Immerse yourself in ultimate relaxation with our luxurious bath packages."
+    "caption": "Immerse yourself in ultimate relaxation with our luxurious bath packages.",
+    "image": "/collections/bath-packages.jpg"
   },
   {
     "handle": "body-care",
@@ -23,7 +24,8 @@
       "full-body-brightening-polish",
       "body-massage"
     ],
-    "caption": "The ultimate pampering experience with our comprehensive body care."
+    "caption": "The ultimate pampering experience with our comprehensive body care.",
+    "image": "/collections/body-care.jpg"
   },
   {
     "handle": "body-scrub-and-waxing",
@@ -36,7 +38,8 @@
       "upper-body-scrub",
       "full-body-scrub-gents"
     ],
-    "caption": "Irresistibly smooth, glowing skin with body scrub & waxing."
+    "caption": "Irresistibly smooth, glowing skin with body scrub & waxing.",
+    "image": "/collections/body-scrub-and-waxing.jpg"
   },
   {
     "handle": "brightening-treatments",
@@ -50,7 +53,8 @@
       "v-line-brightening",
       "bra-line-brightening"
     ],
-    "caption": "A luminous, even-toned complexion with expert brightening treatments."
+    "caption": "A luminous, even-toned complexion with expert brightening treatments.",
+    "image": "/collections/brightening-treatments.png"
   },
   {
     "handle": "facials-gents",
@@ -69,7 +73,8 @@
       "ultimate-hydra-gents",
       "beauty-intelligent-signature"
     ],
-    "caption": "Great skin isn't just for women — Gents Facials tailored for men's skin."
+    "caption": "Great skin isn't just for women — Gents Facials tailored for men's skin.",
+    "image": "/collections/facials-gents.jpg"
   },
   {
     "handle": "facials",
@@ -86,7 +91,8 @@
       "dermaplaning-glow-facial",
       "regular-clean-up"
     ],
-    "caption": "Reveal your skin's natural glow with expert facial treatments, tailored to you."
+    "caption": "Reveal your skin's natural glow with expert facial treatments, tailored to you.",
+    "image": "/collections/facials.jpg"
   },
   {
     "handle": "fair-polish",
@@ -104,7 +110,8 @@
       "full-leg-fair-polish",
       "full-body-fair-polish"
     ],
-    "caption": "Softer, smoother, more radiant skin with our luxurious Fair Polish."
+    "caption": "Softer, smoother, more radiant skin with our luxurious Fair Polish.",
+    "image": "/collections/fair-polish.jpg"
   },
   {
     "handle": "gents-grooming-packages",
@@ -113,7 +120,8 @@
       "advance-grooming-package",
       "premium-grooming-package"
     ],
-    "caption": "Look and feel your best with our exclusive gents grooming packages."
+    "caption": "Look and feel your best with our exclusive gents grooming packages.",
+    "image": "/collections/gents-grooming-packages.jpg"
   },
   {
     "handle": "hair-care-treatment",
@@ -130,7 +138,8 @@
       "hair-rebonding-keratin",
       "hair-straight-hair-spa"
     ],
-    "caption": "Give your hair the nourishment and care it truly deserves."
+    "caption": "Give your hair the nourishment and care it truly deserves.",
+    "image": "/collections/hair-care-treatment.jpg"
   },
   {
     "handle": "hair-colour",
@@ -146,7 +155,8 @@
       "medical-hair-colour",
       "peeling-hair-colour"
     ],
-    "caption": "Express yourself with a stunning new hair colour, expertly crafted."
+    "caption": "Express yourself with a stunning new hair colour, expertly crafted.",
+    "image": "/collections/hair-colour.jpg"
   },
   {
     "handle": "hair-services",
@@ -164,7 +174,8 @@
       "magical-oil-massage",
       "hot-oil-massage"
     ],
-    "caption": "Transform your look with premium hair services from skilled stylists."
+    "caption": "Transform your look with premium hair services from skilled stylists.",
+    "image": "/collections/hair-services.jpg"
   },
   {
     "handle": "hifu-treatment",
@@ -173,7 +184,8 @@
       "face-rf-radio-frequency",
       "hifu"
     ],
-    "caption": "Non-surgical skin lifting and tightening with our HIFU treatment."
+    "caption": "Non-surgical skin lifting and tightening with our HIFU treatment.",
+    "image": "/collections/hifu-treatment.jpg"
   },
   {
     "handle": "hydrafacials",
@@ -185,7 +197,8 @@
       "advance-hydra",
       "bio-hydra"
     ],
-    "caption": "The ultimate skin transformation with advanced Hydra Facial technology."
+    "caption": "The ultimate skin transformation with advanced Hydra Facial technology.",
+    "image": "/collections/hydrafacials.jpg"
   },
   {
     "handle": "pedicure-manicure-gents",
@@ -203,7 +216,8 @@
       "medical-pedi-mani-gents",
       "peeling-pedi-mani-gents"
     ],
-    "caption": "Well-groomed hands and feet — the mark of a polished gentleman."
+    "caption": "Well-groomed hands and feet — the mark of a polished gentleman.",
+    "image": "/collections/pedicure-manicure-gents.jpg"
   },
   {
     "handle": "pedicure-manicure",
@@ -217,7 +231,8 @@
       "brightening-pedi-mani",
       "basic-pedi-mani"
     ],
-    "caption": "Treat your hands and feet to the care they truly deserve."
+    "caption": "Treat your hands and feet to the care they truly deserve.",
+    "image": "/collections/pedicure-manicure.jpg"
   },
   {
     "handle": "skin-treatments",
@@ -241,7 +256,8 @@
       "dermapen-meso-acne",
       "chemical-peeling"
     ],
-    "caption": "Healthier, more radiant skin with our advanced clinical skin treatments."
+    "caption": "Healthier, more radiant skin with our advanced clinical skin treatments.",
+    "image": "/collections/skin-treatments.jpg"
   },
   {
     "handle": "soak-and-relax",
@@ -255,7 +271,8 @@
       "stone-therapy-massage-full-body-60-mins",
       "deep-tissue-massage-full-body-60-mins"
     ],
-    "caption": "Escape daily life with our blissful soak & relax rituals."
+    "caption": "Escape daily life with our blissful soak & relax rituals.",
+    "image": "/collections/soak-and-relax.jpg"
   },
   {
     "handle": "waxing",
@@ -272,7 +289,8 @@
       "bikini-waxing",
       "underarms-waxing"
     ],
-    "caption": "Silky-smooth, hair-free skin with professional waxing services."
+    "caption": "Silky-smooth, hair-free skin with professional waxing services.",
+    "image": "/collections/waxing.png"
   },
   {
     "handle": "hair-beard",

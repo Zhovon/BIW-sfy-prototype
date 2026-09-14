@@ -57,7 +57,9 @@ export default async function StaticPage({ params }: { params: Promise<{ slug: s
     .map((h) => {
       const meta = all.get(h);
       const data = getCollection(h);
-      return meta && data ? { slug: h, title: meta.title, caption: meta.caption, cover: data.items[0]?.image } : null;
+      // Prefer the collection's dedicated cover (as on biw.salon); fall back
+      // to the first product photo if a collection has no cover uploaded.
+      return meta && data ? { slug: h, title: meta.title, caption: meta.caption, cover: meta.image ?? data.items[0]?.image } : null;
     })
     .filter((c): c is NonNullable<typeof c> => Boolean(c));
 
