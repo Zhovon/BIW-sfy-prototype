@@ -1,7 +1,7 @@
 [
   {
     "handle": "bath-packages",
-    "title": "Luxury Bath Packages for Relaxation & Skin Care for Men",
+    "title": "Bath Packages",
     "products": [
       "hot-bath-with-shower-30-min",
       "rose-leaf-bath-30-min",
@@ -10,22 +10,24 @@
       "salt-bath-30-min",
       "ice-bath-30-min",
       "jacuzzi-or-hot-bath-30-min"
-    ]
+    ],
+    "caption": "Immerse yourself in ultimate relaxation with our luxurious bath packages."
   },
   {
     "handle": "body-care",
-    "title": "Professional Body Care Treatments for Glowing Skin",
+    "title": "Body Care",
     "products": [
       "signature-brightening-treatment",
       "full-body-scrub",
       "full-body-brightening-polish-massage",
       "full-body-brightening-polish",
       "body-massage"
-    ]
+    ],
+    "caption": "The ultimate pampering experience with our comprehensive body care."
   },
   {
     "handle": "body-scrub-and-waxing",
-    "title": "Body Scrub & Waxing Services for Men",
+    "title": "Body Scrub & Waxing",
     "products": [
       "lower-body-waxing",
       "upper-body-waxing",
@@ -33,11 +35,12 @@
       "lower-body-scrub",
       "upper-body-scrub",
       "full-body-scrub-gents"
-    ]
+    ],
+    "caption": "Irresistibly smooth, glowing skin with body scrub & waxing."
   },
   {
     "handle": "brightening-treatments",
-    "title": "Skin Brightening Treatments for Glowing Even Skin",
+    "title": "Brightening Treatments",
     "products": [
       "legs-brightening",
       "neck-brightening",
@@ -46,11 +49,12 @@
       "feet-brightening",
       "v-line-brightening",
       "bra-line-brightening"
-    ]
+    ],
+    "caption": "A luminous, even-toned complexion with expert brightening treatments."
   },
   {
     "handle": "facials-gents",
-    "title": "Gents Facials & Skin Care Treatments for Men",
+    "title": "Facials (Gents)",
     "products": [
       "insta-glow",
       "ayurvedic-facial",
@@ -64,11 +68,12 @@
       "premium-hydra-gents",
       "ultimate-hydra-gents",
       "beauty-intelligent-signature"
-    ]
+    ],
+    "caption": "Great skin isn't just for women — Gents Facials tailored for men's skin."
   },
   {
     "handle": "facials",
-    "title": "Professional Facial Treatments for Glowing Skin",
+    "title": "Facials",
     "products": [
       "instant-glow-facial",
       "korean-glow-facial",
@@ -80,11 +85,12 @@
       "dermaplaning",
       "dermaplaning-glow-facial",
       "regular-clean-up"
-    ]
+    ],
+    "caption": "Reveal your skin's natural glow with expert facial treatments, tailored to you."
   },
   {
     "handle": "fair-polish",
-    "title": "Fair Polish Body Scrub & Skin Brightening Treatment",
+    "title": "Fair Polish",
     "products": [
       "feet-fair-polish",
       "back-fair-polish",
@@ -97,19 +103,21 @@
       "half-leg-fair-polish",
       "full-leg-fair-polish",
       "full-body-fair-polish"
-    ]
+    ],
+    "caption": "Softer, smoother, more radiant skin with our luxurious Fair Polish."
   },
   {
     "handle": "gents-grooming-packages",
-    "title": "Gents Grooming Packages for Men",
+    "title": "Gents Grooming Packages",
     "products": [
       "advance-grooming-package",
       "premium-grooming-package"
-    ]
+    ],
+    "caption": "Look and feel your best with our exclusive gents grooming packages."
   },
   {
     "handle": "hair-care-treatment",
-    "title": "Professional Hair Care & Treatment for Healthy Strong Hair for Men",
+    "title": "Hair Care / Treatment",
     "products": [
       "hair-setup-wash-dry",
       "regular-hair-treatment",
@@ -121,11 +129,12 @@
       "hair-curly",
       "hair-rebonding-keratin",
       "hair-straight-hair-spa"
-    ]
+    ],
+    "caption": "Give your hair the nourishment and care it truly deserves."
   },
   {
     "handle": "hair-colour",
-    "title": "Professional Hair Colour Services",
+    "title": "Hair Colour",
     "products": [
       "brightening-hair-colour",
       "d-tan-hair-colour",
@@ -136,11 +145,12 @@
       "signature-hair-colour",
       "medical-hair-colour",
       "peeling-hair-colour"
-    ]
+    ],
+    "caption": "Express yourself with a stunning new hair colour, expertly crafted."
   },
   {
     "handle": "hair-services",
-    "title": "Professional Hair Services for All Hair Types",
+    "title": "Hair Services",
     "products": [
       "blow-dry",
       "shampoo-wash",
@@ -153,30 +163,33 @@
       "hair-smoothie-spa-short-long",
       "magical-oil-massage",
       "hot-oil-massage"
-    ]
+    ],
+    "caption": "Transform your look with premium hair services from skilled stylists."
   },
   {
     "handle": "hifu-treatment",
-    "title": "HIFU Non-Surgical Skin Lifting & Tightening Treatment",
+    "title": "HIFU Treatment",
     "products": [
       "face-rf-radio-frequency",
       "hifu"
-    ]
+    ],
+    "caption": "Non-surgical skin lifting and tightening with our HIFU treatment."
   },
   {
     "handle": "hydrafacials",
-    "title": "Hydra Facial Treatments for Glowing Skin",
+    "title": "Hydra Facials",
     "products": [
       "signature-facial",
       "ultimate-glow-hydra",
       "premium-hydra",
       "advance-hydra",
       "bio-hydra"
-    ]
+    ],
+    "caption": "The ultimate skin transformation with advanced Hydra Facial technology."
   },
   {
     "handle": "pedicure-manicure-gents",
-    "title": "Gents Pedicure & Manicure Nail Care Services",
+    "title": "Pedicure & Manicure (Gents)",
     "products": [
       "basic-manicure",
       "basic-pedicure",
@@ -189,11 +202,12 @@
       "signature-pedi-mani-gents",
       "medical-pedi-mani-gents",
       "peeling-pedi-mani-gents"
-    ]
+    ],
+    "caption": "Well-groomed hands and feet — the mark of a polished gentleman."
   },
   {
     "handle": "pedicure-manicure",
-    "title": "Pedicure & Manicure Nail Services for Perfect Hands",
+    "title": "Pedicure & Manicure",
     "products": [
       "signature-pedi-mani",
       "crystal-pedi-mani",
@@ -202,11 +216,12 @@
       "d-tan-pedi-mani",
       "brightening-pedi-mani",
       "basic-pedi-mani"
-    ]
+    ],
+    "caption": "Treat your hands and feet to the care they truly deserve."
   },
   {
     "handle": "skin-treatments",
-    "title": "Advanced Skin Treatments for Healthy Glowing Skin",
+    "title": "Skin Treatments",
     "products": [
       "radiant-glow-treatment",
       "glutathione-99m-mg",
@@ -225,11 +240,12 @@
       "dermapen-rejuvenation",
       "dermapen-meso-acne",
       "chemical-peeling"
-    ]
+    ],
+    "caption": "Healthier, more radiant skin with our advanced clinical skin treatments."
   },
   {
     "handle": "soak-and-relax",
-    "title": "Soak & Relax Spa Treatments for Stress Relief",
+    "title": "Soak & Relax",
     "products": [
       "foot-calf-massage-30-mins",
       "shoulder-back-massage-45-mins",
@@ -238,11 +254,12 @@
       "stress-relief-massage-full-body-60-mins",
       "stone-therapy-massage-full-body-60-mins",
       "deep-tissue-massage-full-body-60-mins"
-    ]
+    ],
+    "caption": "Escape daily life with our blissful soak & relax rituals."
   },
   {
     "handle": "waxing",
-    "title": "Professional Waxing Services for Smooth Skin",
+    "title": "Waxing",
     "products": [
       "full-hand-waxing",
       "half-hand-waxing",
@@ -254,6 +271,13 @@
       "full-leg-waxing",
       "bikini-waxing",
       "underarms-waxing"
-    ]
+    ],
+    "caption": "Silky-smooth, hair-free skin with professional waxing services."
+  },
+  {
+    "handle": "hair-beard",
+    "title": "Hair & Beard",
+    "caption": "Step up your grooming game with expert hair & beard services.",
+    "products": []
   }
 ]
