@@ -28,7 +28,8 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
   return (
     <article className="wrap py-16 max-w-[68ch]">
       <div className="kicker text-center">Journal</div>
-      <h1 className="font-display text-4xl md:text-5xl mt-3 mb-8 text-center leading-tight">{article.title}</h1>
+      <h1 className="font-display text-4xl md:text-5xl mt-3 mb-6 text-center leading-tight">{article.title}</h1>
+      <hr className="rule-gold mx-auto mb-10" />
       <div className="relative aspect-[16/7] overflow-hidden bg-ice border border-line mb-10">
         {article.image && (
           <Image src={article.image} alt={article.title} fill sizes="(max-width:768px) 100vw, 68ch" className="object-cover" priority />
