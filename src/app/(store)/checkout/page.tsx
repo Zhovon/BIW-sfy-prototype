@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useCart } from "@/lib/cart";
 import { formatBDT } from "@/lib/catalog";
+import PageHeader from "@/components/PageHeader";
 
 export default function CheckoutPage() {
   // Online checkout is for retail products only — services are booked via the
@@ -54,7 +55,7 @@ export default function CheckoutPage() {
 
   return (
     <div className="wrap py-14">
-      <h1 className="font-display text-4xl text-center mb-10">Checkout</h1>
+      <PageHeader title="Checkout" className="mb-10" />
       <div className="grid lg:grid-cols-[1fr_360px] gap-12 max-w-5xl mx-auto">
         {/* customer details */}
         <div>

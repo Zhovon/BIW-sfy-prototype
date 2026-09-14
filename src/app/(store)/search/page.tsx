@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ProductCard from "@/components/ProductCard";
+import PageHeader from "@/components/PageHeader";
 import { products } from "@/lib/catalog";
 
 // Search result pages shouldn't be indexed (thin/duplicate content).
@@ -29,7 +30,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
 
   return (
     <div className="wrap py-12">
-      <h1 className="font-display text-4xl text-center mb-8">Search</h1>
+      <PageHeader title="Search" className="mb-8" />
 
       <form action="/search" method="get" className="mx-auto max-w-xl mb-10">
         <div className="flex items-center border border-line bg-paper focus-within:border-ink transition-colors">

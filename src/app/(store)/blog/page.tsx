@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getArticles } from "@/lib/catalog";
+import PageHeader from "@/components/PageHeader";
 
 export const metadata = {
   title: "Journal · BIW",
@@ -12,8 +13,7 @@ export default function Blog() {
   const articles = getArticles();
   return (
     <div className="wrap py-16">
-      <div className="kicker text-center">Journal</div>
-      <h1 className="font-display text-4xl mt-2 mb-10 text-center">Read Our Blog</h1>
+      <PageHeader kicker="Journal" title="Read Our Blog" className="mb-10" />
       <div className="grid gap-8 md:grid-cols-3">
         {articles.map((a) => (
           <article key={a.slug} className="group">

@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import ProductCard from "@/components/ProductCard";
-import SectionHead from "@/components/SectionHead";
+import PageHeader from "@/components/PageHeader";
 import AboutContent from "@/components/AboutContent";
 import ContactContent from "@/components/ContactContent";
 import { getCustomPage, customPageSlugs, resolveProducts, getCollection, getCollections } from "@/lib/catalog";
@@ -41,8 +41,7 @@ export default async function StaticPage({ params }: { params: Promise<{ slug: s
     const items = resolveProducts(page.products);
     return (
       <div className="wrap py-12">
-        <h1 className="font-display text-4xl text-center mb-2">{page.title}</h1>
-        <p className="text-center text-muted text-sm mb-10">{items.length} products</p>
+        <PageHeader title={page.title} subtitle={`${items.length} products`} className="mb-10" />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10">
           {items.map((p) => (
             <ProductCard key={p.handle} p={p} />
@@ -64,7 +63,7 @@ export default async function StaticPage({ params }: { params: Promise<{ slug: s
 
   return (
     <div className="wrap py-16">
-      <SectionHead kicker="Treatments" title={page.title} />
+      <PageHeader kicker="Treatments" title={page.title} />
       {/* Collection cards mirror biw.salon: square cover, uppercase heading,
           a one-line caption with a trailing arrow. 3-up on desktop. */}
       <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">

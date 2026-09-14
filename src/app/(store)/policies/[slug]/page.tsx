@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import policyData from "@/../data/policies.json";
+import PageHeader from "@/components/PageHeader";
 
 const POLICIES: Record<string, string> = {
   "privacy-policy": "Privacy Policy",
@@ -30,7 +31,7 @@ export default async function PolicyPage({ params }: { params: Promise<{ slug: s
 
   return (
     <div className="wrap py-16 max-w-[70ch]">
-      <h1 className="font-display text-4xl mb-8">{title}</h1>
+      <PageHeader title={title} align="left" className="mb-8" />
       <div className="space-y-4">
         {blocks.map(([tag, text], i) => {
           if (tag === "h") {

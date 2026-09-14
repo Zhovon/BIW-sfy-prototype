@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import BookingWidget from "@/components/BookingWidget";
+import PageHeader from "@/components/PageHeader";
 
 export const metadata: Metadata = {
   title: "Book an Appointment · BIW",
@@ -10,10 +11,12 @@ export const metadata: Metadata = {
 export default function BookPage() {
   return (
     <div className="wrap py-12">
-      <h1 className="font-display text-4xl text-center mb-2">Book Your Appointment</h1>
-      <p className="text-center text-sm text-muted mb-8">
-        Pick a branch, date and time for your services. Payment is at the salon.
-      </p>
+      <PageHeader
+        kicker="Appointments"
+        title="Book Your Appointment"
+        subtitle="Pick a branch, date and time for your services. Payment is at the salon."
+        className="mb-8"
+      />
       <BookingWidget />
     </div>
   );

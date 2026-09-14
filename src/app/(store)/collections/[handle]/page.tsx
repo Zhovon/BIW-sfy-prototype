@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ProductCard from "@/components/ProductCard";
+import PageHeader from "@/components/PageHeader";
 import { products, getCollections, getCollection } from "@/lib/catalog";
 import { absoluteUrl } from "@/lib/site";
 
@@ -83,8 +84,7 @@ export default async function CollectionPage({
 
   return (
     <div className="wrap py-12">
-      <h1 className="font-display text-4xl text-center">{data.title}</h1>
-      <hr className="rule-gold mx-auto mt-5 mb-8" />
+      <PageHeader title={data.title} className="mb-8" />
       <FilterBar count={data.items.length} />
       <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10">
         {pageItems.map((p) => (

@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useCart, CartItem } from "@/lib/cart";
 import { formatBDT } from "@/lib/catalog";
+import PageHeader from "@/components/PageHeader";
 
 function LineItem({ i, setQty, remove }: { i: CartItem; setQty: (h: string, q: number) => void; remove: (h: string) => void }) {
   return (
@@ -43,7 +44,7 @@ export default function CartPage() {
 
   return (
     <div className="wrap py-14">
-      <h1 className="font-display text-4xl text-center mb-10">Your Cart</h1>
+      <PageHeader title="Your Cart" className="mb-10" />
 
       <div className="grid lg:grid-cols-[1fr_340px] gap-12">
         <div className="space-y-10">
