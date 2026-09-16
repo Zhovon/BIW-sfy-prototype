@@ -1,4 +1,4 @@
-import { readAccess, type AccessEvent } from "@/lib/analytics";
+import { readAccess, parseBrowser, parseDevice, type AccessEvent } from "@/lib/analytics";
 
 export const dynamic = "force-dynamic";
 
@@ -116,6 +116,51 @@ export default async function AnalyticsPage() {
         </Panel>
         <Panel title="Top countries">
           <BarList rows={topBy(events, (e) => e.country || "—")} />
+        </Panel>
+      </div>
+
+      <div className="grid gap-4 lg:grid-cols-3">
+        <Panel title="Devices">
+          <BarList rows={topBy(events, (e) => parseDevice(e.ua))} />
+        </Panel>
+        <Panel title="Browsers">
+          <BarList rows={topBy(events, (e) => parseBrowser(e.ua))} />
+        </Panel>
+        <Panel title="Traffic funnel (share of product views)">
+          <ul className="space-y-3 text-sm">
+            {(() => {
+              const productViews = events.filter((e) => e.path.startsWith("/products/")).length;
+              const cart = events.filter((e) => e.path === "/cart").length;
+              const checkout = events.filter((e) => e.path.startsWith("/checkout") && e.path !== "/checkout/success").length;
+              const success = events.filter((e) => e.path === "/checkout/success").length;
+              const base = productViews || 1;
+              const steps: [string, number][] = [
+                ["Product views", productViews],
+                ["Cart visits", cart],
+                ["Checkout started", checkout],
+                ["Order completed", success],
+              ];
+              return steps.map(([label, count], i) => {
+                const pct = Math.round((count / base) * 100);
+                const prev = i === 0 ? count : steps[i - 1][1];
+                const drop = i === 0 || prev === 0 ? null : `−${Math.round((1 - count / prev) * 100)}% from step ${i}`;
+                return (
+                  <li key={label}>
+                    <div className="flex justify-between gap-4">
+                      <span>{label}</span>
+                      <span className="text-muted tabular-nums">
+                        {count.toLocaleString()} · {pct}%
+                      </span>
+                    </div>
+                    <div className="mt-1 h-1.5 bg-ice">
+                      <div className="h-1.5 bg-teal" style={{ width: `${Math.min(pct, 100)}%` }} />
+                    </div>
+                    {drop && <p className="text-[11px] text-muted mt-0.5">{drop}</p>}
+                  </li>
+                );
+              });
+            })()}
+          </ul>
         </Panel>
       </div>
 

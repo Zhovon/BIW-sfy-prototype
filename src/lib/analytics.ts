@@ -1,17 +1,18 @@
 import { promises as fs } from "fs";
 import path from "path";
+import { DATA_DIR } from "@/lib/data-dir";
 
 /**
  * Scaffold analytics + request logging — append-only JSONL files under data/.
- * Same caveat as the order store: this works locally, but Vercel's serverless
- * filesystem is ephemeral and not shared between instances, so in production
- * these move to Postgres (or a real analytics sink). Client code must NOT import
- * this module — it uses `fs`.
+ * Same caveat as the order store: the container filesystem is ephemeral, so set
+ * `DATA_DIR` to a mounted volume in production to keep logs across redeploys.
+ * Client code must NOT import this module — it uses `fs`.
  */
 
-const DIR = path.join(process.cwd(), "data");
+const DIR = DATA_DIR;
 const ACCESS_FILE = path.join(DIR, "access-log.jsonl");
 const API_FILE = path.join(DIR, "api-log.jsonl");
+const VITALS_FILE = path.join(DIR, "vitals-log.jsonl");
 
 export type AccessEvent = {
   ts: string;
@@ -29,6 +30,20 @@ export type ApiEvent = {
   status: number;
   ms: number;
   ip: string;
+};
+
+/** One Core Web Vitals sample from a real visitor (useReportWebVitals beacon). */
+export type VitalEvent = {
+  ts: string;
+  /** Metric name: LCP | INP | CLS | FCP | TTFB */
+  name: string;
+  /** Metric value (ms for all except CLS, which is unitless). */
+  value: number;
+  /** Browser's own classification: good | needs-improvement | poor */
+  rating: string;
+  path: string;
+  ip: string;
+  ua: string;
 };
 
 async function append(file: string, obj: unknown) {
@@ -64,6 +79,35 @@ export function readAccess(limit = 2000) {
 }
 export function readApi(limit = 1000) {
   return readTail<ApiEvent>(API_FILE, limit);
+}
+export function logVital(e: VitalEvent) {
+  return append(VITALS_FILE, e);
+}
+export function readVitals(limit = 4000) {
+  return readTail<VitalEvent>(VITALS_FILE, limit);
+}
+
+/** Simple device classification off the raw user-agent (no heavy UA lib). */
+export function parseDevice(ua: string): "Mobile" | "Tablet" | "Desktop" {
+  const u = ua || "";
+  if (/iPad|Tablet|Nexus 7|Nexus 10/i.test(u)) return "Tablet";
+  if (/Android/i.test(u) && !/Mobile/i.test(u)) return "Tablet";
+  if (/Mobi|iPhone|iPod|Android.*Mobile|Windows Phone/i.test(u)) return "Mobile";
+  return "Desktop";
+}
+
+/** Rough browser family off the raw user-agent (order matters: checks are exclusionary). */
+export function parseBrowser(ua: string): string {
+  const u = ua || "";
+  if (!u) return "Unknown";
+  if (/bot|crawl|spider|slurp|curl|wget|headless/i.test(u)) return "Bot/Other";
+  if (/Edg\//i.test(u)) return "Edge";
+  if (/OPR\//i.test(u)) return "Opera";
+  if (/SamsungBrowser/i.test(u)) return "Samsung Internet";
+  if (/Firefox\//i.test(u)) return "Firefox";
+  if (/Chrome\//i.test(u)) return "Chrome";
+  if (/Safari\//i.test(u)) return "Safari";
+  return "Other";
 }
 
 /** Pull client metadata off request headers (works behind Vercel/proxies). */

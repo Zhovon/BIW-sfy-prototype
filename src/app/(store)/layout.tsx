@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { CartProvider } from "@/lib/cart";
 import CartDrawer from "@/components/CartDrawer";
 import Track from "@/components/Track";
+import Vitals from "@/components/Vitals";
 import JsonLd from "@/components/JsonLd";
 import { SITE_URL, SITE_NAME, SITE_TAGLINE, absoluteUrl } from "@/lib/site";
 
@@ -81,6 +82,7 @@ export default function StoreLayout({ children }: { children: React.ReactNode })
           <Footer />
           <CartDrawer />
           <Track />
+          <Vitals />
         </CartProvider>
       </body>
     </html>
