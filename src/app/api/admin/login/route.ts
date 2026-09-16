@@ -37,10 +37,14 @@ export const POST = withApiLog(async (req: Request) => {
 
   const token = await expectedToken();
   const res = NextResponse.json({ ok: true, next });
+  // `Secure` only when the request actually arrives over HTTPS (directly or via
+  // a proxy) — keying it off NODE_ENV instead breaks the admin gate on any
+  // plain-HTTP deployment, where the browser silently drops Secure cookies.
+  const proto = req.headers.get("x-forwarded-proto")?.split(",")[0].trim() ?? new URL(req.url).protocol.replace(":", "");
   res.cookies.set(ADMIN_COOKIE, token!, {
     httpOnly: true,
     sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
+    secure: proto === "https",
     path: "/",
     maxAge: ADMIN_COOKIE_MAX_AGE,
   });

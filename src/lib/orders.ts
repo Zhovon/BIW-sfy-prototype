@@ -1,6 +1,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { getProduct } from "@/lib/catalog";
+import { DATA_DIR } from "@/lib/data-dir";
 import type { Order, OrderLine, OrderStatus } from "@/lib/order-types";
 
 /**
@@ -14,7 +15,7 @@ import type { Order, OrderLine, OrderStatus } from "@/lib/order-types";
 export type { Order, OrderLine, OrderStatus } from "@/lib/order-types";
 export { ADMIN_STATUSES } from "@/lib/order-types";
 
-const FILE = path.join(process.cwd(), "data", "orders.json");
+const FILE = path.join(DATA_DIR, "orders.json");
 
 async function readAll(): Promise<Record<string, Order>> {
   try {
