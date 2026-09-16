@@ -1,14 +1,34 @@
+import fs from "fs";
+import os from "os";
 import path from "path";
 
 /**
  * Resolved data directory for the flat-file scaffold (orders + logs).
  *
- * Defaults to `<cwd>/data` (local dev + the historic behaviour). In the VPS
- * container this dir is inside the ephemeral build output, so set `DATA_DIR`
- * to a mounted persistent volume (e.g. `/app/data`) to keep orders + logs
- * across redeploys. Until the store joins the CRM Postgres, this is the
- * durability boundary — see the deferred DB migration.
+ * Priority:
+ *  1. `DATA_DIR` env — a mounted persistent volume in production (e.g. Coolify
+ *     volume at /app/data) so orders + logs survive redeploys.
+ *  2. `<cwd>/data` — local dev + the historic behaviour.
+ *  3. If that dir is not writable (Vercel's serverless filesystem is read-only
+ *     outside /tmp), fall back to a per-instance temp dir. Writes there are
+ *     EPHEMERAL — they vanish per instance — which is the honest degradation:
+ *     real durability needs the Postgres migration.
  */
-export const DATA_DIR = process.env.DATA_DIR
-  ? path.resolve(process.env.DATA_DIR)
-  : path.join(process.cwd(), "data");
+function resolveDataDir(): string {
+  if (process.env.DATA_DIR) return path.resolve(process.env.DATA_DIR);
+
+  const local = path.join(process.cwd(), "data");
+  try {
+    fs.mkdirSync(local, { recursive: true });
+    fs.accessSync(local, fs.constants.W_OK);
+    return local;
+  } catch {
+    /* read-only filesystem (e.g. Vercel) — fall through to tmp */
+  }
+
+  const tmp = path.join(os.tmpdir(), "biw-data");
+  fs.mkdirSync(tmp, { recursive: true });
+  return tmp;
+}
+
+export const DATA_DIR = resolveDataDir();

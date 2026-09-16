@@ -26,6 +26,8 @@ export async function POST(req: Request) {
   }
 
   const m = clientMeta(req);
+  // Never fail the beacon over a storage error (e.g. read-only FS on
+  // serverless) — the visit is simply not recorded.
   await logAccess({
     ts: new Date().toISOString(),
     path,
@@ -34,7 +36,7 @@ export async function POST(req: Request) {
     ua: m.ua,
     // Prefer the client-reported document.referrer; fall back to the Referer header.
     referrer: referrer ?? m.referrer,
-  });
+  }).catch(() => {});
 
   return NextResponse.json({ ok: true });
 }

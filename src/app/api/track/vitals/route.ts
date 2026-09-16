@@ -38,6 +38,8 @@ export async function POST(req: Request) {
   // Silently ignore invalid/unknown metrics rather than 4xx-ing the beacon.
   if (name) {
     const m = clientMeta(req);
+    // Storage must never fail the beacon: on an unwritable FS (e.g. read-only
+    // serverless) we still answer ok — the metric is simply not recorded.
     await logVital({
       ts: new Date().toISOString(),
       name,
@@ -46,7 +48,7 @@ export async function POST(req: Request) {
       path,
       ip: m.ip,
       ua: m.ua,
-    });
+    }).catch(() => {});
   }
 
   return NextResponse.json({ ok: true });
