@@ -1,10 +1,30 @@
 import { NextRequest, NextResponse } from "next/server";
 import { withApiLog } from "@/lib/analytics";
 import { rateLimit, clientIp, tooManyRequests } from "@/lib/rate-limit";
+import { staffNotificationEmail, customerAutoReplyEmail, type ContactSubmission } from "@/lib/email-templates";
 
 export const runtime = "nodejs";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+type ResendPayload = {
+  from: string;
+  to: string[];
+  subject: string;
+  html: string;
+  text: string;
+  reply_to?: string;
+};
+
+/** Send one email via Resend's REST API (no SDK). Returns ok flag only. */
+async function sendEmail(apiKey: string, payload: ResendPayload): Promise<boolean> {
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  }).catch(() => null);
+  return !!res && res.ok;
+}
 
 /**
  * Contact form handler. Emails the submission to CONTACT_TO_EMAIL via Resend's
@@ -39,28 +59,37 @@ export const POST = withApiLog(async (req: NextRequest) => {
     );
   }
 
-  const text = [
-    `Name: ${name || "—"}`,
-    `Email: ${email}`,
-    `Phone: ${phone || "—"}`,
-    "",
-    comment,
-  ].join("\n");
+  const submission: ContactSubmission = { name, email, phone, comment };
 
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      from,
-      to: [to],
-      reply_to: email,
-      subject: `New contact form message${name ? ` from ${name}` : ""}`,
-      text,
-    }),
-  }).catch(() => null);
+  // 1. Staff notification — this is the one that must succeed (it's how the
+  //    salon learns about the enquiry), so its result drives the response.
+  //    Reply-To is the customer, so hitting reply in the inbox answers them.
+  const staff = staffNotificationEmail(submission);
+  const staffOk = await sendEmail(apiKey, {
+    from,
+    to: [to],
+    reply_to: email,
+    subject: staff.subject,
+    html: staff.html,
+    text: staff.text,
+  });
 
-  if (!res || !res.ok) {
+  if (!staffOk) {
     return NextResponse.json({ error: "Could not send your message. Please try again." }, { status: 502 });
   }
+
+  // 2. Customer auto-reply — best-effort. If it fails we still succeeded (the
+  //    salon was notified), so never fail the request on this. Reply-To points
+  //    back to the salon inbox so a customer reply reaches the team.
+  const reply = customerAutoReplyEmail(submission);
+  await sendEmail(apiKey, {
+    from,
+    to: [email],
+    reply_to: to,
+    subject: reply.subject,
+    html: reply.html,
+    text: reply.text,
+  }).catch(() => false);
+
   return NextResponse.json({ ok: true });
 });
