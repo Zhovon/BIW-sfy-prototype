@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import BookingWidget from "@/components/BookingWidget";
+import BookingFlow from "@/components/BookingFlow";
 import PageHeader from "@/components/PageHeader";
 
 export const metadata: Metadata = {
@@ -17,7 +17,7 @@ export default function BookPage() {
         subtitle="Pick a branch, date and time for your services. Payment is at the salon."
         className="mb-8"
       />
-      <BookingWidget />
+      <BookingFlow />
     </div>
   );
 }
