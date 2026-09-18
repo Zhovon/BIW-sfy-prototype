@@ -62,15 +62,19 @@ function shell(inner: string): string {
 </body></html>`;
 }
 
-/** Ink header bar with the gold emblem. `center` for the customer email. */
+/**
+ * Ink header bar with the gold logo. Uses the transparent-background wordmark
+ * (biw-logo.png), NOT biw-emblem.png — the emblem is a cream-marble mockup photo
+ * that shows as a light tile on dark. `center` for the customer email.
+ */
 function header(center: boolean): string {
-  const emblem = `<img src="${absoluteUrl("/biw-emblem.png")}" width="${center ? 64 : 40}" alt="${SITE_NAME}" style="display:block;border:0;${center ? "margin:0 auto;" : ""}">`;
+  const logo = `<img src="${absoluteUrl("/biw-logo.png")}" width="${center ? 150 : 96}" alt="${SITE_NAME}" style="display:block;border:0;${center ? "margin:0 auto;" : ""}">`;
   if (center) {
-    return `<tr><td style="background:${INK};padding:28px 32px;text-align:center;">${emblem}</td></tr>`;
+    return `<tr><td style="background:${INK};padding:24px 32px;text-align:center;">${logo}</td></tr>`;
   }
-  return `<tr><td style="background:${INK};padding:20px 32px;">
+  return `<tr><td style="background:${INK};padding:18px 32px;">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
-      <td style="vertical-align:middle;">${emblem}</td>
+      <td style="vertical-align:middle;">${logo}</td>
       <td style="vertical-align:middle;text-align:right;color:${GOLD};font-family:${SANS};font-size:11px;letter-spacing:2px;text-transform:uppercase;">New Website Enquiry</td>
     </tr></table>
   </td></tr>`;
