@@ -12,8 +12,16 @@ import type { CartItem } from "@/lib/cart";
  */
 export const CRM_API_BASE = (process.env.CRM_API_BASE || "https://bcrm.biw.salon").replace(/\/$/, "");
 
-/** Corporate & Head Office is a back-office cost centre, not a bookable salon. */
+/** Corporate & Head Office is a back-office cost centre, not a bookable clinic. */
 const CORPORATE_BRANCH_ID = "branch-corporate";
+
+/**
+ * CRM services normally show in the widget only when linked to a Shopify product
+ * (Shopify is the catalog master). These curated CRM-only categories are ALSO
+ * surfaced — for combos/packages managed directly in the CRM (priced in the CRM),
+ * without a Shopify listing. Keep this tight so unlinked/test services stay hidden.
+ */
+const CURATED_CRM_CATEGORIES = new Set(["Packages"]);
 
 export type CrmService = {
   id: string;
@@ -60,7 +68,7 @@ export async function fetchCatalog(): Promise<BookingCatalog> {
   const rawBranches = (await branchesRes.json()) as RawBranch[];
 
   const services: CrmService[] = rawServices
-    .filter((s) => s.shopify_product_id != null)
+    .filter((s) => s.shopify_product_id != null || (s.category != null && CURATED_CRM_CATEGORIES.has(s.category)))
     .map((s) => ({
       id: s.id,
       name: s.name,
