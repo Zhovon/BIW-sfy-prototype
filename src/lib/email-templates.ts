@@ -1,4 +1,5 @@
 import { SITE_URL, SITE_NAME, absoluteUrl } from "@/lib/site";
+import type { Order } from "@/lib/order-types";
 
 /**
  * Email templates for the contact form. Built email-safe on purpose:
@@ -171,4 +172,80 @@ export function customerAutoReplyEmail(s: ContactSubmission): { subject: string;
   ].join("\n");
 
   return { subject: `We've received your message — ${SITE_NAME}`, html: shell(inner), text };
+}
+
+const bdt = (n: number) => `৳${Math.round(n).toLocaleString("en-US")}`;
+
+/**
+ * STAFF notification for a new "pay at the salon" order. Since there's no payment
+ * callback for floor orders, this email is how the team learns an order came in —
+ * with the items, total and customer contact, so they can prepare it and collect
+ * payment in person. The order sits as `pending` in /admin/orders until fulfilled.
+ */
+export function orderNotificationEmail(o: Order): { subject: string; html: string; text: string } {
+  const dhaka = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Asia/Dhaka", dateStyle: "medium", timeStyle: "short",
+  }).format(new Date(o.createdAt));
+
+  const row = (label: string, value: string) =>
+    `<tr>
+      <td style="padding:6px 0;font-family:${SANS};font-size:12px;letter-spacing:1px;text-transform:uppercase;color:${MUTED};width:80px;vertical-align:top;">${label}</td>
+      <td style="padding:6px 0;font-family:${SANS};font-size:15px;color:${INK};">${value}</td>
+    </tr>`;
+
+  const items = o.lines.map((l) =>
+    `<tr>
+      <td style="padding:8px 0;border-bottom:1px solid ${LINE};font-family:${SANS};font-size:14px;color:${INK};">${esc(l.title)} <span style="color:${MUTED};">× ${l.qty}</span></td>
+      <td style="padding:8px 0;border-bottom:1px solid ${LINE};font-family:${SANS};font-size:14px;color:${INK};text-align:right;white-space:nowrap;">${bdt(l.price * l.qty)}</td>
+    </tr>`).join("");
+
+  const inner = `
+    ${header(false)}
+    <tr><td style="padding:32px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+        <tr><td style="font-family:${SANS};font-size:11px;letter-spacing:2px;text-transform:uppercase;color:${TEAL};padding-bottom:4px;">New order · Pay at the salon</td></tr>
+        <tr><td style="font-family:${SERIF};font-size:26px;color:${INK};line-height:1.2;">${esc(o.customer.name)}</td></tr>
+        ${goldRule}
+      </table>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:18px;">
+        ${row("Phone", `<a href="tel:${esc(o.customer.phone)}" style="color:${INK};text-decoration:none;">${esc(o.customer.phone)}</a>`)}
+        ${row("Email", `<a href="mailto:${esc(o.customer.email)}" style="color:${INK};text-decoration:none;">${esc(o.customer.email)}</a>`)}
+        ${o.customer.address ? row("Address", esc(o.customer.address)) : ""}
+        ${row("Order", esc(o.tranId))}
+      </table>
+      <div style="margin-top:22px;font-family:${SANS};font-size:12px;letter-spacing:1px;text-transform:uppercase;color:${MUTED};">Items</div>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:8px;">
+        ${items}
+        <tr>
+          <td style="padding:12px 0 0;font-family:${SANS};font-size:15px;font-weight:bold;color:${INK};">Total</td>
+          <td style="padding:12px 0 0;font-family:${SANS};font-size:15px;font-weight:bold;color:${INK};text-align:right;">${bdt(o.amount)}</td>
+        </tr>
+      </table>
+      <div style="margin-top:20px;background:${ICE};border-left:3px solid ${GOLD};padding:14px 18px;font-family:${SANS};font-size:14px;line-height:1.6;color:${INK};">
+        <strong>Payment:</strong> collect in person at the salon. This order is <strong>pending</strong> in the admin panel until you mark it fulfilled.
+      </div>
+      <div style="margin-top:24px;">${button(absoluteUrl("/admin/orders"), "Open admin orders")}</div>
+    </td></tr>
+    <tr><td style="padding:18px 32px;border-top:1px solid ${LINE};font-family:${SANS};font-size:12px;color:${MUTED};">
+      New order placed on biw.beauty · ${dhaka} (Dhaka)
+    </td></tr>`;
+
+  const text = [
+    `New order (pay at the salon) — ${o.customer.name}`,
+    ``,
+    `Phone: ${o.customer.phone}`,
+    `Email: ${o.customer.email}`,
+    o.customer.address ? `Address: ${o.customer.address}` : ``,
+    `Order: ${o.tranId}`,
+    ``,
+    ...o.lines.map((l) => `  ${l.title} × ${l.qty} — ${bdt(l.price * l.qty)}`),
+    `  Total — ${bdt(o.amount)}`,
+    ``,
+    `Payment: collect in person at the salon. Order is pending until fulfilled.`,
+    `${SITE_URL}/admin/orders`,
+    ``,
+    `— Placed on biw.beauty (${dhaka} Dhaka)`,
+  ].filter(Boolean).join("\n");
+
+  return { subject: `New order · ${bdt(o.amount)} · ${o.customer.name} (pay at salon)`, html: shell(inner), text };
 }

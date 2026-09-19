@@ -6,6 +6,11 @@ import { useCart } from "@/lib/cart";
 import { formatBDT } from "@/lib/catalog";
 import PageHeader from "@/components/PageHeader";
 
+// Mirrors the server's CHECKOUT_MODE. "floor" (default) = pay in person at the
+// salon, no online gateway; "online" = redirect to SSLCommerz.
+const CHECKOUT_MODE = (process.env.NEXT_PUBLIC_CHECKOUT_MODE || "floor").toLowerCase();
+const PAY_AT_FLOOR = CHECKOUT_MODE !== "online";
+
 export default function CheckoutPage() {
   // Online checkout is for retail products only — services are booked via the
   // CRM widget and paid at the salon, so they never enter the payment total.
@@ -33,7 +38,12 @@ export default function CheckoutPage() {
         }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Could not start payment");
+      if (!res.ok) throw new Error(data.error || (PAY_AT_FLOOR ? "Could not place your order" : "Could not start payment"));
+      if (data.payAtFloor) {
+        // Order recorded — pay in person at the salon. Show the confirmation.
+        window.location.href = `/checkout/success?floor=1&ref=${encodeURIComponent(data.tranId)}`;
+        return;
+      }
       window.location.href = data.url; // redirect to SSLCommerz hosted page
     } catch (e) {
       setError((e as Error).message);
@@ -68,7 +78,9 @@ export default function CheckoutPage() {
           </div>
           {error && <p className="text-[#a24a3c] text-sm mt-4">{error}</p>}
           <p className="text-xs text-muted mt-5">
-            You&rsquo;ll be redirected to SSLCommerz to pay securely with bKash, Nagad, Rocket or card.
+            {PAY_AT_FLOOR
+              ? "No online payment needed — place your order and pay in person when you visit the salon. We'll confirm by email."
+              : "You’ll be redirected to SSLCommerz to pay securely with bKash, Nagad, Rocket or card."}
           </p>
         </div>
 
@@ -88,7 +100,9 @@ export default function CheckoutPage() {
             <span>{formatBDT(retailSubtotal)}</span>
           </div>
           <button className="btn w-full !bg-gold !border-gold disabled:opacity-50" onClick={pay} disabled={loading}>
-            {loading ? "Redirecting…" : "Pay with SSLCommerz"}
+            {loading
+              ? (PAY_AT_FLOOR ? "Placing order…" : "Redirecting…")
+              : (PAY_AT_FLOOR ? "Place order · Pay at the salon" : "Pay with SSLCommerz")}
           </button>
           <Link href="/cart" className="block text-center text-xs text-muted mt-4 hover:text-ink">Back to cart</Link>
         </aside>

@@ -1,10 +1,30 @@
 import { NextRequest, NextResponse } from "next/server";
 import { initSession } from "@/lib/sslcommerz";
 import { priceCart, createOrder } from "@/lib/orders";
+import { orderNotificationEmail } from "@/lib/email-templates";
+import type { Order } from "@/lib/order-types";
 import { withApiLog } from "@/lib/analytics";
 import { rateLimit, clientIp, tooManyRequests } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
+
+// "floor" (default) = pay in person at the salon, no online gateway.
+// "online" = redirect to SSLCommerz. Flip via the CHECKOUT_MODE env var.
+const CHECKOUT_MODE = (process.env.CHECKOUT_MODE || "floor").toLowerCase();
+
+/** Best-effort staff notification for a new pay-at-the-salon order (never blocks the order). */
+async function notifyStaffOfOrder(order: Order): Promise<void> {
+  const apiKey = process.env.RESEND_API_KEY;
+  const to = process.env.CONTACT_TO_EMAIL;
+  const from = process.env.CONTACT_FROM || "BIW Website <noreply@biw.beauty>";
+  if (!apiKey || !to) return; // email not configured — order is still saved; visible in /admin/orders
+  const mail = orderNotificationEmail(order);
+  await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ from, to: [to], subject: mail.subject, html: mail.html, text: mail.text }),
+  }).catch(() => null);
+}
 
 export const POST = withApiLog(async (req: NextRequest) => {
   // Cap order/session spam: 15 checkout inits per 10 min per IP.
@@ -27,12 +47,20 @@ export const POST = withApiLog(async (req: NextRequest) => {
   }
 
   const tranId = `BIW-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
-  await createOrder({
+  const order = await createOrder({
     tranId,
     lines,
     amount,
     customer: { name, email, phone, address: address || "" },
+    payment: CHECKOUT_MODE === "online" ? "online" : "floor",
   });
+
+  // Pay at the salon: the order is recorded as `pending`; no online gateway.
+  // Notify staff by email (best-effort) and let the client show a confirmation.
+  if (CHECKOUT_MODE !== "online") {
+    await notifyStaffOfOrder(order);
+    return NextResponse.json({ payAtFloor: true, tranId });
+  }
 
   const result = await initSession({
     tranId,
