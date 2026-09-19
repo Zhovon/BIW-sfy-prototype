@@ -1,29 +1,41 @@
 import { NextRequest, NextResponse } from "next/server";
 import { initSession } from "@/lib/sslcommerz";
 import { priceCart, createOrder } from "@/lib/orders";
-import { orderNotificationEmail } from "@/lib/email-templates";
+import { orderNotificationEmail, orderCustomerEmail } from "@/lib/email-templates";
 import type { Order } from "@/lib/order-types";
 import { withApiLog } from "@/lib/analytics";
 import { rateLimit, clientIp, tooManyRequests } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 
-// "floor" (default) = pay in person at the salon, no online gateway.
+// "floor" (default) = pay in person at the clinic, no online gateway.
 // "online" = redirect to SSLCommerz. Flip via the CHECKOUT_MODE env var.
 const CHECKOUT_MODE = (process.env.CHECKOUT_MODE || "floor").toLowerCase();
 
-/** Best-effort staff notification for a new pay-at-the-salon order (never blocks the order). */
-async function notifyStaffOfOrder(order: Order): Promise<void> {
-  const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.CONTACT_TO_EMAIL;
-  const from = process.env.CONTACT_FROM || "BIW Website <noreply@biw.beauty>";
-  if (!apiKey || !to) return; // email not configured — order is still saved; visible in /admin/orders
-  const mail = orderNotificationEmail(order);
+type Mail = { subject: string; html: string; text: string };
+
+async function send(apiKey: string, from: string, to: string, mail: Mail): Promise<void> {
   await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
     body: JSON.stringify({ from, to: [to], subject: mail.subject, html: mail.html, text: mail.text }),
   }).catch(() => null);
+}
+
+/**
+ * Best-effort emails for a new pay-at-the-clinic order — a staff alert (there's no
+ * payment callback, so this is how the team hears about it) and a customer
+ * confirmation/receipt. Never blocks the order; the row is saved regardless.
+ */
+async function sendOrderEmails(order: Order): Promise<void> {
+  const apiKey = process.env.RESEND_API_KEY;
+  const staffTo = process.env.CONTACT_TO_EMAIL;
+  const from = process.env.CONTACT_FROM || "BIW Website <noreply@biw.beauty>";
+  if (!apiKey) return; // email not configured — order still saved, visible in /admin/orders
+  await Promise.allSettled([
+    staffTo ? send(apiKey, from, staffTo, orderNotificationEmail(order)) : Promise.resolve(),
+    order.customer.email ? send(apiKey, from, order.customer.email, orderCustomerEmail(order)) : Promise.resolve(),
+  ]);
 }
 
 export const POST = withApiLog(async (req: NextRequest) => {
@@ -55,10 +67,10 @@ export const POST = withApiLog(async (req: NextRequest) => {
     payment: CHECKOUT_MODE === "online" ? "online" : "floor",
   });
 
-  // Pay at the salon: the order is recorded as `pending`; no online gateway.
+  // Pay at the clinic: the order is recorded as `pending`; no online gateway.
   // Notify staff by email (best-effort) and let the client show a confirmation.
   if (CHECKOUT_MODE !== "online") {
-    await notifyStaffOfOrder(order);
+    await sendOrderEmails(order);
     return NextResponse.json({ payAtFloor: true, tranId });
   }
 

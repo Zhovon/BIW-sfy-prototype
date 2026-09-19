@@ -23,7 +23,7 @@ export default function CheckoutSuccess() {
       <h1 className="font-display text-4xl mb-4">{floor ? "Order placed" : "Payment confirmed"}</h1>
       <p className="text-muted leading-relaxed mb-8">
         {floor
-          ? "Thank you — your order is confirmed. Please pay in person when you collect it at the salon. Our team will reach out shortly to arrange the details."
+          ? "Thank you — your order is confirmed. A confirmation has been sent to your email; please pay in person when you collect it at the clinic. Our team will reach out shortly to arrange the details."
           : "Thank you — your booking is confirmed. A receipt has been sent to your email, and our team will reach out to finalise your appointment time."}
       </p>
       {floor && ref && (

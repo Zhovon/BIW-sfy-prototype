@@ -177,7 +177,7 @@ export function customerAutoReplyEmail(s: ContactSubmission): { subject: string;
 const bdt = (n: number) => `৳${Math.round(n).toLocaleString("en-US")}`;
 
 /**
- * STAFF notification for a new "pay at the salon" order. Since there's no payment
+ * STAFF notification for a new "pay at the clinic" order. Since there's no payment
  * callback for floor orders, this email is how the team learns an order came in —
  * with the items, total and customer contact, so they can prepare it and collect
  * payment in person. The order sits as `pending` in /admin/orders until fulfilled.
@@ -203,7 +203,7 @@ export function orderNotificationEmail(o: Order): { subject: string; html: strin
     ${header(false)}
     <tr><td style="padding:32px;">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
-        <tr><td style="font-family:${SANS};font-size:11px;letter-spacing:2px;text-transform:uppercase;color:${TEAL};padding-bottom:4px;">New order · Pay at the salon</td></tr>
+        <tr><td style="font-family:${SANS};font-size:11px;letter-spacing:2px;text-transform:uppercase;color:${TEAL};padding-bottom:4px;">New order · Pay at the clinic</td></tr>
         <tr><td style="font-family:${SERIF};font-size:26px;color:${INK};line-height:1.2;">${esc(o.customer.name)}</td></tr>
         ${goldRule}
       </table>
@@ -222,7 +222,7 @@ export function orderNotificationEmail(o: Order): { subject: string; html: strin
         </tr>
       </table>
       <div style="margin-top:20px;background:${ICE};border-left:3px solid ${GOLD};padding:14px 18px;font-family:${SANS};font-size:14px;line-height:1.6;color:${INK};">
-        <strong>Payment:</strong> collect in person at the salon. This order is <strong>pending</strong> in the admin panel until you mark it fulfilled.
+        <strong>Payment:</strong> collect in person at the clinic. This order is <strong>pending</strong> in the admin panel until you mark it fulfilled.
       </div>
       <div style="margin-top:24px;">${button(absoluteUrl("/admin/orders"), "Open admin orders")}</div>
     </td></tr>
@@ -231,7 +231,7 @@ export function orderNotificationEmail(o: Order): { subject: string; html: strin
     </td></tr>`;
 
   const text = [
-    `New order (pay at the salon) — ${o.customer.name}`,
+    `New order (pay at the clinic) — ${o.customer.name}`,
     ``,
     `Phone: ${o.customer.phone}`,
     `Email: ${o.customer.email}`,
@@ -241,11 +241,65 @@ export function orderNotificationEmail(o: Order): { subject: string; html: strin
     ...o.lines.map((l) => `  ${l.title} × ${l.qty} — ${bdt(l.price * l.qty)}`),
     `  Total — ${bdt(o.amount)}`,
     ``,
-    `Payment: collect in person at the salon. Order is pending until fulfilled.`,
+    `Payment: collect in person at the clinic. Order is pending until fulfilled.`,
     `${SITE_URL}/admin/orders`,
     ``,
     `— Placed on biw.beauty (${dhaka} Dhaka)`,
   ].filter(Boolean).join("\n");
 
-  return { subject: `New order · ${bdt(o.amount)} · ${o.customer.name} (pay at salon)`, html: shell(inner), text };
+  return { subject: `New order · ${bdt(o.amount)} · ${o.customer.name} (pay at clinic)`, html: shell(inner), text };
+}
+
+/** CUSTOMER confirmation for a "pay at the clinic" order — warm, branded, with a receipt. */
+export function orderCustomerEmail(o: Order): { subject: string; html: string; text: string } {
+  const itemRow = (title: string, qty: number, total: number) =>
+    `<tr>
+      <td style="padding:8px 0;border-bottom:1px solid ${LINE};font-family:${SANS};font-size:14px;color:${INK};text-align:left;">${esc(title)} <span style="color:${MUTED};">× ${qty}</span></td>
+      <td style="padding:8px 0;border-bottom:1px solid ${LINE};font-family:${SANS};font-size:14px;color:${INK};text-align:right;white-space:nowrap;">${bdt(total)}</td>
+    </tr>`;
+
+  const inner = `
+    ${header(true)}
+    <tr><td style="padding:40px 40px 8px;text-align:center;">
+      <div style="font-family:${SANS};font-size:11px;letter-spacing:2px;text-transform:uppercase;color:${TEAL};">${SITE_NAME}</div>
+      <div style="font-family:${SERIF};font-size:30px;color:${INK};line-height:1.2;margin-top:6px;">Thank you, ${esc(firstName(o.customer.name))}</div>
+      <div style="height:2px;width:48px;background:${GOLD};margin:20px auto 0;"></div>
+    </td></tr>
+    <tr><td style="padding:20px 40px 0;font-family:${SANS};font-size:15px;line-height:1.7;color:${INK};text-align:center;">
+      Your order is confirmed. There&rsquo;s <strong>nothing to pay online</strong> — simply settle the amount below in person when you visit the clinic. Our team will reach out shortly to arrange the details.
+    </td></tr>
+    <tr><td style="padding:26px 40px 0;">
+      <div style="font-family:${SANS};font-size:11px;letter-spacing:1px;text-transform:uppercase;color:${MUTED};padding-bottom:8px;">Your order · ${esc(o.tranId)}</div>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+        ${o.lines.map((l) => itemRow(l.title, l.qty, l.price * l.qty)).join("")}
+        <tr>
+          <td style="padding:12px 0 0;font-family:${SANS};font-size:15px;font-weight:bold;color:${INK};">Total to pay at the clinic</td>
+          <td style="padding:12px 0 0;font-family:${SANS};font-size:15px;font-weight:bold;color:${INK};text-align:right;">${bdt(o.amount)}</td>
+        </tr>
+      </table>
+    </td></tr>
+    <tr><td style="padding:28px 40px 8px;text-align:center;">${button(absoluteUrl("/collections/all"), "Continue exploring")}</td></tr>
+    <tr><td style="padding:24px 40px 0;text-align:center;">
+      <div style="font-family:${SERIF};font-size:16px;color:${INK};font-style:italic;">Bring out your inner beauty</div>
+    </td></tr>
+    <tr><td style="background:${INK};padding:24px 40px;text-align:center;font-family:${SANS};font-size:12px;line-height:1.7;color:#c7d3d8;">
+      <div style="color:${GOLD};letter-spacing:1px;text-transform:uppercase;font-size:11px;">${SITE_NAME}</div>
+      Dhaka, Bangladesh · <a href="tel:${SALON_PHONE}" style="color:#c7d3d8;text-decoration:none;">${SALON_PHONE}</a><br>
+      <a href="${SITE_URL}" style="color:${GOLD};text-decoration:none;">biw.beauty</a>
+    </td></tr>`;
+
+  const text = [
+    `Thank you, ${firstName(o.customer.name)}`,
+    ``,
+    `Your order is confirmed. Nothing to pay online — settle the amount below in person when you visit the clinic.`,
+    ``,
+    `Order ${o.tranId}:`,
+    ...o.lines.map((l) => `  ${l.title} × ${l.qty} — ${bdt(l.price * l.qty)}`),
+    `  Total to pay at the clinic — ${bdt(o.amount)}`,
+    ``,
+    `Beauty Intelligent Wellness · Dhaka, Bangladesh · ${SALON_PHONE}`,
+    SITE_URL,
+  ].join("\n");
+
+  return { subject: `Your order is confirmed — pay at the clinic · ${SITE_NAME}`, html: shell(inner), text };
 }
