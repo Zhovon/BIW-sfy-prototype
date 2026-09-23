@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { products, getProduct, formatBDT, formatDurationLong } from "@/lib/catalog";
 import { absoluteUrl, metaDescription, SITE_NAME } from "@/lib/site";
+import { breadcrumbLd } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
 import AddToCart from "@/components/AddToCart";
 
@@ -69,9 +70,16 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
       : {}),
   };
 
+  const crumbsLd = breadcrumbLd([
+    { name: "Home", path: "/" },
+    { name: p.type === "service" ? "Services" : "Products", path: p.type === "service" ? "/collections" : "/pages/products" },
+    { name: p.title, path: `/products/${p.handle}` },
+  ]);
+
   return (
     <div className="wrap py-12">
       <JsonLd data={productLd} />
+      <JsonLd data={crumbsLd} />
       <div className="grid md:grid-cols-2 gap-10 md:gap-16">
         {/* image */}
         <div className="relative aspect-[4/5] bg-ice border border-line overflow-hidden self-start">

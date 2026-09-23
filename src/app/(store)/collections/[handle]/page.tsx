@@ -5,6 +5,8 @@ import PageHeader from "@/components/PageHeader";
 import CollectionFilters, { AvailFilter, SortOrder } from "@/components/CollectionFilters";
 import { products, getCollections, getCollection, Product } from "@/lib/catalog";
 import { absoluteUrl } from "@/lib/site";
+import { breadcrumbLd, itemListLd } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 
 const PAGE_SIZE = 24;
 
@@ -105,8 +107,20 @@ export default async function CollectionPage({
   const page = Math.min(Math.max(1, Number(pageParam) || 1), totalPages);
   const pageItems = items.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
+  const crumbsLd = breadcrumbLd([
+    { name: "Home", path: "/" },
+    { name: "Collections", path: "/collections" },
+    { name: data.title, path: `/collections/${handle}` },
+  ]);
+  const listLd = itemListLd(
+    data.title,
+    pageItems.map((p) => ({ title: p.title, path: `/products/${p.handle}` })),
+  );
+
   return (
     <div className="wrap py-12">
+      <JsonLd data={crumbsLd} />
+      <JsonLd data={listLd} />
       <PageHeader title={data.title} className="mb-8" />
       <CollectionFilters count={items.length} avail={avail} sort={sort} />
       {pageItems.length > 0 ? (
