@@ -42,6 +42,7 @@ export const BRANCHES: Branch[] = [
     postalCode: "1229",
     addressRegion: "Dhaka",
     telephone: "+8801806553255",
+    geo: { lat: 23.8122605, lng: 90.4241702 },
   },
 ];
 
