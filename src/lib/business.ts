@@ -18,6 +18,7 @@ export type Branch = {
   postalCode: string;
   addressRegion: string;
   telephone: string; // E.164
+  geo?: { lat: number; lng: number };
 };
 
 export const BRANCHES: Branch[] = [
@@ -29,6 +30,7 @@ export const BRANCHES: Branch[] = [
     postalCode: "1230",
     addressRegion: "Dhaka",
     telephone: "+8801747298909",
+    geo: { lat: 23.8674984, lng: 90.3965313 },
   },
   {
     id: "bashundhara",
@@ -94,6 +96,16 @@ export function branchLd(branch: Branch, siteUrl: string, logo: string) {
       addressCountry: "BD",
     },
     areaServed: { "@type": "City", name: "Dhaka" },
+    ...(branch.geo
+      ? {
+          geo: {
+            "@type": "GeoCoordinates",
+            latitude: branch.geo.lat,
+            longitude: branch.geo.lng,
+          },
+          hasMap: `https://www.google.com/maps/search/?api=1&query=${branch.geo.lat},${branch.geo.lng}`,
+        }
+      : {}),
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
