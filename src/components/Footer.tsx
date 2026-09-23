@@ -8,6 +8,7 @@ const cols = [
       { label: "Services", href: "/collections" },
       { label: "Blog", href: "/blog" },
       { label: "About", href: "/pages/about" },
+      { label: "FAQ", href: "/faq" },
     ],
   },
   {

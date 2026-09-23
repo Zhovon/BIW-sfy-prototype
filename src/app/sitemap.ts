@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entry("/", 1, "weekly"),
     entry("/collections", 0.7, "weekly"),
     entry("/blog", 0.6, "weekly"),
+    entry("/faq", 0.5, "monthly"),
     ...products.map((p) => entry(`/products/${p.handle}`, 0.8, "weekly")),
     ...getCollections().map((c) => entry(`/collections/${c.slug}`, 0.6, "weekly")),
     ...customPageSlugs().map((s) => entry(`/pages/${s}`, 0.5, "monthly")),
