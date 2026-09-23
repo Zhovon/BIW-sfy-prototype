@@ -9,6 +9,7 @@ import Track from "@/components/Track";
 import Vitals from "@/components/Vitals";
 import JsonLd from "@/components/JsonLd";
 import { SITE_URL, SITE_NAME, SITE_TAGLINE, absoluteUrl } from "@/lib/site";
+import { BRANCHES, branchLd, SOCIAL_LINKS, PRIMARY_PHONE } from "@/lib/business";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -39,13 +40,29 @@ const organizationLd = {
   alternateName: "BIW",
   url: SITE_URL,
   logo: absoluteUrl("/biw-logo.png"),
+  image: absoluteUrl("/biw-logo.png"),
   description: SITE_TAGLINE,
-  address: {
+  telephone: PRIMARY_PHONE,
+  address: BRANCHES.map((b) => ({
     "@type": "PostalAddress",
-    addressLocality: "Dhaka",
+    streetAddress: b.streetAddress,
+    addressLocality: b.addressLocality,
+    postalCode: b.postalCode,
+    addressRegion: b.addressRegion,
     addressCountry: "BD",
+  })),
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: PRIMARY_PHONE,
+    contactType: "customer service",
+    areaServed: "BD",
+    availableLanguage: ["en", "bn"],
   },
+  areaServed: { "@type": "City", name: "Dhaka" },
+  sameAs: SOCIAL_LINKS,
 };
+
+const branchNodes = BRANCHES.map((b) => branchLd(b, SITE_URL, absoluteUrl("/biw-logo.png")));
 
 const websiteLd = {
   "@context": "https://schema.org",
@@ -78,6 +95,9 @@ export default function StoreLayout({ children }: { children: React.ReactNode })
       <body className="flex min-h-screen flex-col">
         <JsonLd data={organizationLd} />
         <JsonLd data={websiteLd} />
+        {branchNodes.map((node) => (
+          <JsonLd key={node["@id"]} data={node} />
+        ))}
         <CartProvider>
           <a
             href="#MainContent"
