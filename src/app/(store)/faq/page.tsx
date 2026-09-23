@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const FAQ: { q: string; a: string }[] = [
   {
     q: "Where is Beauty Intelligent Wellness located?",
-    a: "BIW has two branches in Dhaka: Uttara (House 39, Road 15, Sector 3, Rabindra Sarani) and Bashundhara (Adept NR Complex, Jagannathpur, Bashundhara Link Road). Both are open 10:00 AM–8:00 PM, seven days a week.",
+    a: "BIW has two branches in Dhaka: Uttara (House 39, Level 4, Sector 3, Rabindra Sarani) and Bashundhara (Adept NR Complex, Main Gate, by the KFC / Pizza Hut building — gents on the 3rd floor, ladies on the 5th). Both are open 10:00 AM–8:00 PM, seven days a week.",
   },
   {
     q: "What treatments and services does BIW offer?",

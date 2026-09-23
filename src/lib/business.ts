@@ -3,11 +3,10 @@
  * clinic structured data, llms.txt, contact surfaces). Single source of truth —
  * update here when a branch, phone, or hours change.
  *
- * Sourced from the public Google/Facebook listings 2026-09-23. Owner to confirm:
- *   - price range band (currently "premium")
- *   - the "Bashundhara Residence" 3rd FB page — same address as Bashundhara or a
- *     separate location? (not listed below until confirmed)
- *   - geo lat/long per branch (omitted; Google geocodes from the address)
+ * Addresses confirmed by owner 2026-09-23 (2 physical locations — the
+ * "Bashundhara Residence" FB page is the SAME Bashundhara building: gents 3rd
+ * floor, ladies 5th floor). Still open: price band (currently "premium") and
+ * geo lat/long per branch (omitted; Google geocodes from the address).
  */
 import { SITE_NAME, SITE_TAGLINE } from "./site";
 
@@ -25,7 +24,7 @@ export const BRANCHES: Branch[] = [
   {
     id: "uttara",
     name: `${SITE_NAME} — Uttara`,
-    streetAddress: "House 39 (4th Floor), Road 15, Sector 3, Rabindra Sarani, Uttara",
+    streetAddress: "House 39 (Level 4), Sector 3, Rabindra Sarani, Uttara",
     addressLocality: "Dhaka",
     postalCode: "1230",
     addressRegion: "Dhaka",
@@ -34,8 +33,9 @@ export const BRANCHES: Branch[] = [
   {
     id: "bashundhara",
     name: `${SITE_NAME} — Bashundhara`,
+    // Same building serves both: gents on the 3rd floor, ladies on the 5th.
     streetAddress:
-      "Adept NR Complex (KFC / Pizza Hut Building, Lift 3), Jagannathpur, Bashundhara Link Road",
+      "Adept NR Complex, Main Gate (KFC / Pizza Hut Building), Bashundhara — gents 3rd floor, ladies 5th floor",
     addressLocality: "Dhaka",
     postalCode: "1229",
     addressRegion: "Dhaka",
