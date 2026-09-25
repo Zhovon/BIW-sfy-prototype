@@ -7,17 +7,18 @@ import { getProduct } from "@/lib/catalog";
 import type { BookingCatalog, CrmBranch, CrmService, CrmSlot } from "@/lib/crm";
 
 /**
- * Native, brand-styled booking flow. Runs entirely on biw.beauty and talks to
- * the CRM through the storefront's own /api/booking proxy routes (server-to-
- * server), so there is no iframe and no cross-origin dependency. Seeds the
- * service selection from the cart, then walks branch → date → time → details →
- * confirm. Services are paid at the salon; nothing here touches online checkout.
+ * Native, brand-styled booking flow on biw.beauty. Talks to the CRM through the
+ * storefront's own /api/booking proxy routes (server-to-server), so there is no
+ * iframe and no cross-origin dependency.
+ *
+ * Services are chosen while browsing the shop and land in the cart — this page
+ * is purely the appointment checkout: branch → date & time → details → confirm.
+ * The CART is the single source of truth for which services are being booked,
+ * so there is deliberately NO service picker here (that would duplicate the
+ * shop). Services are paid at the salon; nothing here touches online checkout.
  */
 
-type Step = "services" | "branch" | "when" | "details" | "done";
-
-/** Selected services as a service-id → count map (count = number of guests). */
-type Selection = Record<string, number>;
+type Step = "branch" | "when" | "details" | "done";
 
 function formatTk(n: number): string {
   return "৳ " + Math.round(n).toLocaleString("en-US");
@@ -75,14 +76,13 @@ function Check() {
 }
 
 export default function BookingFlow() {
-  const { serviceItems, remove, hydrated } = useCart();
+  const { serviceItems, remove, setQty, hydrated } = useCart();
 
   const [catalog, setCatalog] = useState<BookingCatalog | null>(null);
   const [loadError, setLoadError] = useState(false);
-  const [step, setStep] = useState<Step>("services");
-  const [seeded, setSeeded] = useState(false);
+  const [step, setStep] = useState<Step>("branch");
+  const [stepReady, setStepReady] = useState(false);
 
-  const [selection, setSelection] = useState<Selection>({});
   const [branchId, setBranchId] = useState("");
   const [date, setDate] = useState("");
   const [slots, setSlots] = useState<CrmSlot[]>([]);
@@ -93,7 +93,6 @@ export default function BookingFlow() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
-  const [search, setSearch] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
 
@@ -113,47 +112,42 @@ export default function BookingFlow() {
     };
   }, []);
 
-  const serviceById = useMemo(() => {
-    const map = new Map<string, CrmService>();
-    catalog?.services.forEach((s) => map.set(s.id, s));
-    return map;
-  }, [catalog]);
+  const multiBranch = (catalog?.branches.length ?? 0) > 1;
 
-  // Seed the selection from the cart's service items once, after the catalog
-  // and cart are both ready. Matches Shopify products to CRM services by id.
-  useEffect(() => {
-    if (seeded || !catalog || !hydrated) return;
-    const seed: Selection = {};
+  // The services being booked, derived LIVE from the cart (the source of truth).
+  // Matches Shopify products to CRM services by id; unbookable items are ignored.
+  const selectedServices = useMemo(() => {
+    if (!catalog) return [] as { service: CrmService; count: number; handle: string }[];
+    const out: { service: CrmService; count: number; handle: string }[] = [];
     for (const item of serviceItems) {
       const pid = getProduct(item.handle)?.shopify_product_id;
       if (pid == null) continue;
       const svc = catalog.services.find((s) => s.shopify_product_id === String(pid));
-      if (svc) seed[svc.id] = (seed[svc.id] || 0) + item.qty;
+      if (svc) out.push({ service: svc, count: item.qty, handle: item.handle });
     }
-    setSelection(seed);
-    setSeeded(true);
-  }, [seeded, catalog, hydrated, serviceItems]);
-
-  const selectedServices = useMemo(
-    () =>
-      Object.entries(selection)
-        .map(([id, count]) => ({ service: serviceById.get(id), count }))
-        .filter((x): x is { service: CrmService; count: number } => Boolean(x.service) && x.count > 0),
-    [selection, serviceById],
-  );
+    return out;
+  }, [serviceItems, catalog]);
 
   const totalDuration = selectedServices.reduce((n, { service, count }) => n + service.duration_minutes * count, 0);
   const totalPrice = selectedServices.reduce((n, { service, count }) => n + service.price * count, 0);
   const hasSelection = selectedServices.length > 0;
 
-  const setCount = useCallback((id: string, next: number) => {
-    setSelection((cur) => {
-      const copy = { ...cur };
-      if (next <= 0) delete copy[id];
-      else copy[id] = next;
-      return copy;
-    });
-  }, []);
+  // Choose the first step once the catalog and cart are ready: single-branch
+  // salons skip straight to date & time.
+  useEffect(() => {
+    if (stepReady || !catalog || !hydrated) return;
+    setStep(multiBranch ? "branch" : "when");
+    setStepReady(true);
+  }, [stepReady, catalog, hydrated, multiBranch]);
+
+  // Adjust a booked service's guest count straight on the cart.
+  const changeQty = useCallback(
+    (handle: string, next: number) => {
+      if (next <= 0) remove(handle);
+      else setQty(handle, next);
+    },
+    [remove, setQty],
+  );
 
   // Fetch slots whenever branch + date + duration are settled.
   const loadSlots = useCallback(
@@ -206,9 +200,10 @@ export default function BookingFlow() {
         setError(json.error || "Could not confirm your booking. Please try again.");
         return;
       }
-      // Clear the booked services from the cart and show the confirmation.
-      serviceItems.forEach((i) => remove(i.handle));
+      // Show the confirmation first, then clear the booked services from the
+      // cart (order matters so the empty-cart state can't flash in between).
       setStep("done");
+      selectedServices.forEach(({ handle }) => remove(handle));
     } catch {
       setError("Network error. Please check your connection and try again.");
     } finally {
@@ -248,21 +243,26 @@ export default function BookingFlow() {
     );
   }
 
+  // No services in the cart — there is nothing to book. Point them to the shop
+  // rather than showing an empty flow.
+  if (!hasSelection) {
+    return (
+      <div className="mx-auto max-w-xl rounded-2xl border border-line bg-paper px-6 py-14 text-center">
+        <span className="kicker">Your booking</span>
+        <h2 className="mt-3 font-display text-2xl text-ink">Your cart is empty</h2>
+        <p className="mx-auto mt-3 max-w-sm text-muted">
+          Add the treatments you&apos;d like from our services, then come back here to choose a branch and time.
+        </p>
+        <Link href="/collections" className="btn btn--gold mt-8 inline-block">Browse services</Link>
+      </div>
+    );
+  }
+
   return (
     <div className="grid gap-8 lg:grid-cols-[1fr_360px]">
       {/* Active step */}
       <div className="order-2 lg:order-1">
-        <Stepper step={step} hasSelection={hasSelection} branchNeeded={catalog.branches.length > 1} />
-
-        {step === "services" && (
-          <ServiceStep
-            services={catalog.services}
-            selection={selection}
-            setCount={setCount}
-            search={search}
-            setSearch={setSearch}
-          />
-        )}
+        <Stepper step={step} multiBranch={multiBranch} />
 
         {step === "branch" && (
           <BranchStep branches={catalog.branches} branchId={branchId} onPick={(id) => { setBranchId(id); setDate(""); setTime(""); }} />
@@ -290,17 +290,17 @@ export default function BookingFlow() {
 
         <Nav
           step={step}
+          isFirst={isFirstStep(step, multiBranch)}
           canForward={
-            (step === "services" && hasSelection) ||
             (step === "branch" && !!branchId) ||
             (step === "when" && !!date && !!time) ||
             (step === "details" && !!name.trim() && !!phone.trim())
           }
           submitting={submitting}
-          onBack={() => setStep(prevStep(step, catalog.branches.length > 1))}
+          onBack={() => setStep(prevStep(step, multiBranch))}
           onForward={() => {
             if (step === "details") return submit();
-            setStep(nextStep(step, catalog.branches.length > 1));
+            setStep(nextStep(step, multiBranch));
           }}
         />
       </div>
@@ -309,7 +309,8 @@ export default function BookingFlow() {
       <aside className="order-1 lg:order-2">
         <Summary
           services={selectedServices}
-          setCount={setCount}
+          changeQty={changeQty}
+          remove={remove}
           totalPrice={totalPrice}
           totalDuration={totalDuration}
           branch={catalog.branches.find((b) => b.id === branchId)}
@@ -323,24 +324,27 @@ export default function BookingFlow() {
 
 // ---- step navigation order --------------------------------------------
 
-const order: Step[] = ["services", "branch", "when", "details"];
-function nextStep(s: Step, branchStep: boolean): Step {
-  let i = order.indexOf(s) + 1;
-  if (order[i] === "branch" && !branchStep) i += 1;
-  return order[Math.min(i, order.length - 1)];
+/** The active steps, excluding the branch step for single-branch salons. */
+function stepsFor(multiBranch: boolean): Step[] {
+  return multiBranch ? ["branch", "when", "details"] : ["when", "details"];
 }
-function prevStep(s: Step, branchStep: boolean): Step {
-  let i = order.indexOf(s) - 1;
-  if (order[i] === "branch" && !branchStep) i -= 1;
-  return order[Math.max(i, 0)];
+function nextStep(s: Step, multiBranch: boolean): Step {
+  const a = stepsFor(multiBranch);
+  return a[Math.min(a.indexOf(s) + 1, a.length - 1)];
+}
+function prevStep(s: Step, multiBranch: boolean): Step {
+  const a = stepsFor(multiBranch);
+  return a[Math.max(a.indexOf(s) - 1, 0)];
+}
+function isFirstStep(s: Step, multiBranch: boolean): boolean {
+  return stepsFor(multiBranch)[0] === s;
 }
 
 // ---- sub-components ----------------------------------------------------
 
-function Stepper({ step, hasSelection, branchNeeded }: { step: Step; hasSelection: boolean; branchNeeded: boolean }) {
+function Stepper({ step, multiBranch }: { step: Step; multiBranch: boolean }) {
   const items = [
-    { key: "services", label: "Services" },
-    ...(branchNeeded ? [{ key: "branch", label: "Branch" }] : []),
+    ...(multiBranch ? [{ key: "branch", label: "Branch" }] : []),
     { key: "when", label: "Date & time" },
     { key: "details", label: "Details" },
   ] as { key: Step; label: string }[];
@@ -355,67 +359,7 @@ function Stepper({ step, hasSelection, branchNeeded }: { step: Step; hasSelectio
           {idx < items.length - 1 && <span aria-hidden className="text-line">→</span>}
         </li>
       ))}
-      {!hasSelection && step === "services" && <span className="sr-only">Choose a service to begin</span>}
     </ol>
-  );
-}
-
-function ServiceStep({
-  services, selection, setCount, search, setSearch,
-}: {
-  services: CrmService[];
-  selection: Selection;
-  setCount: (id: string, n: number) => void;
-  search: string;
-  setSearch: (s: string) => void;
-}) {
-  const q = search.trim().toLowerCase();
-  const list = q
-    ? services.filter((s) => s.name.toLowerCase().includes(q) || (s.category || "").toLowerCase().includes(q))
-    : services;
-  return (
-    <div>
-      <h2 className="font-display text-2xl text-ink">Choose your services</h2>
-      <p className="mt-1 text-sm text-muted">Pick one or more — they&apos;re booked together. Use +/− for more than one guest.</p>
-      <input
-        type="search"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        placeholder="Search services…"
-        className="mt-4 w-full border border-line bg-paper px-4 py-3 text-sm focus:border-ink focus:outline-none"
-      />
-      <div className="mt-4 max-h-[520px] space-y-2 overflow-y-auto pr-1">
-        {list.map((s) => {
-          const count = selection[s.id] || 0;
-          const picked = count > 0;
-          return (
-            <div
-              key={s.id}
-              className={`flex items-center justify-between gap-3 border px-4 py-3 transition-colors ${
-                picked ? "border-ink bg-ice" : "border-line bg-paper hover:border-ink"
-              }`}
-            >
-              <button type="button" onClick={() => setCount(s.id, count > 0 ? 0 : 1)} className="min-w-0 flex-1 text-left">
-                <div className="truncate font-medium text-ink">{s.name}</div>
-                <div className="text-xs text-muted">{formatDuration(s.duration_minutes)} · {formatTk(s.price)}</div>
-              </button>
-              {picked ? (
-                <div className="flex items-center gap-2">
-                  <StepBtn label="Decrease" onClick={() => setCount(s.id, count - 1)}>−</StepBtn>
-                  <span className="w-5 text-center text-sm font-medium">{count}</span>
-                  <StepBtn label="Increase" onClick={() => setCount(s.id, count + 1)}>+</StepBtn>
-                </div>
-              ) : (
-                <button type="button" onClick={() => setCount(s.id, 1)} className="text-teal">
-                  <span className="text-sm tracking-[0.06em]">Add</span>
-                </button>
-              )}
-            </div>
-          );
-        })}
-        {list.length === 0 && <p className="py-8 text-center text-sm text-muted">No services match “{search}”.</p>}
-      </div>
-    </div>
   );
 }
 
@@ -551,9 +495,10 @@ function DetailsStep({
 }
 
 function Nav({
-  step, canForward, submitting, onBack, onForward,
+  step, isFirst, canForward, submitting, onBack, onForward,
 }: {
   step: Step;
+  isFirst: boolean;
   canForward: boolean;
   submitting: boolean;
   onBack: () => void;
@@ -561,7 +506,7 @@ function Nav({
 }) {
   return (
     <div className="mt-8 flex items-center justify-between">
-      {step !== "services" ? (
+      {!isFirst ? (
         <button type="button" onClick={onBack} className="btn btn--ghost">← Back</button>
       ) : (
         <span />
@@ -574,10 +519,11 @@ function Nav({
 }
 
 function Summary({
-  services, setCount, totalPrice, totalDuration, branch, date, timeLabel,
+  services, changeQty, remove, totalPrice, totalDuration, branch, date, timeLabel,
 }: {
-  services: { service: CrmService; count: number }[];
-  setCount: (id: string, n: number) => void;
+  services: { service: CrmService; count: number; handle: string }[];
+  changeQty: (handle: string, n: number) => void;
+  remove: (handle: string) => void;
   totalPrice: number;
   totalDuration: number;
   branch?: CrmBranch;
@@ -587,29 +533,27 @@ function Summary({
   return (
     <div className="lg:sticky lg:top-24 border border-line bg-ice px-6 py-6">
       <span className="kicker">Your booking</span>
-      {services.length === 0 ? (
-        <p className="mt-4 text-sm text-muted">No services chosen yet.</p>
-      ) : (
-        <ul className="mt-4 space-y-3">
-          {services.map(({ service, count }) => (
-            <li key={service.id} className="flex items-baseline justify-between gap-3 text-sm">
-              <span className="text-ink">
-                {service.name}
-                {count > 1 && <span className="text-muted"> ×{count}</span>}
-                <button type="button" onClick={() => setCount(service.id, 0)} className="ml-2 text-xs text-muted underline hover:text-ink">remove</button>
-              </span>
-              <span className="whitespace-nowrap text-muted">{formatTk(service.price * count)}</span>
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul className="mt-4 space-y-3">
+        {services.map(({ service, count, handle }) => (
+          <li key={service.id} className="flex items-baseline justify-between gap-3 text-sm">
+            <span className="min-w-0 text-ink">
+              <span className="block truncate">{service.name}</span>
+              <button type="button" onClick={() => remove(handle)} className="mt-0.5 text-xs text-muted underline hover:text-ink">remove</button>
+            </span>
+            <span className="flex items-center gap-2 whitespace-nowrap">
+              <StepBtn label={`One fewer ${service.name}`} onClick={() => changeQty(handle, count - 1)}>−</StepBtn>
+              <span className="w-4 text-center text-sm font-medium">{count}</span>
+              <StepBtn label={`One more ${service.name}`} onClick={() => changeQty(handle, count + 1)}>+</StepBtn>
+              <span className="w-16 text-right text-muted">{formatTk(service.price * count)}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
 
-      {services.length > 0 && (
-        <div className="mt-5 space-y-1.5 border-t border-line pt-4 text-sm">
-          <div className="flex justify-between"><span className="text-muted">Total time</span><span className="text-ink">{formatDuration(totalDuration)}</span></div>
-          <div className="flex justify-between"><span className="text-muted">Total (pay at salon)</span><span className="font-medium text-ink">{formatTk(totalPrice)}</span></div>
-        </div>
-      )}
+      <div className="mt-5 space-y-1.5 border-t border-line pt-4 text-sm">
+        <div className="flex justify-between"><span className="text-muted">Total time</span><span className="text-ink">{formatDuration(totalDuration)}</span></div>
+        <div className="flex justify-between"><span className="text-muted">Total (pay at salon)</span><span className="font-medium text-ink">{formatTk(totalPrice)}</span></div>
+      </div>
 
       {(branch || date) && (
         <div className="mt-5 space-y-1.5 border-t border-line pt-4 text-sm">
@@ -617,6 +561,10 @@ function Summary({
           {date && <div className="flex justify-between gap-3"><span className="text-muted">When</span><span className="text-right text-ink">{longDate(date)}{timeLabel ? `, ${timeLabel}` : ""}</span></div>}
         </div>
       )}
+
+      <p className="mt-5 border-t border-line pt-4 text-xs text-muted">
+        Need to add more treatments? <Link href="/collections" className="underline hover:text-ink">Browse services</Link>.
+      </p>
     </div>
   );
 }
