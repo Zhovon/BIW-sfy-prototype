@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useCart } from "@/lib/cart";
 import { getProduct } from "@/lib/catalog";
+import { PRIMARY_PHONE } from "@/lib/business";
 import type { BookingCatalog, CrmBranch, CrmService, CrmSlot } from "@/lib/crm";
 
 /**
@@ -19,6 +20,27 @@ import type { BookingCatalog, CrmBranch, CrmService, CrmSlot } from "@/lib/crm";
  */
 
 type Step = "branch" | "when" | "details" | "done";
+
+// --- CRM service resolution -------------------------------------------------
+// The storefront catalog (products.json, scraped from Shopify) and the CRM both
+// key on the Shopify product id, but those ids have drifted apart over time
+// (products were re-created in Shopify with new ids after the scrape). So we
+// resolve a cart item to its CRM service by id FIRST (fast, exact) and fall
+// back to a gender-aware NAME match, which survives the id drift.
+const GENDER_RE = /\b(gents?|ladies|lady|female|male|men|women)\b/gi;
+
+/** Service name without gender/punctuation noise, for fuzzy matching. */
+function normServiceName(s: string): string {
+  return s.toLowerCase().replace(GENDER_RE, " ").replace(/[^a-z0-9]+/g, " ").replace(/\s+/g, " ").trim();
+}
+
+/** "gents" | "ladies" | null — the audience a service name implies, if any. */
+function genderOf(s: string): "gents" | "ladies" | null {
+  const t = s.toLowerCase();
+  if (/\b(gents?|male|men)\b/.test(t)) return "gents";
+  if (/\b(ladies|lady|female|women)\b/.test(t)) return "ladies";
+  return null;
+}
 
 function formatTk(n: number): string {
   return "৳ " + Math.round(n).toLocaleString("en-US");
@@ -114,19 +136,58 @@ export default function BookingFlow() {
 
   const multiBranch = (catalog?.branches.length ?? 0) > 1;
 
-  // The services being booked, derived LIVE from the cart (the source of truth).
-  // Matches Shopify products to CRM services by id; unbookable items are ignored.
-  const selectedServices = useMemo(() => {
-    if (!catalog) return [] as { service: CrmService; count: number; handle: string }[];
-    const out: { service: CrmService; count: number; handle: string }[] = [];
-    for (const item of serviceItems) {
-      const pid = getProduct(item.handle)?.shopify_product_id;
-      if (pid == null) continue;
-      const svc = catalog.services.find((s) => s.shopify_product_id === String(pid));
-      if (svc) out.push({ service: svc, count: item.qty, handle: item.handle });
+  // Index the CRM catalog by exact Shopify id and by normalized name so cart
+  // items can be resolved even when the ids have drifted (see note above).
+  const crmIndex = useMemo(() => {
+    const byPid = new Map<string, CrmService>();
+    const byName = new Map<string, CrmService[]>();
+    for (const s of catalog?.services ?? []) {
+      if (s.shopify_product_id) byPid.set(s.shopify_product_id, s);
+      const key = normServiceName(s.name);
+      const bucket = byName.get(key);
+      if (bucket) bucket.push(s);
+      else byName.set(key, [s]);
     }
-    return out;
-  }, [serviceItems, catalog]);
+    return { byPid, byName };
+  }, [catalog]);
+
+  // Resolve a cart item to its CRM service: exact Shopify id first, then a
+  // gender-aware name match (preferring a same-gender candidate, then a
+  // Shopify-linked one). Returns null when the CRM has no such service.
+  const resolveService = useCallback(
+    (handle: string, title: string): CrmService | null => {
+      const pid = getProduct(handle)?.shopify_product_id;
+      if (pid != null) {
+        const hit = crmIndex.byPid.get(String(pid));
+        if (hit) return hit;
+      }
+      const cands = crmIndex.byName.get(normServiceName(title));
+      if (!cands || cands.length === 0) return null;
+      if (cands.length === 1) return cands[0];
+      const want = genderOf(title);
+      return (
+        (want && cands.find((c) => genderOf(c.name) === want)) ||
+        cands.find((c) => c.shopify_product_id) ||
+        cands[0]
+      );
+    },
+    [crmIndex],
+  );
+
+  // The services being booked, derived LIVE from the cart (the source of truth).
+  // Items the CRM can't offer are kept aside so we can tell the customer which
+  // ones need a phone booking, rather than silently dropping them.
+  const { selectedServices, unbookable } = useMemo(() => {
+    const resolved: { service: CrmService; count: number; handle: string }[] = [];
+    const missing: { title: string; handle: string }[] = [];
+    if (!catalog) return { selectedServices: resolved, unbookable: missing };
+    for (const item of serviceItems) {
+      const svc = resolveService(item.handle, item.title);
+      if (svc) resolved.push({ service: svc, count: item.qty, handle: item.handle });
+      else missing.push({ title: item.title, handle: item.handle });
+    }
+    return { selectedServices: resolved, unbookable: missing };
+  }, [serviceItems, catalog, resolveService]);
 
   const totalDuration = selectedServices.reduce((n, { service, count }) => n + service.duration_minutes * count, 0);
   const totalPrice = selectedServices.reduce((n, { service, count }) => n + service.price * count, 0);
@@ -243,9 +304,25 @@ export default function BookingFlow() {
     );
   }
 
-  // No services in the cart — there is nothing to book. Point them to the shop
-  // rather than showing an empty flow.
+  // Nothing bookable. Two cases: a genuinely empty cart, or a cart whose
+  // services aren't offered for online booking yet — for the latter we name
+  // them and point to the phone rather than showing a misleading empty state.
   if (!hasSelection) {
+    if (unbookable.length > 0) {
+      return (
+        <div className="mx-auto max-w-xl rounded-2xl border border-line bg-paper px-6 py-14 text-center">
+          <span className="kicker">Your booking</span>
+          <h2 className="mt-3 font-display text-2xl text-ink">Booked over the phone</h2>
+          <p className="mx-auto mt-3 max-w-sm text-muted">
+            These treatments aren&apos;t available for online booking just yet. Please call us and we&apos;ll set your appointment:
+          </p>
+          <ul className="mx-auto mt-4 max-w-sm text-sm text-ink">
+            {unbookable.map((u) => <li key={u.handle}>{u.title}</li>)}
+          </ul>
+          <a href={`tel:${PRIMARY_PHONE}`} className="btn btn--gold mt-8 inline-block">Call {PRIMARY_PHONE}</a>
+        </div>
+      );
+    }
     return (
       <div className="mx-auto max-w-xl rounded-2xl border border-line bg-paper px-6 py-14 text-center">
         <span className="kicker">Your booking</span>
@@ -263,6 +340,15 @@ export default function BookingFlow() {
       {/* Active step */}
       <div className="order-2 lg:order-1">
         <Stepper step={step} multiBranch={multiBranch} />
+
+        {unbookable.length > 0 && (
+          <p className="mb-6 rounded-lg border border-[#f0d9a8] bg-[#fdf6e6] px-4 py-3 text-sm text-[#7a5a12]">
+            {unbookable.length === 1 ? "One treatment" : `${unbookable.length} treatments`} in your cart
+            {unbookable.length === 1 ? " isn't" : " aren't"} available for online booking
+            ({unbookable.map((u) => u.title).join(", ")}) — please call{" "}
+            <a href={`tel:${PRIMARY_PHONE}`} className="underline">{PRIMARY_PHONE}</a> for those.
+          </p>
+        )}
 
         {step === "branch" && (
           <BranchStep branches={catalog.branches} branchId={branchId} onPick={(id) => { setBranchId(id); setDate(""); setTime(""); }} />
