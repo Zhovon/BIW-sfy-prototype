@@ -85,6 +85,51 @@ export async function fetchCatalog(): Promise<BookingCatalog> {
   return { services, branches };
 }
 
+export type CrmReview = {
+  id: string;
+  name: string;
+  rating: number;
+  review_text: string | null;
+  created_at: string | null;
+};
+
+type RawReview = {
+  id: string;
+  name?: string | null;
+  rating?: number | null;
+  review_text?: string | null;
+  created_at?: string | null;
+};
+
+/**
+ * Published, owner-approved QR reviews for the storefront's testimonials.
+ * Pull-based: the CRM flips a review to published and it appears here on the next
+ * ISR revalidation — no upload/deploy. Only reviews with actual text are kept
+ * (a star-only rating makes a poor testimonial). Best-effort: any failure
+ * returns [] so the page falls back to curated testimonials instead of erroring.
+ */
+export async function fetchReviews(branchId?: string): Promise<CrmReview[]> {
+  const qs = branchId ? `?branch_id=${encodeURIComponent(branchId)}` : "";
+  try {
+    const res = await fetch(`${CRM_API_BASE}/api/v1/reviews/public${qs}`, {
+      next: { revalidate: 300 },
+    });
+    if (!res.ok) return [];
+    const raw = (await res.json()) as RawReview[];
+    return raw
+      .filter((r) => (r.review_text || "").trim().length > 0)
+      .map((r) => ({
+        id: r.id,
+        name: (r.name || "Guest").trim(),
+        rating: Math.max(1, Math.min(5, Number(r.rating ?? 5))),
+        review_text: (r.review_text || "").trim(),
+        created_at: r.created_at ?? null,
+      }));
+  } catch {
+    return [];
+  }
+}
+
 /** Available time slots for a branch/date, fitted to the total service duration. */
 export async function fetchSlots(branchId: string, date: string, durationMinutes: number): Promise<CrmSlot[]> {
   const qs = new URLSearchParams({

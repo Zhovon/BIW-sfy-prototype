@@ -4,15 +4,29 @@ import SectionHead from "@/components/SectionHead";
 import Reveal from "@/components/Reveal";
 import BlogCarousel from "@/components/BlogCarousel";
 import { getArticles } from "@/lib/catalog";
+import { fetchReviews } from "@/lib/crm";
 
 const HERO_VIDEO = "/hero.mp4";
 
-const testimonials = [
+type Testimonial = { stars: number; name: string; service: string; text: string };
+
+// Curated fallbacks — shown only until real published reviews exist, so the
+// section is never empty. Real reviews from the CRM take precedence.
+const fallbackTestimonials: Testimonial[] = [
   { stars: 5, name: "Nadia Islam", service: "Signature Facial", text: "The facial treatment at BIW was absolutely divine. My skin felt rejuvenated and glowing for days. The staff was incredibly professional and attentive." },
   { stars: 4, name: "Fatema Afrin", service: "Hair Treatment", text: "I've tried many salons in Dhaka, but BIW is on another level. The ambiance is so calming and the hair treatment left my hair silky smooth. Will definitely be back!" },
   { stars: 4, name: "Nowshin Rahman", service: "Body Massage", text: "Booked a full body massage and it was the most relaxing experience I've had. The therapists are highly skilled and the products they use smell amazing." },
   { stars: 5, name: "Mehnaz Begum", service: "Spa Package", text: "Such a premium experience from start to finish. The salon is beautifully designed and the team made me feel so pampered. BIW is now my go-to wellness destination." },
 ];
+
+/** Month-year label for a review's date, e.g. "October 2026". Falls back cleanly. */
+function reviewMonth(iso: string | null): string {
+  if (!iso) return "Verified Client";
+  const d = new Date(iso);
+  return Number.isNaN(d.getTime())
+    ? "Verified Client"
+    : d.toLocaleDateString("en-GB", { month: "long", year: "numeric" });
+}
 
 // Images match the original biw.salon "Our Services" section (migrated local).
 const serviceCards = [
@@ -33,7 +47,19 @@ function Stars({ filled }: { filled: number }) {
   );
 }
 
-export default function Home() {
+export default async function Home() {
+  // Real published reviews take precedence; curated fallbacks keep the section
+  // populated until the owner approves the first ones in the CRM.
+  const reviews = await fetchReviews();
+  const testimonials: Testimonial[] = reviews.length
+    ? reviews.slice(0, 6).map((r) => ({
+        stars: r.rating,
+        name: r.name,
+        service: reviewMonth(r.created_at),
+        text: r.review_text || "",
+      }))
+    : fallbackTestimonials;
+
   return (
     <>
       {/* HERO — full-bleed video banner with the signature gold hairline beneath */}
