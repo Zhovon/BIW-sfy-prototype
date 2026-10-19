@@ -147,6 +147,7 @@ export type CreateAppointmentInput = {
   customer_name: string;
   customer_phone: string;
   customer_email: string | null;
+  customer_address?: string | null;
   service_ids: string[];
   branch_id: string;
   /** Dhaka wall-clock labelled as UTC, e.g. "2026-09-20T14:00:00Z" (CRM contract). */

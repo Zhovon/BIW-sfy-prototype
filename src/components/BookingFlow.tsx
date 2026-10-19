@@ -114,6 +114,7 @@ export default function BookingFlow() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
@@ -250,6 +251,7 @@ export default function BookingFlow() {
           customer_name: name.trim(),
           customer_phone: phone.trim(),
           customer_email: email.trim() || null,
+          customer_address: address.trim() || null,
           service_ids,
           branch_id: branchId,
           date,
@@ -367,8 +369,8 @@ export default function BookingFlow() {
 
         {step === "details" && (
           <DetailsStep
-            name={name} email={email} phone={phone}
-            setName={setName} setEmail={setEmail} setPhone={setPhone}
+            name={name} email={email} phone={phone} address={address}
+            setName={setName} setEmail={setEmail} setPhone={setPhone} setAddress={setAddress}
           />
         )}
 
@@ -551,10 +553,10 @@ function WhenStep({
 }
 
 function DetailsStep({
-  name, email, phone, setName, setEmail, setPhone,
+  name, email, phone, address, setName, setEmail, setPhone, setAddress,
 }: {
-  name: string; email: string; phone: string;
-  setName: (v: string) => void; setEmail: (v: string) => void; setPhone: (v: string) => void;
+  name: string; email: string; phone: string; address: string;
+  setName: (v: string) => void; setEmail: (v: string) => void; setPhone: (v: string) => void; setAddress: (v: string) => void;
 }) {
   const field = "w-full border border-line bg-paper px-4 py-3 text-sm focus:border-ink focus:outline-none";
   const lbl = "block text-[13px] tracking-[0.08em] mb-1.5";
@@ -573,6 +575,10 @@ function DetailsStep({
         <div>
           <label htmlFor="bk-email" className={lbl}>Email (optional)</label>
           <input id="bk-email" value={email} onChange={(e) => setEmail(e.target.value)} type="email" autoComplete="email" className={field} placeholder="jane@example.com" />
+        </div>
+        <div>
+          <label htmlFor="bk-address" className={lbl}>Address (optional)</label>
+          <textarea id="bk-address" value={address} onChange={(e) => setAddress(e.target.value)} autoComplete="street-address" rows={2} className={field} placeholder="House, road, area, city" />
         </div>
       </div>
       <p className="mt-4 text-xs text-muted">Payment is made at the salon — nothing is charged now.</p>

@@ -23,6 +23,7 @@ export const POST = withApiLog(async (req: NextRequest) => {
   const name = String(body?.customer_name ?? "").trim();
   const phone = String(body?.customer_phone ?? "").trim();
   const emailRaw = String(body?.customer_email ?? "").trim();
+  const address = String(body?.customer_address ?? "").trim();
   const branchId = String(body?.branch_id ?? "").trim();
   const date = String(body?.date ?? "").trim();
   const time = String(body?.time ?? "").trim();
@@ -50,6 +51,7 @@ export const POST = withApiLog(async (req: NextRequest) => {
     customer_name: name,
     customer_phone: phone,
     customer_email: emailRaw || null,
+    customer_address: address || null,
     service_ids: serviceIds,
     branch_id: branchId,
     appointment_time,
