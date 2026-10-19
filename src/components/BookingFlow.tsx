@@ -644,7 +644,7 @@ function Summary({
 
       <div className="mt-5 space-y-1.5 border-t border-line pt-4 text-sm">
         <div className="flex justify-between"><span className="text-muted">Total time</span><span className="text-ink">{formatDuration(totalDuration)}</span></div>
-        <div className="flex justify-between"><span className="text-muted">Total (pay at salon)</span><span className="font-medium text-ink">{formatTk(totalPrice)}</span></div>
+        <div className="flex justify-between"><span className="text-muted">Total (pay at floor or clinic)</span><span className="font-medium text-ink">{formatTk(totalPrice)}</span></div>
       </div>
 
       {(branch || date) && (
