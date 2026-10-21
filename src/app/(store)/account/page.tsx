@@ -2,9 +2,10 @@ import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
 import { ordersForEmail } from "@/lib/orders";
-import { getCustomerAppointments } from "@/lib/crm";
+import { getCustomerAppointments, getCustomerLoyalty } from "@/lib/crm";
 import SignOutButton from "./_components/SignOutButton";
 import ProfileForm from "./_components/ProfileForm";
+import LoyaltyCard from "./_components/LoyaltyCard";
 
 export const metadata = { title: "My Account · BIW" };
 export const dynamic = "force-dynamic";
@@ -21,6 +22,7 @@ export default async function AccountPage() {
   const user = session.user as typeof session.user & { phone?: string; address?: string };
   const orders = await ordersForEmail(user.email);
   const appointments = await getCustomerAppointments({ phone: user.phone, email: user.email });
+  const loyaltyCards = await getCustomerLoyalty({ phone: user.phone, email: user.email });
 
   // appointment_time is Dhaka wall-clock labeled UTC — format in UTC to show the
   // real local time (never the viewer's timezone). See CRM timezone convention.
@@ -91,10 +93,20 @@ export default async function AccountPage() {
         )}
       </section>
 
-      {/* Loyalty — Phase 2 */}
+      {/* Loyalty */}
       <section className="mb-12">
         <h2 className="font-display text-2xl mb-4">Loyalty</h2>
-        <p className="text-sm text-muted">Coming soon — track your stamps and rewards here.</p>
+        {loyaltyCards.length === 0 ? (
+          <p className="text-sm text-muted">
+            Visit us and start collecting stamps — your rewards will show up here.
+          </p>
+        ) : (
+          <div className="grid gap-4 sm:grid-cols-2">
+            {loyaltyCards.map((card, i) => (
+              <LoyaltyCard key={`${card.program_name}-${i}`} card={card} />
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Profile */}

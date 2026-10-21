@@ -229,3 +229,36 @@ export async function getCustomerAppointments(opts: { phone?: string; email?: st
     return [];
   }
 }
+
+/**
+ * A logged-in customer's loyalty stamp cards, for the storefront account page.
+ * Same key-gated, server-to-server pattern as getCustomerAppointments — passes
+ * only the authenticated customer's own phone/email, degrades gracefully to [].
+ */
+export type PortalLoyaltyCard = {
+  program_name: string;
+  reward_text: string;
+  stamps_count: number;
+  stamps_required: number;
+  status: string; // active | completed | redeemed | expired
+  redeemed_count: number;
+};
+
+export async function getCustomerLoyalty(opts: { phone?: string; email?: string }): Promise<PortalLoyaltyCard[]> {
+  const key = process.env.PORTAL_API_KEY;
+  if (!key) return [];
+  const qs = new URLSearchParams();
+  if (opts.phone) qs.set("phone", opts.phone);
+  if (opts.email) qs.set("email", opts.email);
+  if ([...qs.keys()].length === 0) return [];
+  try {
+    const res = await fetch(`${CRM_API_BASE}/api/v1/portal/loyalty?${qs.toString()}`, {
+      headers: { "X-Portal-Key": key },
+      cache: "no-store",
+    });
+    if (!res.ok) return [];
+    return (await res.json()) as PortalLoyaltyCard[];
+  } catch {
+    return [];
+  }
+}
