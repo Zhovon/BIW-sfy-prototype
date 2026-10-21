@@ -193,3 +193,39 @@ export function serviceProductIds(serviceItems: CartItem[]): string[] {
   }
   return ids;
 }
+
+/**
+ * A logged-in customer's own appointments, for the storefront account page.
+ * Calls the CRM's portal endpoint server-to-server with the shared PORTAL_API_KEY
+ * and only ever passes the authenticated customer's own phone/email. Returns [] on
+ * any error or when the key/identity is missing (the account page degrades gracefully).
+ */
+export type PortalAppointment = {
+  id: string;
+  appointment_time: string; // Dhaka wall-clock labeled UTC — format in UTC
+  status: string;
+  payment_status: string;
+  branch_id: string;
+  branch_name: string | null;
+  services: string[];
+  total_duration_minutes: number;
+};
+
+export async function getCustomerAppointments(opts: { phone?: string; email?: string }): Promise<PortalAppointment[]> {
+  const key = process.env.PORTAL_API_KEY;
+  if (!key) return [];
+  const qs = new URLSearchParams();
+  if (opts.phone) qs.set("phone", opts.phone);
+  if (opts.email) qs.set("email", opts.email);
+  if ([...qs.keys()].length === 0) return [];
+  try {
+    const res = await fetch(`${CRM_API_BASE}/api/v1/portal/appointments?${qs.toString()}`, {
+      headers: { "X-Portal-Key": key },
+      cache: "no-store",
+    });
+    if (!res.ok) return [];
+    return (await res.json()) as PortalAppointment[];
+  } catch {
+    return [];
+  }
+}
