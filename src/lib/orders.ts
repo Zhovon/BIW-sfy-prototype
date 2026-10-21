@@ -63,6 +63,13 @@ export async function listOrders(): Promise<Order[]> {
   return Object.values(orders).sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 }
 
+/** A customer's own orders, newest first — matched by email (case-insensitive). */
+export async function ordersForEmail(email: string): Promise<Order[]> {
+  const want = (email || "").trim().toLowerCase();
+  if (!want) return [];
+  return (await listOrders()).filter((o) => (o.customer?.email || "").trim().toLowerCase() === want);
+}
+
 /**
  * Admin manual status override. Unlike markOrder (the payment-callback path,
  * which is idempotent and never regresses a "paid" order), an admin is trusted

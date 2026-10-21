@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { initSession } from "@/lib/sslcommerz";
+import { auth } from "@/lib/auth";
 import { priceCart, createOrder } from "@/lib/orders";
 import { orderNotificationEmail, orderCustomerEmail } from "@/lib/email-templates";
 import type { Order } from "@/lib/order-types";
@@ -52,6 +53,16 @@ export const POST = withApiLog(async (req: NextRequest) => {
     return NextResponse.json({ error: "Name, email and phone are required" }, { status: 400 });
   }
 
+  // If the shopper is signed in, tie the order to their account email so it
+  // appears in their order history (/account). Otherwise trust the typed email.
+  let orderEmail = email;
+  try {
+    const session = await auth.api.getSession({ headers: req.headers });
+    if (session?.user?.email) orderEmail = session.user.email;
+  } catch {
+    /* not signed in — keep the form email */
+  }
+
   // Recompute authoritative totals from the catalog — never trust client prices.
   const { lines, amount } = priceCart(body.cart);
   if (lines.length === 0 || amount <= 0) {
@@ -63,7 +74,7 @@ export const POST = withApiLog(async (req: NextRequest) => {
     tranId,
     lines,
     amount,
-    customer: { name, email, phone, address: address || "" },
+    customer: { name, email: orderEmail, phone, address: address || "" },
     payment: CHECKOUT_MODE === "online" ? "online" : "floor",
   });
 
@@ -77,7 +88,7 @@ export const POST = withApiLog(async (req: NextRequest) => {
   const result = await initSession({
     tranId,
     amount,
-    customer: { name, email, phone, address: address || "" },
+    customer: { name, email: orderEmail, phone, address: address || "" },
     productName: lines.map((l) => l.title).join(", "),
     numItems: lines.reduce((n, l) => n + l.qty, 0),
   });

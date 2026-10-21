@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import CartButton from "@/components/CartButton";
+import AccountNav from "@/components/AccountNav";
 import MobileNav from "@/components/MobileNav";
 
 type NavItem = { label: string; href: string; children?: { label: string; href: string }[] };
@@ -52,9 +53,7 @@ export default function Header() {
           <Image src="/biw-logo.png" alt="BIW" width={64} height={64} priority className="h-14 w-auto object-contain" />
         </Link>
         <div className="flex items-center justify-end gap-5 text-ink">
-          <Link href="/account/login" className="text-[12.5px] tracking-[0.14em] text-ink/75 hover:text-ink transition-colors">
-            Log in
-          </Link>
+          <AccountNav />
           <CartButton />
         </div>
       </div>
