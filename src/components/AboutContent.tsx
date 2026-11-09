@@ -69,11 +69,11 @@ const locations = [
     hours: "Hours: 10:00 am - 10:00 pm",
   },
   {
-    badge: "Flagship · Coming soon",
-    name: "Mirpur",
-    address: "Arriving soon, Keep eye on our pages and website for updates",
-    phone: "",
-    hours: "",
+    badge: "New · Open now",
+    name: "Mirpur Female",
+    address: "Haji Kujrat Ali Mollah Super Market (Lift 4), 1 No. Harunabad, Section 12, Pallabi, Mirpur, Dhaka (Between Metro Rail Pillars 166-167)",
+    phone: "Phone: +880 1313-634176",
+    hours: "Hours: 10:00 am - 08:00 pm",
   },
 ];
 
@@ -84,7 +84,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Where is BIW located?",
-    a: "Our flagship centre is in Bashundhara, Dhaka, with a dedicated gentlemen's centre in Bashundhara, a branch in Uttara (Azampur), and a further location arriving in Mirpur.",
+    a: "Our centres are located across Dhaka: dedicated ladies and gentlemen centres in Bashundhara (Adept NR Complex), our ladies clinic in Uttara (Sector 3, Rabindra Sarani), and our newly opened ladies branch in Mirpur 12 (Pallabi, between Metro Pillars 166-167).",
   },
   {
     q: "What treatments does BIW offer?",
