@@ -44,17 +44,6 @@ export const BRANCHES: Branch[] = [
     telephone: "+8801806553255",
     geo: { lat: 23.8122605, lng: 90.4241702 },
   },
-  {
-    id: "mirpur",
-    name: `${SITE_NAME} — Mirpur (Female)`,
-    streetAddress:
-      "Haji Kujrat Ali Mollah Super Market (Lift 4), 1 No. Harunabad, Section 12, Pallabi, Mirpur (Between Metro Rail Pillars 166-167)",
-    addressLocality: "Dhaka",
-    postalCode: "1216",
-    addressRegion: "Dhaka",
-    telephone: "+8801313634176",
-    geo: { lat: 23.8295323, lng: 90.3636351 },
-  },
 ];
 
 /** Public contact + social profiles. */
